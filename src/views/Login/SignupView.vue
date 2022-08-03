@@ -1,9 +1,9 @@
 <template>
-  <div class="login">
+  <div class="SignUp">
     <v-container align-center fluid>
       <v-layout fill-height>
         <v-flex xs12>
-          <v-row>
+          <v-row class="row">
             <v-col cols="6" sm="6" md="6" lg="6" xl="6">
               <v-img
                 id="img"
@@ -16,159 +16,228 @@
 
             </v-col>
 
-            <v-col  cols="6" class="bg">
-         
-              <v-row cols="12">
+            <v-col cols="6" class="bg">
+              <h2 class="header">Let's get you started</h2>
+              <v-row cols="12" class="box">
                 <v-col class="mt-10" cols="6" md="5" lg="5" sm="6" xl="3">
-                  <v-text-field
-                    placeholder="USERNAME"
-                    prepend-inner-icon="mdi-account"
-                    background-color="white"
-                    solo
-                    dense
-                    required
-                    class="centered-input shrink mx-4"
-                    style="font-size: small; height: 45px; width: 150rem"
-                  ></v-text-field>
-                  <v-text-field
-                    placeholder="FIRSTNAME"
-                    prepend-inner-icon="mdi-account"
-                    background-color="white"
-                    solo
-                    dense
-                    required
-                    class="centered-input shrink mx-4"
-                    style="font-size: small; height: 45px; width: 150rem"
-                  ></v-text-field>
-                  <v-text-field
-                    placeholder="PASSWORD"
-                    prepend-inner-icon="mdi-lock"
-                    background-color="white"
-                    solo
-                    dense
-                    required
-                    class="centered-input shrink mx-4"
-                    style="font-size: small; height: 45px; width: 150rem"
-                  ></v-text-field>
-                  <v-text-field
-                    placeholder="PHONENUMBER"
-                    prepend-inner-icon="mdi-account"
-                    background-color="white"
-                    solo
-                    dense
-                    required
-                    class="centered-input shrink mx-4"
-                    style="font-size: small; height: 45px; width: 150rem"
-                  ></v-text-field>
-
-                  <v-text-field
-                    placeholder="PASSWORD"
-                    prepend-inner-icon="mdi-lock-outline"
-                    background-color="white"
-                    solo
-                    required
-                    dense
-                    class="centered-input shrink mx-4"
-                    style="font-size: small; width: 150rem; height: 70px"
-                  ></v-text-field>
+                  <label for="username">username</label>
+                  <input type="text" placeholder="username" id="username" />
+                  <div class="fs">
+                    <label for="firstname">firstname</label>
+                    <input type="text" placeholder="firstname" id="user" />
+                  </div>
+                  <div class="fs">
+                    <label for="password">Create password</label>
+                    <VuePassword
+                      v-model="password"
+                      id="password"
+                      style="
+                        margin-left: 12px;
+                        width: 235px;
+                        border: 1px solid #ffff;
+                        border-radius: 6px;
+                      "
+                    />
+                    
+                  </div>
+                  <div class="fs">
+                    <label for="location">Location</label>
+                    <input
+                      type="text"
+                      placeholder="select location"
+                      id="location"
+                    />
+                  </div>
+                  <div class="fs">
+                    <label for="genre">genre</label>
+                    <input type="text" placeholder="genre" id="genre" />
+                  </div>
                 </v-col>
                 <v-col class="mt-10" cols="6" md="5" lg="5" sm="6" xl="3">
-                  <v-text-field
-                    placeholder="USERNAME"
-                    prepend-inner-icon="mdi-account"
-                    background-color="white"
-                    solo
-                    dense
-                    required
-                    class="centered-input shrink mx-4"
-                    style="font-size: small; height: 45px; width: 150rem"
-                  ></v-text-field>
-                  <v-text-field
-                    placeholder="USERNAME"
-                    prepend-inner-icon="mdi-account"
-                    background-color="white"
-                    solo
-                    dense
-                    required
-                    class="centered-input shrink mx-4"
-                    style="font-size: small; height: 45px; width: 150rem"
-                  ></v-text-field>
-                  <v-text-field
-                    placeholder="USERNAME"
-                    prepend-inner-icon="mdi-account"
-                    background-color="white"
-                    solo
-                    dense
-                    required
-                    class="centered-input shrink mx-4"
-                    style="font-size: small; height: 45px; width: 150rem"
-                  ></v-text-field>
-                  <v-text-field
-                    placeholder="USERNAME"
-                    prepend-inner-icon="mdi-account"
-                    background-color="white"
-                    solo
-                    dense
-                    required
-                    class="centered-input shrink mx-4"
-                    style="font-size: small; height: 45px; width: 150rem"
-                  ></v-text-field>
-
-                  <v-text-field
-                    placeholder="PASSWORD"
-                    prepend-inner-icon="mdi-lock-outline"
-                    background-color="white"
-                    solo
-                    required
-                    dense
-                    class="centered-input shrink mx-4"
-                    style="font-size: small; width: 150rem; height: 70px"
-                  ></v-text-field>
+                  <div>
+                    <label for="lastname">lastname</label>
+                    <input
+                      type="text"
+                      placeholder="lastname"
+                      id="lastname"
+                      class="colu"
+                    />
+                    <div class="fs">
+                      <label for="email">Email adress</label>
+                      <input
+                        type="email"
+                        id="email"
+                        placeholder="axz@gmail.com"
+                        class="colu"
+                      />
+                    </div>
+                    <div class="fs">
+                      <label for="tel"> Phone number </label>
+                      <vue-tel-input
+                        v-model="vueTel.phone"
+                        v-bind="vueTel.props"
+                        style="
+                          width: 301px;
+                          margin-left: 10px;
+                          border: 1px solid #ffff;
+                          border-radius: 6px;
+                        "
+                      ></vue-tel-input>
+                    </div>
+                    <div class="fs" style="margin-top:22px">
+                      <label for="postal" >Code Postal</label>
+                      <input
+                        type="tel"
+                        id="postal"
+                        class="colu"
+                        placeholder="codePostal"
+                        
+                      />
+                    </div>
+                  </div>
                 </v-col>
-
-                <!-- <a id="forget" class=""> Forgot Password ? </a> -->
               </v-row>
               <v-row style="padding-left: 38px">
                 <v-col cols="6" md="5" lg="5" sm="6" xl="3">
-                  <v-btn class="btn" elevation="3 ">Login</v-btn></v-col
-                >
+                  <input type="button" value="Sign Up" id="btn" />
+                  <div class="links">
+                    <p>already a user?</p>
+                    <a href="login">Login</a>
+                  </div>
+                </v-col>
               </v-row>
             </v-col>
           </v-row>
         </v-flex>
       </v-layout>
     </v-container>
+    <font-awesome-icon icon="fa-solid fa-user-secret" />
   </div>
 </template>
+
+<script>
+import VuePassword from "vue-password";
+export default {
+  name: "SignUp",
+  components: {
+    VuePassword,
+  },
+  data() {
+    return {
+      password: "",
+     
+
+      vueTel: {
+        phone: "",
+        props: {
+          preferredCountries: ["US", "GB"],
+          placeholder: "Enter your phone",
+          mode: "international",
+          inputOptions: {
+            showDialCode: true,
+          },
+          disabledFormatting: false,
+          wrapperClasses: "country-phone-input",
+        },
+      },
+    };
+  },
+  
+  mounted() {
+    Prism.highlightAll();
+  },
+};
+</script>
 <style scoped>
-.sec-col {
-  padding-top: 130px;
+p {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
 }
+a {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  color: #476d73;
+  margin-left: 15px;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  margin-left: 194px;
+  width: 100%;
+  margin-top: 10px;
+}
+.row {
+  height: 122px;
+}
+.header {
+  text-align: center;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: bold;
+  color: #ffff;
+  margin-top: 50px;
+}
+.fs {
+  margin-top: 10px;
+}
+.box {
+  margin: 50px 20px;
+  background: rgba(57, 92, 115, 0.22);
+  border: 1px solid rgba(0, 0, 0, 0.47);
+  border-radius: 10px;
+  height: 350px;
+}
+
 #img {
   height: 90vh;
 }
 .bg {
   background: #a4ced1;
 }
-#forget {
-  color: white;
-  margin-left: 350px;
-  font-size: 15px;
+label {
+  color: black;
+  margin-left: 10px;
+  margin-top: 10px;
 }
-.centered-input >>> input {
-  text-align: center;
-  font-family: "IBM Plex Sans", sans-serif;
+::placeholder {
+  color: #ffff;
 }
-.v-text-field.v-text-field--solo .v-input__control {
-  min-height: 30px !important;
-  padding: 0;
+
+input {
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 240px;
+  height: 32px;
+  margin-left: 10px;
+}
+input:focus {
+  color: #ffff;
+}
+.colu {
+  width: 300px;
+}
+#btn {
+  color: #ffff;
+  background-color: #284a5e;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: -26px;
+  margin-left: 152px;
+  border: none;
+  border-radius: 2px;
+}
+.VuePassword__Meter {
+  display: none;
 }
 </style>
-<script>
-export default {
-  name: "SignUp",
-  data() {
-    return {};
-  },
-};
-</script>
