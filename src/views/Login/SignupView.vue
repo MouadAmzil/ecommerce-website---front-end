@@ -1,0 +1,203 @@
+<template>
+  <div class="SignUp">
+    <v-container align-center fluid>
+      <v-layout fill-height>
+        <v-flex xs12>
+          <v-row class="row">
+            <v-col cols="6" sm="6" md="6" lg="6" xl="6">
+              <v-img
+                id="img"
+                class="mt-10"
+                max-height="100%"
+                max-width="100%"
+                src="../../assets/Group_3897.png"
+              ></v-img>
+            </v-col>
+
+            <v-col cols="6" class="bg">
+              <h2 class="header">Let's get you started</h2>
+              <v-row cols="12" class="box">
+                <v-col class="mt-10" cols="6" md="5" lg="5" sm="6" xl="3">
+                  
+                  <label for="username">username</label>
+                  <input type="text" placeholder="username" id="username" />
+                  <div class="fs">
+                  <label for="firstname" >firstname</label>
+                  <input type="text" placeholder="firstname" id="user" />
+                  </div>
+                  <div class="fs">
+                  <label for="password">Create password</label>
+                  <input  type="password" placeholder="Type your password" />
+           
+                  </div>
+                  <div class="fs">
+                  <label for="location">Location</label>
+                  <input
+                    type="text"
+                    placeholder="select location"
+                    id="location"
+                  />
+                  </div>
+                  <div class="fs">
+                  <label for="genre">genre</label>
+                  <input type="text" placeholder="genre" id="genre" />
+                  </div>
+                </v-col>
+                <v-col class="mt-10" cols="6" md="5" lg="5" sm="6" xl="3">
+                    <div>
+                    <label for="lastname">lastname</label>
+                    <input
+                      type="text"
+                      placeholder="lastname"
+                      id="lastname"
+                      class="colu"
+                    />
+                    <div class="fs">
+                    <label for="email">Email adress</label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="axz@gmail.com"
+                      class="colu"
+                    />
+                    </div>
+                    <div class="fs">
+                    <label for="tel"> Phone number </label>
+                    <input type="tel" id="tel" class="colu" />
+                    </div>
+                    <div class="fs">
+                    <label for="postal">Code Postal</label>
+                    <input type="tel" id="postal" class="colu" placeholder="codePostal" />
+                    </div>
+                  </div>
+                </v-col>
+              </v-row>
+              <v-row style="padding-left: 38px">
+
+                <v-col cols="6" md="5" lg="5" sm="6" xl="3" >
+                 <input type="button" value="Sign Up" id="btn">
+                 <div class="links"><p>already a user?</p><a href="login" >Login</a></div>
+                 </v-col>
+                  
+  
+        
+               
+                 
+              </v-row>
+            
+            </v-col> 
+          </v-row>
+        </v-flex>
+      </v-layout>
+    </v-container>
+      <font-awesome-icon icon="fa-solid fa-user-secret" />
+  </div>
+   
+          
+</template>
+<style scoped>
+
+p{
+font-family: 'Space Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+color: #FFFFFF;
+}
+a{
+font-family: 'Space Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+text-decoration-line: underline;
+color: #476D73;
+margin-left: 15px;
+
+}
+
+.links{
+ display: flex;
+ flex-direction: row;
+ margin-left: 194px;
+    width: 100%;
+    margin-top: 10px;
+}
+.row{
+      height: 122px;
+}
+.header {
+  text-align: center;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: bold;
+  color: #ffff;
+  margin-top: 50px;
+}
+.fs{
+  margin-top: 10px;
+}
+.box {
+  margin: 50px 20px;
+  background: rgba(57, 92, 115, 0.22);
+  border: 1px solid rgba(0, 0, 0, 0.47);
+  border-radius: 10px;
+  height: 350px;
+}
+
+#img {
+  height: 90vh;
+}
+.bg {
+  background: #a4ced1;
+}
+label {
+  color: black;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+::placeholder {
+  color: #ffff;
+}
+
+input {
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 240px;
+  height: 32px;
+  margin-left: 10px;
+}
+input:focus{
+  color: #ffff;
+
+}
+.colu {
+  width: 300px;
+  
+}
+#btn{
+color: #ffff;
+background-color: #284A5E;
+font-family: 'Space Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+margin-top: -26px;
+margin-left: 152px;
+border: none;
+border-radius:2px ;
+}
+</style>
+<script>
+export default {
+  name: "SignUp",
+  data() {
+   return{
+
+   }
+  },
+  
+  
+};
+</script>
