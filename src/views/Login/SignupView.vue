@@ -12,8 +12,6 @@
                 max-width="100%"
                 src="../../assets/Group_3897.png"
               ></v-img>
-                    <router-link to="/about">About</router-link> |
-
             </v-col>
 
             <v-col cols="6" class="bg">
