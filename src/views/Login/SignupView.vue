@@ -19,10 +19,10 @@
               <v-row cols="12" class="box">
                 <v-col class="mt-10" cols="6" md="5" lg="5" sm="6" xl="3">
                   <div style="margin-left:-10px;">
-                  <label for="username">username</label>
+                  <label for="username">Username</label>
                   <input type="text" placeholder="username" id="username"  />
                   <div class="fs">
-                    <label for="firstname">firstname</label>
+                    <label for="firstname">Firstname</label>
                     <input type="text" placeholder="firstname" id="user" />
                   </div>
                   <div class="fs">
@@ -47,14 +47,14 @@
 "/>
                   </div>
                   <div class="fs" >
-                    <label for="genre">genre</label>
+                    <label for="genre">Genre</label>
                     <input type="text" placeholder="genre" id="genre"  />
                   </div>
                   </div>
                 </v-col>
                 <v-col class="mt-10" cols="6" md="5" lg="5" sm="6" xl="3" >
                   <div>
-                    <label for="lastname">lastname</label>
+                    <label for="lastname">Lastname</label>
                     <input
                       type="text"
                       placeholder="lastname"
