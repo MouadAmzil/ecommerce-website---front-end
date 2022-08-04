@@ -18,8 +18,9 @@
               <h2 class="header">Let's get you started</h2>
               <v-row cols="12" class="box">
                 <v-col class="mt-10" cols="6" md="5" lg="5" sm="6" xl="3">
+                  <div style="margin-left:-10px;">
                   <label for="username">username</label>
-                  <input type="text" placeholder="username" id="username" />
+                  <input type="text" placeholder="username" id="username"  />
                   <div class="fs">
                     <label for="firstname">firstname</label>
                     <input type="text" placeholder="firstname" id="user" />
@@ -29,29 +30,29 @@
                     <VuePassword
                       v-model="password"
                       id="password"
-                      style="
-                        margin-left: 12px;
-                        width: 235px;
-                        border: 1px solid #ffff;
-                        border-radius: 6px;
-                      "
+                      
                     />
                     
                   </div>
                   <div class="fs">
-                    <label for="location">Location</label>
-                    <input
-                      type="text"
-                      placeholder="select location"
-                      id="location"
-                    />
+                    <label for="location">Country</label>
+                    <country-select v-model="country" :country="country" topCountry="US" id="select" style="
+    width: 247px;
+    border: 1px solid #ffff;
+    border-radius: 4px;
+    margin-left: 11px;
+    height: 30px;
+    color: #ffff;
+    height:30px;
+"/>
                   </div>
-                  <div class="fs">
+                  <div class="fs" >
                     <label for="genre">genre</label>
-                    <input type="text" placeholder="genre" id="genre" />
+                    <input type="text" placeholder="genre" id="genre"  />
+                  </div>
                   </div>
                 </v-col>
-                <v-col class="mt-10" cols="6" md="5" lg="5" sm="6" xl="3">
+                <v-col class="mt-10" cols="6" md="5" lg="5" sm="6" xl="3" >
                   <div>
                     <label for="lastname">lastname</label>
                     <input
@@ -82,16 +83,23 @@
                         "
                       ></vue-tel-input>
                     </div>
-                    <div class="fs" style="margin-top:22px">
+                    <div class="fs"  >
                       <label for="postal" >Code Postal</label>
                       <input
                         type="tel"
                         id="postal"
                         class="colu"
                         placeholder="codePostal"
+                        style="height:30px"
                         
                       />
                     </div>
+                    <div class="fs">
+                    <label for="adress">Adresse :</label>
+                    <input type="text" placeholder="adress" id="adress" style="
+    width: 301px;
+" />
+                  </div>
                   </div>
                 </v-col>
               </v-row>
@@ -123,6 +131,7 @@ export default {
   data() {
     return {
       password: "",
+       country: '',
      
 
       vueTel: {
@@ -147,6 +156,7 @@ export default {
 };
 </script>
 <style scoped>
+
 p {
   font-family: "Space Grotesk";
   font-style: normal;
@@ -165,6 +175,7 @@ a {
   color: #476d73;
   margin-left: 15px;
 }
+
 
 .links {
   display: flex;
@@ -212,7 +223,7 @@ label {
 input {
   border: 1px solid white;
   border-radius: 5px;
-  width: 240px;
+  width: 253px;
   height: 32px;
   margin-left: 10px;
 }
@@ -238,4 +249,35 @@ input:focus {
 .VuePassword__Meter {
   display: none;
 }
+
 </style>
+<style>
+select option{
+  color:black;
+}
+.VuePassword__Meter{
+  display: none;
+}
+.VuePassword__Input {
+      padding: 0.5rem 0.75rem;
+      border:none;
+}
+.VuePassword{
+  width: 260px;
+}
+
+#password{
+  
+                        margin-left: 12px;
+                        width: 260px;
+                        border: 1px solid #ffff;
+                        border-radius: 6px;
+                        height:31px;
+                      outline: none;
+}
+*{
+  outline:none;
+
+}
+</style>
+
