@@ -45,8 +45,18 @@
         </v-col>
 
         <v-col>
-          <v-sheet class="pa-6" min-height="80vh" width="75vw" rounded="lg">
+          <v-sheet class="pa-6" style="width: 100%;" min-height="80vh" rounded="lg">
             <v-spacer class="about">
+              <v-sheet class="mx-auto" max-width="700">
+                <v-slide-group multiple show-arrows>
+                  <v-slide-item v-for="n in 10" :key="n" v-slot="{ active, toggle }">
+                    <v-btn class="mx-2" :input-value="active" active-class="purple white--text" depressed rounded
+                      @click="toggle">
+                      category {{ n }}
+                    </v-btn>
+                  </v-slide-item>
+                </v-slide-group>
+              </v-sheet>
               <h2>Trending Items</h2>
               <v-container align-center fluid>
                 <v-row>
