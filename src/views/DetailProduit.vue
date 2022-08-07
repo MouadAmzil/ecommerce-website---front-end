@@ -23,11 +23,11 @@
            <h3>{{ produit.price }}$</h3>
           <p style="margin-top:20px">Colors :</p>
           <p class="box">
-            <v-chip style="color: #929292" class="ma-1"> </v-chip>
+            <v-chip color="blue lighten-4" class="ma-1"> </v-chip>
 
-            <v-chip class="ma-1" style="color: #f1e2d4"> </v-chip>
+            <v-chip class="ma-1" color="grey darken-2"> </v-chip>
 
-            <v-chip class="ma-1" style="color: #c9c9c9"> </v-chip>
+            <v-chip class="ma-1" color="deep-orange lighten-5"> </v-chip>
           </p>
 
          
