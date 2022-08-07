@@ -1,57 +1,5 @@
-<template>
-  <div class="about">
-    <h2>Trending Items</h2>
-    <v-container align-center fluid>
-    <v-row>
-      <v-col cols="6" v-for="product in products" :key="product.id">
-        <v-card elevation="5" outlined min-height="100%">
-          <v-row>
-            <v-col cols="6" >
-              <v-img 
-                class="img"
-                width="200"
-                height="200"
-                :src="product.image"
-              ></v-img
-            ></v-col>
-
-            <v-col cols="6"
-              ><div class="text-center">
-                <h3 class="pt-5">{{ product.name }}</h3>
-                <v-card-text>{{ product.description }}</v-card-text>
-                <v-card-text
-                  >colors : <v-chip color="primary"> </v-chip>
-
-                  <v-chip color="secondary" class="ma-1"> </v-chip>
-
-                  <v-chip color="red"> </v-chip
-                ></v-card-text>
-                <v-card-text v-if="product.size != 0"
-                  >{{ product.size }} -sizes available
-                </v-card-text>
-                <v-card-text v-else text="">{{ product.size }}</v-card-text>
-
-                <v-card-text>{{ product.price }} $</v-card-text>
-
-                <div class="div">
-                  <v-chip v-if="product.stock == 0" color="red"
-                    >only {{ product.stock }}</v-chip
-                  >
-                  <v-chip v-else color="green">only {{ product.stock }}</v-chip>
-
-                  <v-action
-                    ><v-icon>mdi-cart</v-icon
-                    ><v-icon>mdi-cards-heart-outline</v-icon></v-action
-                  >
-                </div>
-              </div></v-col
-            >
-          </v-row>
-        </v-card>
-      </v-col>
-    </v-row>
-    </v-container>
-  </div>
+<!-- <template>
+ 
 </template>
 <style scoped>
 .div {
@@ -60,7 +8,159 @@
 .img{
   color: white !important;
 }
-</style>
+</style> -->
+<template>
+  <v-app id="inspire">
+    <v-app-bar class="pt-3" max-height="90" color="white" flat>
+      <v-container class="d-flex justify-center">
+        <v-responsive class="pt-6" max-width="750">
+          <v-text-field height="30" rounded outlined elevation="20px" color="grey" background-color="white"
+            placeholder="hello"></v-text-field>
+        </v-responsive>
+
+      </v-container>
+    </v-app-bar>
+    <v-spacer class="pt-0">
+      <v-row>
+        <v-col class="pt-16 ml-5" cols="2">
+          <v-sheet class="grey lighten-3 " rounded="lg">
+            <v-list color="transparent">
+              <v-avatar class="mr-10 ma-4" color="grey darken-1" size="32"></v-avatar>
+
+              <v-list-item v-for="n in 5" :key="n" link>
+                <v-list-item-content>
+                  <v-list-item-title> List Item {{ n }} </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-divider class="my-2"></v-divider>
+
+              <v-list-item link color="grey lighten-4">
+                <v-list-item-content>
+                  <v-list-item-title> Refresh </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-sheet>
+        </v-col>
+
+        <v-col>
+          <v-sheet class="pa-6" style="width: 100%;" min-height="80vh" rounded="lg">
+            <v-spacer class="about">
+              <v-sheet class="mx-auto" max-width="700">
+                <v-slide-group multiple show-arrows>
+                  <v-slide-item v-for="n in 10" :key="n" v-slot="{ active, toggle }">
+                    <v-btn class="mx-2" :input-value="active" active-class="purple white--text" depressed rounded
+                      @click="toggle">
+                      category {{ n }}
+                    </v-btn>
+                  </v-slide-item>
+                </v-slide-group>
+              </v-sheet>
+              <h2>Trending Items</h2>
+              <v-container align-center fluid>
+                <v-row>
+                  <v-col cols="6" v-for="product in products" :key="product.id">
+                    <v-card elevation="5" style="border-radius: 24px; overflow: hidden;" outlined m in-height="100%">
+                      <v-row>
+                        <v-col col cols="6">
+                          <v-img class="img" contain
+                            style="width: 100%;height: 300px !important;background-color: #f6f6f6; background-size: contain !important;"
+                            :src="product.image"></v-img>
+                        </v-col>
+
+                        <v-col cols="6">
+                          <v-spacer style="padding-top:10px ;padding-right: 5px;">
+                            <h3 style="padding-bottom: 10px;">{{ product.name }}</h3>
+                            <v-card-text
+                              style="padding-bottom: 20px !important; font-weight: 400;font-size: 16px;line-height: 18px;">
+                              {{ product.description }}
+                            </v-card-text>
+                            <v-card-text style="display:flex ;align-items: center;margin-bottom: 20px;">Colors : <span
+                                style="padding: 4px 8px;margin-left: 6px; border-radius: 24px; background-color: #F6F6F6;display:flex ;align-items: center;">
+                                <span class="dot" sytle="background-color:red;"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                              </span>
+                            </v-card-text>
+                            <v-card-text style="margin-bottom: 20px;" v-if="product.size != 0">{{ product.size }} -sizes
+                              available
+                            </v-card-text>
+                            <v-card-text v-else text="">{{ product.size }}</v-card-text>
+                            <!-- <v-card-text>{{ product.price }} $</v-card-text> -->
+                            <v-spacer class="div" :class="{ AddPadding: product.size == 0 }">
+                              <v-chip v-if="product.stock == 0" color="red">only {{ product.stock }}</v-chip>
+                              <v-chip v-else color="green">only {{ product.stock }}</v-chip>
+                            </v-spacer>
+                            <v-spacer class="footerCard">
+                              <v-spacer style="display:flex ;justify-content: space-between;">
+                                <v-spacer style="font-weight: 700;font-size: 20px;line-height: 22px;">
+                                  {{ product.price
+                                  }} ₹</v-spacer>
+                                <v-spacer style="display: flex;justify-content: flex-end;padding-right: 10px;">
+                                  <v-action>
+                                    <v-icon style="padding-right: 5px;">mdi-cart</v-icon>
+                                    <v-icon>mdi-cards-heart-outline</v-icon>
+                                  </v-action>
+                                </v-spacer>
+                              </v-spacer>
+                            </v-spacer>
+                          </v-spacer>
+                        </v-col>
+                      </v-row>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-spacer>
+          </v-sheet>
+        </v-col>
+      </v-row>
+    </v-spacer>
+  </v-app>
+</template>
+<style scoped>
+.div {
+  display: inline-block;
+}
+
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.v-card__text {
+  padding: 0 !important;
+}
+
+.AddPadding {
+  margin-top: 40px;
+}
+
+.v-image__image {
+  background-size: contain !important;
+}
+
+.dot {
+  height: 18px;
+  margin-right: 2px;
+  width: 18px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.footerCard {
+  width: 100%;
+  /* height: 100%; */
+  display: flex;
+  align-items: flex-end;
+  margin-top: 40px;
+}
+
+.img {
+  color: white !important;
+}
+</style> -->
 <script>
 export default {
   data() {
