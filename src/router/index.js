@@ -1,3 +1,4 @@
+import DetailProduitVue from '@/views/DetailProduit.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
@@ -22,6 +23,11 @@ const routes = [
     name: 'SignUp',
     component: SignUp
   },
+  {
+    path:'/detailproduit',
+    name:'detailProduit',
+    component: DetailProduitVue
+  }
 
 ]
 
