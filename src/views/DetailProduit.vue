@@ -53,11 +53,13 @@
           <p>{{ produit.name }}</p>
           <v-rating
             v-model="rating"
+            
             color="yellow darken-3"
             background-color="grey darken-1"
           
             half-increments
             hover
+
                     :empty-icon="emptyIcon"
       :full-icon="fullIcon"
       :half-icon="halfIcon"
@@ -105,10 +107,10 @@ export default {
   data() {
     return {
      selection: 2,
-     rating: 5,
-    emptyIcon: 'mdi-heart-outline',
-      fullIcon: 'mdi-heart',
-      halfIcon: 'mdi-heart-half',
+     rating: 3.5,
+    emptyIcon: 'mdi-star-outline',
+      fullIcon: 'mdi-star',
+      halfIcon: 'mdi-star-half',
       produit: {
         name: " Running shoes",
         description: "Men's Road Running shoes",
