@@ -147,7 +147,8 @@ margin-top: 13px;
           <b class="subheading">Description :</b>
           <p>{{ produit.description }}</p>
           <h3>{{ produit.price }}$</h3>
-          <p style="margin-top: 20px">Colors :</p>
+          <div class="colors"> 
+            <p style="margin-top: 20px">Colors :</p>
 
           <p class="box">
             <v-chip color="blue lighten-4" class="ma-1" > </v-chip>
@@ -156,7 +157,8 @@ margin-top: 13px;
 
             <v-chip class="ma-1" color="deep-orange lighten-5"> </v-chip>
           </p>
-
+        </div>
+         
           <div><img src="../assets/shoes.png" alt="" /></div>
 
           <b id="size">Size :</b>
@@ -200,6 +202,9 @@ export default {
 };
 </script>
 <style scoped>
+.colors{
+    display: flex;
+}
 .about-produit{
     display: flex;
     flex-direction: row;
@@ -214,8 +219,11 @@ export default {
   margin-top: 100px;
 }
 .box {
-  border-radius: 30px;
-  width: 100px;
-  background-color: #bebebe;
+  border-radius: 20px;
+    width: 98px;
+    background-color: #bebebe;
+    height: 40px;
+    margin-top: 13px;
+    margin-left: 13px;
 }
 </style>
