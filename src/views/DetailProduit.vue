@@ -151,11 +151,11 @@ margin-top: 13px;
             <p style="margin-top: 20px">Colors :</p>
 
           <p class="box">
-            <v-chip color="blue lighten-4" class="ma-1" > </v-chip>
+            <v-chip small color="blue lighten-4" class="ma-1" > </v-chip>
 
-            <v-chip class="ma-1" color="grey darken-2"> </v-chip>
+            <v-chip small class="ma-1" color="grey darken-2"> </v-chip>
 
-            <v-chip class="ma-1" color="deep-orange lighten-5"> </v-chip>
+            <v-chip small class="ma-1" color="deep-orange lighten-5"> </v-chip>
           </p>
         </div>
          
@@ -213,6 +213,7 @@ export default {
     gap: 7px;
     width: 800px;
     height: 51px;
+    
 
 }
 .detail-produit {
@@ -222,8 +223,8 @@ export default {
   border-radius: 20px;
     width: 98px;
     background-color: #bebebe;
-    height: 40px;
-    margin-top: 13px;
+    
+    margin-top: 16px;
     margin-left: 13px;
 }
 </style>
