@@ -32,6 +32,7 @@
                     <VuePassword
                       v-model="password"
                       id="password"
+                      style="color:#ffff;"
                       
                     />
                     
