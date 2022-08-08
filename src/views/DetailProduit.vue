@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row style="margin: 0">
-      <v-col cols="6" class="col1" style="margin: 0; padding: 0">
+      <v-col cols="6" class="col1" style="margin: 0; padding: 0 ; position:relative;">
         <svg
           width="650px"
           height="656px"
@@ -9,7 +9,9 @@
           xmlns="http://www.w3.org/2000/svg"
           style=""
         >
+        
           <g clip-path="url(#clip0_104_258)">
+           
             <rect width="761" height="1117" fill="#E3E5FA" />
             <circle
               opacity="0.1"
@@ -18,7 +20,8 @@
               r="357.561"
               transform="rotate(-5 380.364 549.364)"
               fill="url(#paint0_linear_104_258)"
-            />
+          
+            />        
             <g opacity="0.1" filter="url(#filter0_f_104_258)">
               <circle
                 r="239.922"
@@ -37,6 +40,8 @@
             </g>
           </g>
           <defs>
+           
+        
             <filter
               id="filter0_f_104_258"
               x="-212.508"
@@ -111,54 +116,65 @@
         <div class="detail-produit">
           <v-chip color="red" label text-color="white">HOTSALE</v-chip>
           <h3>Nike React Miler</h3>
-        <div class="about-produit">
-         <p style="font-family: 'Almarai';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;width: 104px;
-height: 18px;margin-top: 8px;">{{ produit.name }}</p>
-          <v-rating
-            v-model="rating"
-            color="yellow darken-3"
-            background-color="grey darken-1"
-            half-increments
-            hover
-            size="20"
-            :empty-icon="emptyIcon"
-            :full-icon="fullIcon"
-            :half-icon="halfIcon"
-            style="margin-top: 3px;
-    margin-left: -10px;"
-          ></v-rating>
-          <span style="
-    width: 118px;
-    height: 15px;
-    font-family: 'Manrope';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 15px;
-margin-top: 13px;
-    text-align: center;
-    letter-spacing: 0.03em;
-">4.9 (2130 reviews)</span>
+          <div class="about-produit">
+            <p
+              style="
+                font-family: 'Almarai';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                width: 104px;
+                height: 18px;
+                margin-top: 8px;
+              "
+            >
+              {{ produit.name }}
+            </p>
+            <v-rating
+              v-model="rating"
+              color="yellow darken-3"
+              background-color="grey darken-1"
+              half-increments
+              hover
+              size="20"
+              :empty-icon="emptyIcon"
+              :full-icon="fullIcon"
+              :half-icon="halfIcon"
+              style="margin-top: 3px; margin-left: -10px"
+            ></v-rating>
+            <span
+              style="
+                width: 118px;
+                height: 15px;
+                font-family: 'Manrope';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 15px;
+                margin-top: 13px;
+                text-align: center;
+                letter-spacing: 0.03em;
+              "
+              >4.9 (2130 reviews)</span
+            >
           </div>
-          
+
           <b class="subheading">Description :</b>
           <p>{{ produit.description }}</p>
           <h3>{{ produit.price }}$</h3>
-          <div class="colors"> 
+          <div class="colors">
             <p style="margin-top: 20px">Colors :</p>
 
-          <p class="box">
-            <v-chip small color="blue lighten-4" class="ma-1" > </v-chip>
+            <p class="box">
+              <v-chip small color="blue lighten-4" class="ma-1"> </v-chip>
 
-            <v-chip small class="ma-1" color="grey darken-2"> </v-chip>
+              <v-chip small class="ma-1" color="grey darken-2"> </v-chip>
 
-            <v-chip small class="ma-1" color="deep-orange lighten-5"> </v-chip>
-          </p>
-        </div>
-         
+              <v-chip small class="ma-1" color="deep-orange lighten-5">
+              </v-chip>
+            </p>
+          </div>
+
           <div><img src="../assets/shoes.png" alt="" /></div>
 
           <b id="size">Size :</b>
@@ -202,29 +218,27 @@ export default {
 };
 </script>
 <style scoped>
-.colors{
-    display: flex;
+.colors {
+  display: flex;
 }
-.about-produit{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 7px;
-    width: 800px;
-    height: 51px;
-    
-
+.about-produit {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 7px;
+  width: 800px;
+  height: 51px;
 }
 .detail-produit {
   margin-top: 100px;
 }
 .box {
   border-radius: 20px;
-    width: 98px;
-    background-color: #bebebe;
-    
-    margin-top: 16px;
-    margin-left: 13px;
+  width: 98px;
+  background-color: #bebebe;
+
+  margin-top: 16px;
+  margin-left: 13px;
 }
 </style>
