@@ -5,7 +5,7 @@
 
 </v-app>
 
- 
+
 </template>
 
 <script>
@@ -21,7 +21,7 @@ components:{
 Login,
 AboutView,
 SignUp,
-DetailProduit
+DetailProduit,
 },
 
   data() {
