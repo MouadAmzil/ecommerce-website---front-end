@@ -1,9 +1,9 @@
 <template>
-  <div class="SignUp">
+  <div >
     <v-container align-center fluid>
       <v-layout fill-height>
         <v-flex xs12>
-          <v-row class="row">
+          <v-row class="row" >
             <v-col cols="6" sm="6" md="6" lg="6" xl="6">
               <v-img
                 id="img"
@@ -14,7 +14,7 @@
               ></v-img>
             </v-col>
 
-            <v-col cols="6" class="bg" >
+            <v-col cols="6"  class="bg">
               <h2 class="header">Let's get you started</h2>
               <v-row cols="12" class="box">
                 <v-col  cols="6" md="5" lg="5" sm="6" xl="3">
@@ -32,7 +32,7 @@
                     <VuePassword
                       v-model="password"
                       id="password"
-                      style="color:#ffff;"
+                     placeholder=""
                       
                     />
                     
@@ -213,7 +213,7 @@ a {
 }
 .bg {
   background: #a4ced1;
-  height: 41.4rem;
+  
 }
 label {
   color: black;
