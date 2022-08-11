@@ -5,6 +5,7 @@ import roleModule from "./models/roleModule";
 import userModule from "./models/userModule";
 import categorieModule from "./models/categorieModule";
 import produitModule from "./models/produitModule";
+import commandeModule from "./models/commandeModule";
 
 import VuexPersist from "vuex-persist";
 
@@ -30,6 +31,7 @@ export default function () {
       userModule,
       categorieModule,
       produitModule,
+      commandeModule
     },
     getters: {},
     mutations: {},
