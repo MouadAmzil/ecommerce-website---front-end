@@ -15,7 +15,7 @@
       <v-container class="d-flex justify-center">
         <v-responsive class="pt-6" max-width="750">
           <v-text-field height="30" rounded outlined elevation="20px" color="grey" background-color="white"
-            placeholder="hello"></v-text-field>
+            placeholder="Search"></v-text-field>
         </v-responsive>
 
       </v-container>
@@ -23,25 +23,57 @@
     <v-spacer class="pt-0">
       <v-row>
         <v-col class="pt-16 ml-5" cols="2">
-          <v-sheet class="grey lighten-3 " rounded="lg">
-            <v-list color="transparent">
-              <v-avatar class="mr-10 ma-4" color="grey darken-1" size="32"></v-avatar>
+          <template>
+            <v-card class="mx-auto" style="border-radius: 24px !important; padding: 3px 5px ;" max-width="300" tile>
+              <v-list style="padding: 0px !important;" class="brand">
+                <v-img src="../assets/brande.png"></v-img>
 
-              <v-list-item v-for="n in 5" :key="n" link>
-                <v-list-item-content>
-                  <v-list-item-title> List Item {{ n }} </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-
-              <v-divider class="my-2"></v-divider>
-
-              <v-list-item link color="grey lighten-4">
-                <v-list-item-content>
-                  <v-list-item-title> Refresh </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-sheet>
+              </v-list>
+              <v-list rounded>
+                <v-list-item-group class="maraginBettwenItems" color="primary">
+                  <v-list-item>
+                    <!-- <v-list-item-icon> -->
+                    <!-- <v-icon></v-icon> -->
+                    <!-- </v-list-item-icon> -->
+                    <v-list-item-content>
+                      <v-list-item-title class="myIyemListText">Dashborad</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-item-group>
+                <v-list-item-group class="maraginBettwenItems">
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon color="red" x-large>mdi-heart</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                      <v-list-item-title>WishList</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-item-group>
+                <v-list-item-group class="maraginBettwenItems">
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon x-large>mdi-cart</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                      <v-list-item-title>Cart</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-item-group>
+                <v-list-item-group class="maraginBettwenItems">
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon x-large>mdi-account-circle</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                      <v-list-item-title>His Name</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
+            </v-card>
+          </template>
+          <!-- </v-sheet> -->
         </v-col>
 
         <v-col>
@@ -61,7 +93,8 @@
               <v-container align-center fluid>
                 <v-row>
                   <v-col cols="6" v-for="product in products" :key="product.id">
-                    <v-card elevation="5" style="border-radius: 24px; overflow: hidden;" outlined m in-height="100%">
+                    <v-card elevation="5" style="border-radius: 24px; overflow: hidden; cursor: pointer;" outlined m
+                      in-height="100%">
                       <v-row>
                         <v-col col cols="6">
                           <v-img class="img" contain
@@ -138,6 +171,22 @@
 
 .v-image__image {
   background-size: contain !important;
+}
+
+.myIyemListText {
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  line-height: 30px !important;
+  color: #474747 !important;
+}
+ .v-responsive__sizer{
+  padding-bottom: 50% !important;
+}
+
+.maraginBettwenItems {
+
+  margin-top: 12px !important;
+  margin-bottom: 12px impr !important;
 }
 
 .dot {
