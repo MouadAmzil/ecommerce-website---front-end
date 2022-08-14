@@ -1,9 +1,9 @@
 <template>
-  <div class="SignUp">
+  <div >
     <v-container align-center fluid>
       <v-layout fill-height>
         <v-flex xs12>
-          <v-row class="row">
+          <v-row class="row" >
             <v-col cols="6" sm="6" md="6" lg="6" xl="6">
               <v-img
                 id="img"
@@ -14,22 +14,25 @@
               ></v-img>
             </v-col>
 
-            <v-col cols="6" class="bg">
+            <v-col cols="6"  class="bg">
               <h2 class="header">Let's get you started</h2>
               <v-row cols="12" class="box">
-                <v-col class="mt-10" cols="6" md="5" lg="5" sm="6" xl="3">
-                  <div style="margin-left:-10px;">
+                <v-col  cols="6" md="5" lg="5" sm="6" xl="3">
+                  <div>
+                    <div >
                   <label for="username">Username</label>
-                  <input type="text" placeholder="username" id="username"  />
+                  <input type="text" placeholder="Username" id="username"  style="width: 260px;padding-left:10px;"  />
+                    </div>
                   <div class="fs">
                     <label for="firstname">Firstname</label>
-                    <input type="text" placeholder="firstname" id="user" />
+                    <input type="text" placeholder="Firstname" id="user"  style="width: 260px;padding-left:10px;"/>
                   </div>
                   <div class="fs">
                     <label for="password">Create password</label>
                     <VuePassword
                       v-model="password"
                       id="password"
+                     placeholder=""
                       
                     />
                     
@@ -37,29 +40,31 @@
                   <div class="fs">
                     <label for="location">Country</label>
                     <country-select v-model="country" :country="country" topCountry="US" id="select" style="
-    width: 247px;
+    
     border: 1px solid #ffff;
     border-radius: 4px;
-    margin-left: 11px;
+    padding-left:10px;
     height: 30px;
     color: #ffff;
     height:30px;
+    width: 260px;
 "/>
                   </div>
                   <div class="fs" >
                     <label for="genre">Genre</label>
-                    <input type="text" placeholder="genre" id="genre"  />
+                    <input type="text" placeholder="Genre" id="genre"   style="width: 260px;padding-left:10px;"/>
                   </div>
                   </div>
                 </v-col>
-                <v-col class="mt-10" cols="6" md="5" lg="5" sm="6" xl="3" >
-                  <div>
+                <v-col class="" cols="6" md="5" lg="5" sm="6" xl="3" >
+                  <div style="margin-left: 24px;">
                     <label for="lastname">Lastname</label>
                     <input
                       type="text"
-                      placeholder="lastname"
+                      placeholder="Lastname"
                       id="lastname"
                       class="colu"
+                      style="padding-left:10px;width:290px"
                     />
                     <div class="fs">
                       <label for="email">Email adress</label>
@@ -68,19 +73,15 @@
                         id="email"
                         placeholder="axz@gmail.com"
                         class="colu"
+                       style=" padding-left:10px;width:290px"
                       />
                     </div>
-                    <div class="fs">
+                    <div  style="margin-top:9px">
                       <label for="tel"> Phone number </label>
                       <vue-tel-input
                         v-model="vueTel.phone"
                         v-bind="vueTel.props"
-                        style="
-                          width: 301px;
-                          margin-left: 10px;
-                          border: 1px solid #ffff;
-                          border-radius: 6px;
-                        "
+                        style="width: 290px;margin-left: -1px;border: 1px solid rgb(255, 255, 255);border-radius: 6px;height:32px"
                       ></vue-tel-input>
                     </div>
                     <div class="fs"  >
@@ -89,15 +90,16 @@
                         type="tel"
                         id="postal"
                         class="colu"
-                        placeholder="codePostal"
-                        style="height:30px"
+                        placeholder="Code Postal"
+                        style="height:30px;padding-left:10px;width:290px"
                         
                       />
                     </div>
                     <div class="fs">
                     <label for="adress">Adresse :</label>
-                    <input type="text" placeholder="adress" id="adress" style="
-    width: 301px;
+                    <input type="text" placeholder="Adresse" id="adress" style="
+    width: 290px;
+    padding-left:10px;
 " />
                   </div>
                   </div>
@@ -196,9 +198,10 @@ a {
 }
 .fs {
   margin-top: 10px;
+  
 }
 .box {
-  margin: 50px 20px;
+  margin: 5% 20px;
   background: rgba(57, 92, 115, 0.22);
   border: 1px solid rgba(0, 0, 0, 0.47);
   border-radius: 10px;
@@ -210,6 +213,7 @@ a {
 }
 .bg {
   background: #a4ced1;
+  
 }
 label {
   color: black;
@@ -225,7 +229,7 @@ input {
   border-radius: 5px;
   width: 253px;
   height: 32px;
-  margin-left: 10px;
+ 
 }
 input:focus {
   color: #ffff;
@@ -266,14 +270,12 @@ select option{
   width: 260px;
 }
 
-#password{
-  
-                        margin-left: 12px;
-                        width: 260px;
-                        border: 1px solid #ffff;
-                        border-radius: 6px;
-                        height:31px;
-                      outline: none;
+#password{             
+ width: 260px;
+ border: 1px solid #ffff;
+ border-radius: 6px;
+ height:31px;
+ outline: none;
 }
 *{
   outline:none;

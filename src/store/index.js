@@ -1,14 +1,18 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import HomeView from '../views/HomeView.vue'
-import Login from '../views/Login/LoginView.vue'
-import SignUp from '../views/Login/SignupView.vue'
+import Vue from "vue";
+import Vuex from "vuex";
+
+import roleModule from "./models/roleModule";
+import userModule from "./models/userModule";
+import categorieModule from "./models/categorieModule";
+import produitModule from "./models/produitModule";
+import commandeModule from "./models/commandeModule";
+
 import VuexPersist from "vuex-persist";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 Vue.use(Vuex);
- const vuexLocalStorage = new VuexPersist({
+const vuexLocalStorage = new VuexPersist({
   key: "checklistCach",
   storage: window.localStorage, // or window.sessionStorage or localForage
   // Function that passes the state and returns the state with only the objects you want to store.
@@ -16,28 +20,25 @@ Vue.use(Vuex);
   // Function that passes a mutation and lets you decide if it should update the state in localStorage.
   // filter: mutation => (true)
   reducer: (state) => ({
-    usersModule: state.usersModule,
+    userModule: state.userModule,
   }),
-}); 
+});
 let store = null;
-export default function(){
+export default function () {
   store = new Vuex.Store({
     modules: {
-      HomeView,
-      Login,
-      SignUp,
+      roleModule,
+      userModule,
+      categorieModule,
+      produitModule,
+      commandeModule
     },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  },
-  plugins: [vuexLocalStorage.plugin],
-
-});
-return store;
+    getters: {},
+    mutations: {},
+    actions: {},
+    modules: {},
+    plugins: [vuexLocalStorage.plugin],
+  });
+  return store;
 }
 export { store };
