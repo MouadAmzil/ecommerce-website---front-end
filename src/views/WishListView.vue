@@ -30,13 +30,13 @@
 
               </v-list>
               <v-list rounded>
-                <v-list-item-group class="maraginBettwenItems" color="primary">
+               <v-list-item-group class="maraginBettwenItems" >
                   <v-list-item>
-                    <!-- <v-list-item-icon> -->
-                    <!-- <v-icon></v-icon> -->
-                    <!-- </v-list-item-icon> -->
+                    <v-list-item-icon>
+                      <v-icon x-large>mdi-home</v-icon>
+                    </v-list-item-icon>
                     <v-list-item-content>
-                      <v-list-item-title class="myIyemListText">Dashborad</v-list-item-title>
+                      <v-list-item-title>Home</v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
                 </v-list-item-group>
@@ -79,17 +79,7 @@
         <v-col>
           <v-sheet class="pa-6" style="width: 100%;" min-height="80vh" rounded="lg">
             <v-spacer class="about">
-              <v-sheet class="mx-auto" max-width="700">
-                <v-slide-group multiple show-arrows>
-                  <v-slide-item v-for="n in 10" :key="n" v-slot="{ active, toggle }">
-                    <v-btn class="mx-2" :input-value="active" active-class="purple white--text" depressed rounded
-                      @click="toggle">
-                      category {{ n }}
-                    </v-btn>
-                  </v-slide-item>
-                </v-slide-group>
-              </v-sheet>
-              <h2>Trending Items</h2>
+              <h2>WishList</h2>
               <v-container class="mycontainer" align-center fluid>
                 <v-row>
                   <v-col cols="6" v-for="product in products" :key="product.id">

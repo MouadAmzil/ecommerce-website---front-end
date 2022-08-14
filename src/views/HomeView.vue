@@ -20,9 +20,9 @@
 
       </v-container>
     </v-app-bar>
-    <v-spacer class="pt-0">
+    <v-spacer class="pt-0 px-3">
       <v-row>
-        <v-col class="pt-16 ml-5" cols="2">
+        <v-col class="pt-16" cols="2">
           <template>
             <v-card class="mx-auto" style="border-radius: 24px !important; padding: 3px 5px ;" max-width="300" tile>
               <v-list style="padding: 0px !important;" class="brand">
@@ -30,13 +30,13 @@
 
               </v-list>
               <v-list rounded>
-                <v-list-item-group class="maraginBettwenItems" color="primary">
+                <v-list-item-group class="maraginBettwenItems">
                   <v-list-item>
-                    <!-- <v-list-item-icon> -->
-                    <!-- <v-icon></v-icon> -->
-                    <!-- </v-list-item-icon> -->
+                    <v-list-item-icon>
+                      <v-icon x-large>mdi-home</v-icon>
+                    </v-list-item-icon>
                     <v-list-item-content>
-                      <v-list-item-title class="myIyemListText">Dashborad</v-list-item-title>
+                      <v-list-item-title>Home</v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
                 </v-list-item-group>
@@ -76,10 +76,10 @@
           <!-- </v-sheet> -->
         </v-col>
 
-        <v-col>
-          <v-sheet class="pa-6" style="width: 100%;" min-height="80vh" rounded="lg">
+        <v-col cols="10">
+          <v-sheet class="pa-6" style="width: 100%;" min-height="80vh"  rounded="lg">
             <v-spacer class="about">
-              <v-sheet class="mx-auto" max-width="700">
+              <v-sheet class="mx-auto" >
                 <v-slide-group multiple show-arrows>
                   <v-slide-item v-for="n in 10" :key="n" v-slot="{ active, toggle }">
                     <v-btn class="mx-2" :input-value="active" active-class="purple white--text" depressed rounded
@@ -175,7 +175,7 @@
 
 .mycontainer {
   overflow-y: scroll !important;
-  height: 70vh !important;
+  height: 68vh !important;
 }
 
 .myIyemListText {

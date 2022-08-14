@@ -31,9 +31,10 @@ const routes = [
     component: SignUp
   },
   {
-    path:'/detailproduit',
+    path:'/detailproduit/:id',
     name:'detailProduit',
-    component: DetailProduitVue
+    component: DetailProduitVue,
+    props: true 
   }
 
 ]
