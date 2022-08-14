@@ -105,10 +105,6 @@
                         <v-col cols="6">
                           <v-spacer style="padding-top:10px ;padding-right: 5px;">
                             <h3>{{ product.name }}</h3>
-                            <v-card-text
-                              style="padding-bottom: 9px !important; font-weight: 400;font-size: 16px;line-height: 18px;">
-                              {{ product.description }}
-                            </v-card-text>
                             <v-card-text style="display:flex ;align-items: center;margin-bottom: 5px;">Colors : <span
                                 style="padding: 4px 8px;margin-left: 6px; border-radius: 24px; background-color: #F6F6F6;display:flex ;align-items: center;">
                                 <span class="dot" sytle="background-color:red;"></span>
