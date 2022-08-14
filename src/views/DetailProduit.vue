@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-row style="margin: 0">
+      
       <v-col cols="6" class="col1" style="margin: 0; padding: 0 ; position:relative;">
         <svg
           width="650px"
@@ -15,13 +16,14 @@
             <rect width="761" height="1117" fill="#E3E5FA" />
             <circle
               opacity="0.1"
-              cx="380.364"
-              cy="549.364"
-              r="357.561"
+              cx="340"
+              cy="350"
+              r="260"
               transform="rotate(-5 380.364 549.364)"
               fill="url(#paint0_linear_104_258)"
           
-            />        
+            /> 
+                  
             <g opacity="0.1" filter="url(#filter0_f_104_258)">
               <circle
                 r="239.922"
@@ -31,12 +33,13 @@
             </g>
             <g filter="url(#filter1_f_104_258)">
               <ellipse
-                cx="387.277"
-                cy="611.608"
+                cx="300"
+                cy="330"
                 rx="165.277"
-                ry="26.608"
+                ry="50"
                 fill="#818AF9"
               />
+              
             </g>
           </g>
           <defs>
@@ -108,13 +111,14 @@
             </linearGradient>
             <clipPath id="clip0_104_258">
               <rect width="761" height="1117" fill="white" />
+              
             </clipPath>
           </defs>
         </svg>
       </v-col>
       <v-col cols="6">
         <div class="detail-produit">
-          <v-chip color="red" label text-color="white">HOTSALE</v-chip>
+          <v-chip color="red" label text-color="white" >HOTSALE</v-chip>
           <h3>Nike React Miler</h3>
           <div class="about-produit">
             <p
@@ -189,8 +193,10 @@
             <v-chip>{{ produit.size[2] }}</v-chip>
             <v-chip>{{ produit.size[3] }}</v-chip>
           </v-chip-group>
-        </div>
+        </div> 
+       
       </v-col>
+     
     </v-row>
   </div>
 </template>

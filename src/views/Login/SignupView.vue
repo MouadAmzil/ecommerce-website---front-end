@@ -1,7 +1,7 @@
 <template>
   <div >
     <v-container align-center fluid>
-      <v-layout fill-height>
+      <v-layout >
         <v-flex xs12>
           <v-row class="row" >
             <v-col cols="6" sm="6" md="6" lg="6" xl="6">
@@ -186,9 +186,7 @@ a {
   width: 100%;
   margin-top: 10px;
 }
-.row {
-  height: 122px;
-}
+
 .header {
   text-align: center;
   font-family: "Space Grotesk", sans-serif;
