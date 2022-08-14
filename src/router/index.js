@@ -2,6 +2,7 @@ import DetailProduitVue from '@/views/DetailProduit.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import WishList from '../views/WishListView.vue'
 import Login from '../views/Login/LoginView.vue'
 import SignUp from '../views/Login/SignupView.vue'
 Vue.use(VueRouter)
@@ -12,6 +13,12 @@ const routes = [
     name: 'home',
 
     component: HomeView
+  },
+  { 
+    path: '/wishList',
+    name: 'wshList',
+
+    component: WishList
   },
   {
     path:'/login',
