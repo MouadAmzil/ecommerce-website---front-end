@@ -20,9 +20,9 @@
 
       </v-container>
     </v-app-bar>
-    <v-spacer class="pt-0">
+    <v-spacer class="pt-0 px-3">
       <v-row>
-        <v-col class="pt-16 ml-5" cols="2">
+        <v-col class="pt-16" cols="2">
           <template>
             <v-card class="mx-auto" style="border-radius: 24px !important; padding: 3px 5px ;" max-width="300" tile>
               <v-list style="padding: 0px !important;" class="brand">
@@ -30,36 +30,42 @@
 
               </v-list>
               <v-list rounded>
-               <v-list-item-group class="maraginBettwenItems" >
-                  <v-list-item>
-                    <v-list-item-icon>
-                      <v-icon x-large>mdi-home</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                      <v-list-item-title>Home</v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list-item-group>
-                <v-list-item-group class="maraginBettwenItems">
-                  <v-list-item>
-                    <v-list-item-icon>
-                      <v-icon color="red" x-large>mdi-heart</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                      <v-list-item-title>WishList</v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list-item-group>
-                <v-list-item-group class="maraginBettwenItems">
-                  <v-list-item>
-                    <v-list-item-icon>
-                      <v-icon x-large>mdi-cart</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                      <v-list-item-title>Cart</v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list-item-group>
+                <router-link to="/home" class="itemd" style="text-decoration: none;">
+                  <v-list-item-group class="maraginBettwenItems">
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon x-large>mdi-home</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title>Home</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
+                </router-link>
+                <router-link to="/WishList" class="itemd" style="text-decoration: none;">
+                  <v-list-item-group class="maraginBettwenItems active">
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon color="red" x-large>mdi-heart</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title>WishList</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
+                </router-link>
+                <router-link to="/card" class="itemd" style="text-decoration: none;">
+                  <v-list-item-group class="maraginBettwenItems">
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon x-large>mdi-cart</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title>Cart</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
+                </router-link>
                 <v-list-item-group class="maraginBettwenItems">
                   <v-list-item>
                     <v-list-item-icon>
@@ -76,7 +82,7 @@
           <!-- </v-sheet> -->
         </v-col>
 
-        <v-col>
+        <v-col cols="10">
           <v-sheet class="pa-6" style="width: 100%;" min-height="80vh" rounded="lg">
             <v-spacer class="about">
               <h2>WishList</h2>
@@ -95,10 +101,6 @@
                         <v-col cols="6">
                           <v-spacer style="padding-top:10px ;padding-right: 5px;">
                             <h3>{{ product.name }}</h3>
-                            <v-card-text
-                              style="padding-bottom: 9px !important; font-weight: 400;font-size: 16px;line-height: 18px;">
-                              {{ product.description }}
-                            </v-card-text>
                             <v-card-text style="display:flex ;align-items: center;margin-bottom: 5px;">Colors : <span
                                 style="padding: 4px 8px;margin-left: 6px; border-radius: 24px; background-color: #F6F6F6;display:flex ;align-items: center;">
                                 <span class="dot" sytle="background-color:red;"></span>
@@ -165,7 +167,7 @@
 
 .mycontainer {
   overflow-y: scroll !important;
-  height: 70vh !important;
+  height: 68vh !important;
 }
 
 .myIyemListText {

@@ -31,7 +31,7 @@
               </v-list>
               <v-list rounded>
                 <router-link to="/home" class="itemd" style="text-decoration: none;">
-                  <v-list-item-group class="maraginBettwenItems  active">
+                  <v-list-item-group class="maraginBettwenItems">
                     <v-list-item>
                       <v-list-item-icon>
                         <v-icon x-large>mdi-home</v-icon>
@@ -43,7 +43,7 @@
                   </v-list-item-group>
                 </router-link>
                 <router-link to="/WishList" class="itemd" style="text-decoration: none;">
-                  <v-list-item-group class="maraginBettwenItems">
+                  <v-list-item-group class="maraginBettwenItems active">
                     <v-list-item>
                       <v-list-item-icon>
                         <v-icon color="red" x-large>mdi-heart</v-icon>
@@ -83,22 +83,12 @@
         </v-col>
 
         <v-col cols="10">
-          <v-sheet class="pa-6" style="width: 100%;padding: 0px 24px !important;" min-height="80vh" rounded="lg">
+          <v-sheet class="pa-6" style="width: 100%;" min-height="80vh" rounded="lg">
             <v-spacer class="about">
-              <v-sheet class="mx-auto">
-                <v-slide-group multiple show-arrows>
-                  <v-slide-item v-for="n in 10" :key="n" v-slot="{ active, toggle }">
-                    <v-btn class="mx-2" :input-value="active" active-class="purple white--text" depressed rounded
-                      @click="toggle">
-                      category {{ n }}
-                    </v-btn>
-                  </v-slide-item>
-                </v-slide-group>
-              </v-sheet>
-              <h2 class="pt-2">Trending Items</h2>
+              <h2>Added To Card</h2>
               <v-container class="mycontainer" align-center fluid>
                 <v-row>
-                  <v-col cols="6" class="myItmeHover" v-for="product in products" :key="product.id">
+                  <v-col cols="6" v-for="product in products" :key="product.id">
                     <v-card elevation="5" style="border-radius: 24px; overflow: hidden; cursor: pointer;" outlined m
                       in-height="100%">
                       <v-row>
@@ -124,8 +114,8 @@
                             <v-card-text v-else text="">{{ product.size }}</v-card-text>
                             <!-- <v-card-text>{{ product.price }} $</v-card-text> -->
                             <v-spacer class="div" :class="{ AddPadding: product.size == 0 }">
-                              <v-chip v-if="product.stock == 0" color="red lighten-1">only {{ product.stock }}</v-chip>
-                              <v-chip v-else color="teal lighten-1">only {{ product.stock }}</v-chip>
+                              <v-chip v-if="product.stock == 0" color="red">only {{ product.stock }}</v-chip>
+                              <v-chip v-else color="green">only {{ product.stock }}</v-chip>
                             </v-spacer>
                             <v-spacer class="footerCard">
                               <v-spacer style="display:flex ;justify-content: space-between;">
@@ -170,10 +160,7 @@
 .AddPadding {
   margin-top: 10px;
 }
-.myItmeHover:hover{
-  transition: all 0.5s ease-in-out;
-  transform: scale(0.97);
-}
+
 .v-image__image {
   background-size: contain !important;
 }
@@ -196,8 +183,8 @@
 
 .maraginBettwenItems {
 
-  margin-top: 3px !important;
-  margin-bottom: 3px !important;
+  margin-top: 12px !important;
+  margin-bottom: 12px impr !important;
 }
 
 .dot {
@@ -215,10 +202,6 @@
   display: flex;
   align-items: flex-end;
   margin-top: 20px;
-}
-.active{
-  color: #1976d2;
-  outline-color:rgb(25, 118, 210);
 }
 
 .img {
@@ -260,17 +243,6 @@ export default {
           description: "Men Road Running shoes ",
           stock: "available",
           size: "",
-          price: 200,
-        },
-        {
-          id: 4,
-          name: "Nike Air Force",
-          image:
-            "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a9861ab2-bc80-4328-ba7e-1d0a6e8d49b2/chaussure-air-force-1-07-ess-pour-xxQdZf.png",
-          description: "Men Road Running shoes ",
-          stock: "available",
-          reduction: "25% off",
-          size: 5,
           price: 200,
         },
       ],

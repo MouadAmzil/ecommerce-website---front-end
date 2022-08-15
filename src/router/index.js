@@ -3,6 +3,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import WishList from '../views/WishListView.vue'
+import Card from '../views/CardView.vue' 
 import Login from '../views/Login/LoginView.vue'
 import SignUp from '../views/Login/SignupView.vue'
 Vue.use(VueRouter)
@@ -19,6 +20,12 @@ const routes = [
     name: 'wshList',
 
     component: WishList
+  },
+  { 
+    path: '/card',
+    name: 'card',
+
+    component: Card
   },
   {
     path:'/login',
