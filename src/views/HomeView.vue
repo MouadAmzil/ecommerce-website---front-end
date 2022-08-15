@@ -118,8 +118,8 @@
                             <v-card-text v-else text="">{{ product.size }}</v-card-text>
                             <!-- <v-card-text>{{ product.price }} $</v-card-text> -->
                             <v-spacer class="div" :class="{ AddPadding: product.size == 0 }">
-                              <v-chip v-if="product.stock == 0" color="red">only {{ product.stock }}</v-chip>
-                              <v-chip v-else color="green">only {{ product.stock }}</v-chip>
+                              <v-chip v-if="product.stock == 0" color="red lighten-1">only {{ product.stock }}</v-chip>
+                              <v-chip v-else color="teal lighten-1">only {{ product.stock }}</v-chip>
                             </v-spacer>
                             <v-spacer class="footerCard">
                               <v-spacer style="display:flex ;justify-content: space-between;">
