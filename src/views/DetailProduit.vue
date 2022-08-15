@@ -1,19 +1,19 @@
 <template>
-  <div>
-    <v-row style="margin: 0">
+  
+    <v-row style="margin: 0;height:100%;">
       
-      <v-col cols="6" class="col1" style="margin: 0; padding: 0 ; position:relative;">
+      <v-col cols="6"  style="margin: 0; padding: 0 ">
         <svg
           width="650px"
-          height="656px"
+          height="100%"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           style=""
         >
         
-          <g clip-path="url(#clip0_104_258)">
+          <g clip-path="url(#clip0_104_258)" >
            
-            <rect width="761" height="1117" fill="#E3E5FA" />
+            <rect width="761" height="100%" fill="#E3E5FA" />
             <circle
               opacity="0.1"
               cx="340"
@@ -198,7 +198,7 @@
       </v-col>
      
     </v-row>
-  </div>
+  
 </template>
 
 <script>
