@@ -30,36 +30,42 @@
 
               </v-list>
               <v-list rounded>
-                <v-list-item-group class="maraginBettwenItems">
-                  <v-list-item>
-                    <v-list-item-icon>
-                      <v-icon x-large>mdi-home</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                      <v-list-item-title>Home</v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list-item-group>
-                <v-list-item-group class="maraginBettwenItems">
-                  <v-list-item>
-                    <v-list-item-icon>
-                      <v-icon color="red" x-large>mdi-heart</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                      <v-list-item-title>WishList</v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list-item-group>
-                <v-list-item-group class="maraginBettwenItems">
-                  <v-list-item>
-                    <v-list-item-icon>
-                      <v-icon x-large>mdi-cart</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                      <v-list-item-title>Cart</v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list-item-group>
+                <router-link to="/home" class="itemd" style="text-decoration: none;">
+                  <v-list-item-group class="maraginBettwenItems">
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon x-large>mdi-home</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title>Home</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
+                </router-link>
+                <router-link to="/WishList" class="itemd" style="text-decoration: none;">
+                  <v-list-item-group class="maraginBettwenItems active">
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon color="red" x-large>mdi-heart</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title>WishList</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
+                </router-link>
+                <router-link to="/card" class="itemd" style="text-decoration: none;">
+                  <v-list-item-group class="maraginBettwenItems">
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon x-large>mdi-cart</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title>Cart</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
+                </router-link>
                 <v-list-item-group class="maraginBettwenItems">
                   <v-list-item>
                     <v-list-item-icon>
@@ -77,7 +83,7 @@
         </v-col>
 
         <v-col cols="10">
-          <v-sheet class="pa-6" style="width: 100%;" min-height="80vh"  rounded="lg">
+          <v-sheet class="pa-6" style="width: 100%;" min-height="80vh" rounded="lg">
             <v-spacer class="about">
               <h2>WishList</h2>
               <v-container class="mycontainer" align-center fluid>
