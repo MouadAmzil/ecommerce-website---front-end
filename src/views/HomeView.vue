@@ -11,7 +11,7 @@
 </style> -->
 <template>
 <div >
-          <v-sheet class="pa-6" style="width: 100%;padding: 0px 24px !important;" min-height="80vh" rounded="lg">
+          <div class="pa-6" style="width: 100%;padding: 0px 24px !important;" min-height="90vh" rounded="lg">
             <v-spacer class="about">
               <v-sheet class="mx-auto">
                 <v-slide-group multiple show-arrows>
@@ -76,7 +76,7 @@
                 </v-row>
               </v-container>
             </v-spacer>
-          </v-sheet>
+          </div>
         </div>
 </template>
 <style scoped>

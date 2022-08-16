@@ -73,9 +73,8 @@
                       </v-list-item-content>
                     </router-link>
                   </v-list-item>
-                </v-list-item-group>
+                  <v-divider></v-divider>
 
-                <v-list-item-group class="maraginBettwenItems">
                   <v-list-item>
                     <v-list-item-icon>
                       <v-icon x-large>mdi-account-circle</v-icon>
@@ -85,6 +84,7 @@
                     </v-list-item-content>
                   </v-list-item>
                 </v-list-item-group>
+
               </v-list>
             </v-card>
           </template>
