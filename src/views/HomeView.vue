@@ -127,7 +127,7 @@
                               <v-chip v-if="product.stock == 0" color="red lighten-1">only {{ product.stock }}</v-chip>
                               <v-chip v-else color="teal lighten-1">only {{ product.stock }}</v-chip>
                             </v-spacer>
-                            <v-spacer class="footerCard">
+                            <v-spacer class="footerCard" :class="{ AddMargin2: product.size == 0 }">
                               <v-spacer style="display:flex ;justify-content: space-between;">
                                 <v-spacer style="font-weight: 700;font-size: 20px;line-height: 22px;">
                                   {{ product.price
@@ -166,7 +166,9 @@
 .v-card__text {
   padding: 0 !important;
 }
-
+.AddMargin2{
+    margin-top: 47px !important;
+}
 .AddPadding {
   margin-top: 10px;
 }
@@ -214,7 +216,7 @@
   /* height: 100%; */
   display: flex;
   align-items: flex-end;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .active{
   color: #1976d2;

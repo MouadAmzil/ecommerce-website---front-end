@@ -74,7 +74,7 @@
         <v-col cols="10">
           <v-sheet class="pa-6" style="width: 100%;padding: 0px 24px !important;" min-height="80vh" rounded="lg">
             <v-spacer class="about">
-              <h2 class="pt-2">Added To Card</h2>
+              <h2 class="pt-2">WishList</h2>
               <v-container class="mycontainer" align-center fluid>
                 <v-row>
                   <v-col cols="6" class="myItmeHover" v-for="product in products" :key="product.id">
@@ -106,7 +106,7 @@
                               <v-chip v-if="product.stock == 0" color="red lighten-1">only {{ product.stock }}</v-chip>
                               <v-chip v-else color="teal lighten-1">only {{ product.stock }}</v-chip>
                             </v-spacer>
-                            <v-spacer class="footerCard">
+                            <v-spacer class="footerCard"  :class="{ AddMargin2: product.size == 0 }">
                               <v-spacer style="display:flex ;justify-content: space-between;">
                                 <v-spacer style="font-weight: 700;font-size: 20px;line-height: 22px;">
                                   {{ product.price
@@ -145,7 +145,9 @@
 .v-card__text {
   padding: 0 !important;
 }
-
+.AddMargin2{
+    margin-top: 47px !important;
+}
 .AddPadding {
   margin-top: 10px;
 }
@@ -193,7 +195,7 @@
   /* height: 100%; */
   display: flex;
   align-items: flex-end;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .active{
   color: #1976d2;
@@ -209,17 +211,6 @@ export default {
   data() {
     return {
       products: [
-        {
-          id: 1,
-          name: "Nike",
-          description: "Men Road Running shoes ",
-          stock: 5,
-          size: 5,
-          reduction: "25% off",
-          price: 200,
-          image:
-            "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/303abd11-0610-4881-8616-a8103a700aed/chaussures-air-max-terrascape-90-pour-CRn0XW.png",
-        },
         {
           id: 2,
           name: "Apple Macbook Air",
