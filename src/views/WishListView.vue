@@ -1,14 +1,3 @@
-<!-- <template>
- 
-</template>
-<style scoped>
-.div {
-  display: inline-block;
-}
-.img{
-  color: white !important;
-}
-</style> -->
 <template>
   <v-app id="inspire">
     <v-app-bar class="pt-3" max-height="90" color="white" flat>
@@ -31,7 +20,7 @@
               </v-list>
               <v-list rounded>
                 <router-link to="/home" class="itemd" style="text-decoration: none;">
-                  <v-list-item-group class="maraginBettwenItems">
+                  <v-list-item-group class="maraginBettwenItems  active">
                     <v-list-item>
                       <v-list-item-icon>
                         <v-icon x-large>mdi-home</v-icon>
@@ -43,7 +32,7 @@
                   </v-list-item-group>
                 </router-link>
                 <router-link to="/WishList" class="itemd" style="text-decoration: none;">
-                  <v-list-item-group class="maraginBettwenItems active">
+                  <v-list-item-group class="maraginBettwenItems">
                     <v-list-item>
                       <v-list-item-icon>
                         <v-icon color="red" x-large>mdi-heart</v-icon>
@@ -83,12 +72,12 @@
         </v-col>
 
         <v-col cols="10">
-          <v-sheet class="pa-6" style="width: 100%;" min-height="80vh" rounded="lg">
+          <v-sheet class="pa-6" style="width: 100%;padding: 0px 24px !important;" min-height="80vh" rounded="lg">
             <v-spacer class="about">
-              <h2>WishList</h2>
+              <h2 class="pt-2">Added To Card</h2>
               <v-container class="mycontainer" align-center fluid>
                 <v-row>
-                  <v-col cols="6" v-for="product in products" :key="product.id">
+                  <v-col cols="6" class="myItmeHover" v-for="product in products" :key="product.id">
                     <v-card elevation="5" style="border-radius: 24px; overflow: hidden; cursor: pointer;" outlined m
                       in-height="100%">
                       <v-row>
@@ -114,8 +103,8 @@
                             <v-card-text v-else text="">{{ product.size }}</v-card-text>
                             <!-- <v-card-text>{{ product.price }} $</v-card-text> -->
                             <v-spacer class="div" :class="{ AddPadding: product.size == 0 }">
-                              <v-chip v-if="product.stock == 0" color="red">only {{ product.stock }}</v-chip>
-                              <v-chip v-else color="green">only {{ product.stock }}</v-chip>
+                              <v-chip v-if="product.stock == 0" color="red lighten-1">only {{ product.stock }}</v-chip>
+                              <v-chip v-else color="teal lighten-1">only {{ product.stock }}</v-chip>
                             </v-spacer>
                             <v-spacer class="footerCard">
                               <v-spacer style="display:flex ;justify-content: space-between;">
@@ -160,7 +149,10 @@
 .AddPadding {
   margin-top: 10px;
 }
-
+.myItmeHover:hover{
+  transition: all 0.5s ease-in-out;
+  transform: scale(0.97);
+}
 .v-image__image {
   background-size: contain !important;
 }
@@ -183,8 +175,8 @@
 
 .maraginBettwenItems {
 
-  margin-top: 12px !important;
-  margin-bottom: 12px impr !important;
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
 }
 
 .dot {
@@ -202,6 +194,10 @@
   display: flex;
   align-items: flex-end;
   margin-top: 20px;
+}
+.active{
+  color: #1976d2;
+  outline-color:rgb(25, 118, 210);
 }
 
 .img {
