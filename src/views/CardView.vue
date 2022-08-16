@@ -1,77 +1,5 @@
 <template>
-  <v-app id="inspire">
-    <v-app-bar class="pt-3" max-height="90" color="white" flat>
-      <v-container class="d-flex justify-center">
-        <v-responsive class="pt-6" max-width="750">
-          <v-text-field height="30" rounded outlined elevation="20px" color="grey" background-color="white"
-            placeholder="Search"></v-text-field>
-        </v-responsive>
-
-      </v-container>
-    </v-app-bar>
-    <v-spacer class="pt-0 px-3">
-      <v-row>
-        <v-col class="pt-16" cols="2">
-          <template>
-            <v-card class="mx-auto" style="border-radius: 24px !important; padding: 3px 5px ;" max-width="300" tile>
-              <v-list style="padding: 0px !important;" class="brand">
-                <v-img src="../assets/brande.png"></v-img>
-
-              </v-list>
-              <v-list rounded>
-                <router-link to="/home" class="itemd" style="text-decoration: none;">
-                  <v-list-item-group class="maraginBettwenItems  active">
-                    <v-list-item>
-                      <v-list-item-icon>
-                        <v-icon x-large>mdi-home</v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content>
-                        <v-list-item-title>Home</v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </v-list-item-group>
-                </router-link>
-                <router-link to="/WishList" class="itemd" style="text-decoration: none;">
-                  <v-list-item-group class="maraginBettwenItems">
-                    <v-list-item>
-                      <v-list-item-icon>
-                        <v-icon color="red" x-large>mdi-heart</v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content>
-                        <v-list-item-title>WishList</v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </v-list-item-group>
-                </router-link>
-                <router-link to="/card" class="itemd" style="text-decoration: none;">
-                  <v-list-item-group class="maraginBettwenItems">
-                    <v-list-item>
-                      <v-list-item-icon>
-                        <v-icon x-large>mdi-cart</v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content>
-                        <v-list-item-title>Cart</v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </v-list-item-group>
-                </router-link>
-                <v-list-item-group class="maraginBettwenItems">
-                  <v-list-item>
-                    <v-list-item-icon>
-                      <v-icon x-large>mdi-account-circle</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                      <v-list-item-title>His Name</v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list-item-group>
-              </v-list>
-            </v-card>
-          </template>
-          <!-- </v-sheet> -->
-        </v-col>
-
-        <v-col cols="10">
+ <div >
           <v-sheet class="pa-6" style="width: 100%;padding: 0px 24px !important;" min-height="80vh" rounded="lg">
             <v-spacer class="about">
               <h2 class="pt-2">Added To Card</h2>
@@ -128,10 +56,7 @@
               </v-container>
             </v-spacer>
           </v-sheet>
-        </v-col>
-      </v-row>
-    </v-spacer>
-  </v-app>
+        </div>
 </template>
 <style scoped>
 .div {

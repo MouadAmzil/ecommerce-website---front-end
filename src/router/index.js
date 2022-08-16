@@ -4,8 +4,9 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import WishList from '../views/WishListView.vue'
 import Card from '../views/CardView.vue' 
-import Login from '../views/Login/LoginView.vue'
+import Login from '../views/Login/login.vue'
 import SignUp from '../views/Login/SignupView.vue'
+import listProduit from '../components/listProduit.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -14,6 +15,12 @@ const routes = [
     name: 'home',
 
     component: HomeView
+  },
+  { 
+    path: '/listProduit',
+    name: 'listProduit',
+
+    component: listProduit
   },
   { 
     path: '/wishList',

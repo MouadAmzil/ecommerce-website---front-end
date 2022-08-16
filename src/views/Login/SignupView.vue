@@ -1,126 +1,128 @@
 <template>
-  <div >
-    <v-container align-center fluid>
-      <v-layout >
-        <v-flex xs12>
-          <v-row class="row" >
-            <v-col cols="6" sm="6" md="6" lg="6" xl="6">
-              <v-img
-                id="img"
-                class="mt-10"
-                max-height="100%"
-                max-width="100%"
-                src="../../assets/Group_3897.png"
-              ></v-img>
-            </v-col>
+<div>
 
-            <v-col cols="6"  class="bg">
-              <h2 class="header">Let's get you started</h2>
-              <v-row cols="12" class="box">
-                <v-col  cols="6" md="5" lg="5" sm="6" xl="3">
-                  <div>
-                    <div >
-                  <label for="username">Username</label>
-                  <input type="text" placeholder="Username" id="username"  style="width: 260px;padding-left:10px;"  />
-                    </div>
-                  <div class="fs">
-                    <label for="firstname">Firstname</label>
-                    <input type="text" placeholder="Firstname" id="user"  style="width: 260px;padding-left:10px;"/>
-                  </div>
-                  <div class="fs">
-                    <label for="password">Create password</label>
-                    <VuePassword
-                      v-model="password"
-                      id="password"
-                     placeholder=""
-                      
-                    />
-                    
-                  </div>
-                  <div class="fs">
-                    <label for="location">Country</label>
-                    <country-select v-model="country" :country="country" topCountry="US" id="select" style="
-    
-    border: 1px solid #ffff;
-    border-radius: 4px;
-    padding-left:10px;
-    height: 30px;
-    color: #ffff;
-    height:30px;
-    width: 260px;
-"/>
-                  </div>
-                  <div class="fs" >
-                    <label for="genre">Genre</label>
-                    <input type="text" placeholder="Genre" id="genre"   style="width: 260px;padding-left:10px;"/>
-                  </div>
-                  </div>
-                </v-col>
-                <v-col class="" cols="6" md="5" lg="5" sm="6" xl="3" >
-                  <div style="margin-left: 24px;">
-                    <label for="lastname">Lastname</label>
-                    <input
-                      type="text"
-                      placeholder="Lastname"
-                      id="lastname"
-                      class="colu"
-                      style="padding-left:10px;width:290px"
-                    />
-                    <div class="fs">
-                      <label for="email">Email adress</label>
-                      <input
-                        type="email"
-                        id="email"
-                        placeholder="axz@gmail.com"
-                        class="colu"
-                       style=" padding-left:10px;width:290px"
-                      />
-                    </div>
-                    <div  style="margin-top:9px">
-                      <label for="tel"> Phone number </label>
-                      <vue-tel-input
-                        v-model="vueTel.phone"
-                        v-bind="vueTel.props"
-                        style="width: 290px;margin-left: -1px;border: 1px solid rgb(255, 255, 255);border-radius: 6px;height:32px"
-                      ></vue-tel-input>
-                    </div>
-                    <div class="fs"  >
-                      <label for="postal" >Code Postal</label>
-                      <input
-                        type="tel"
-                        id="postal"
-                        class="colu"
-                        placeholder="Code Postal"
-                        style="height:30px;padding-left:10px;width:290px"
-                        
-                      />
-                    </div>
-                    <div class="fs">
-                    <label for="adress">Adresse :</label>
-                    <input type="text" placeholder="Adresse" id="adress" style="
-    width: 290px;
-    padding-left:10px;
-" />
-                  </div>
-                  </div>
-                </v-col>
-              </v-row>
-              <v-row style="padding-left: 38px">
-                <v-col cols="6" md="5" lg="5" sm="6" xl="3">
-                  <input type="button" value="Sign Up" id="btn" />
-                  <div class="links">
-                    <p>already a user?</p>
-                    <a href="login">Login</a>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
-        </v-flex>
-      </v-layout>
-    </v-container>
-    <font-awesome-icon icon="fa-solid fa-user-secret" />
-  </div>
+    <h2 class="header">Let's get you started</h2>
+    <v-row cols="12" class="box">
+      <v-col cols="6" md="5" lg="5" sm="6" xl="3">
+        <div>
+          <div>
+            <label for="username">Username</label>
+            <input
+              type="text"
+              placeholder="Username"
+              id="username"
+              style="width: 260px; padding-left: 10px"
+            />
+          </div>
+          <div class="fs">
+            <label for="firstname">Firstname</label>
+            <input
+              type="text"
+              placeholder="Firstname"
+              id="user"
+              style="width: 260px; padding-left: 10px"
+            />
+          </div>
+          <div class="fs">
+            <label for="password">Create password</label>
+            <VuePassword v-model="password" id="password" placeholder="" />
+          </div>
+          <div class="fs">
+            <label for="location">Country</label>
+            <country-select
+              v-model="country"
+              :country="country"
+              topCountry="US"
+              id="select"
+              style="
+                border: 1px solid #ffff;
+                border-radius: 4px;
+                padding-left: 10px;
+                height: 30px;
+                color: #ffff;
+                height: 30px;
+                width: 260px;
+              "
+            />
+          </div>
+          <div class="fs">
+            <label for="genre">Genre</label>
+            <input
+              type="text"
+              placeholder="Genre"
+              id="genre"
+              style="width: 260px; padding-left: 10px"
+            />
+          </div>
+        </div>
+      </v-col>
+      <v-col class="" cols="6" md="5" lg="5" sm="6" xl="3">
+        <div style="margin-left: 24px">
+          <label for="lastname">Lastname</label>
+          <input
+            type="text"
+            placeholder="Lastname"
+            id="lastname"
+            class="colu"
+            style="padding-left: 10px; width: 290px"
+          />
+          <div class="fs">
+            <label for="email">Email adress</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="axz@gmail.com"
+              class="colu"
+              style="padding-left: 10px; width: 290px"
+            />
+          </div>
+          <div style="margin-top: 9px">
+            <label for="tel"> Phone number </label>
+            <vue-tel-input
+              v-model="vueTel.phone"
+              v-bind="vueTel.props"
+              style="
+                width: 290px;
+                margin-left: -1px;
+                border: 1px solid rgb(255, 255, 255);
+                border-radius: 6px;
+                height: 32px;
+              "
+            ></vue-tel-input>
+          </div>
+          <div class="fs">
+            <label for="postal">Code Postal</label>
+            <input
+              type="tel"
+              id="postal"
+              class="colu"
+              placeholder="Code Postal"
+              style="height: 30px; padding-left: 10px; width: 290px"
+            />
+          </div>
+          <div class="fs">
+            <label for="adress">Adresse :</label>
+            <input
+              type="text"
+              placeholder="Adresse"
+              id="adress"
+              style="width: 290px; padding-left: 10px"
+            />
+          </div>
+        </div>
+      </v-col>
+    </v-row>
+    <v-row style="padding-left: 38px">
+      <v-col cols="6" md="5" lg="5" sm="6" xl="3">
+        <input type="button" value="Sign Up" id="btn" />
+        <div class="links">
+          <p>already a user?</p>
+          <a href="login">Login</a>
+        </div>
+      </v-col>
+    </v-row>
+    </div>
+
 </template>
 
 <script>
@@ -133,8 +135,7 @@ export default {
   data() {
     return {
       password: "",
-       country: '',
-     
+      country: "",
 
       vueTel: {
         phone: "",
@@ -151,14 +152,13 @@ export default {
       },
     };
   },
-  
+
   mounted() {
     Prism.highlightAll();
   },
 };
 </script>
 <style scoped>
-
 p {
   font-family: "Space Grotesk";
   font-style: normal;
@@ -178,7 +178,6 @@ a {
   margin-left: 15px;
 }
 
-
 .links {
   display: flex;
   flex-direction: row;
@@ -196,7 +195,6 @@ a {
 }
 .fs {
   margin-top: 10px;
-  
 }
 .box {
   margin: 5% 20px;
@@ -211,7 +209,6 @@ a {
 }
 .bg {
   background: #a4ced1;
-  
 }
 label {
   color: black;
@@ -227,7 +224,6 @@ input {
   border-radius: 5px;
   width: 253px;
   height: 32px;
- 
 }
 input:focus {
   color: #ffff;
@@ -251,33 +247,30 @@ input:focus {
 .VuePassword__Meter {
   display: none;
 }
-
 </style>
 <style>
-select option{
-  color:black;
+select option {
+  color: black;
 }
-.VuePassword__Meter{
+.VuePassword__Meter {
   display: none;
 }
 .VuePassword__Input {
-      padding: 0.5rem 0.75rem;
-      border:none;
+  padding: 0.5rem 0.75rem;
+  border: none;
 }
-.VuePassword{
+.VuePassword {
   width: 260px;
 }
 
-#password{             
- width: 260px;
- border: 1px solid #ffff;
- border-radius: 6px;
- height:31px;
- outline: none;
+#password {
+  width: 260px;
+  border: 1px solid #ffff;
+  border-radius: 6px;
+  height: 31px;
+  outline: none;
 }
-*{
-  outline:none;
-
+* {
+  outline: none;
 }
 </style>
-
