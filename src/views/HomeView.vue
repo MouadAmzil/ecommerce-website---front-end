@@ -57,6 +57,8 @@
                   <v-col cols="6">
                     <v-spacer style="padding-top: 10px; padding-right: 5px">
                       <h3>{{ product.name }}</h3>
+                      <h5>{{ product.brand }}</h5>
+
                       <v-card-text
                         style="
                           display: flex;
@@ -114,7 +116,7 @@
                               line-height: 22px;
                             "
                           >
-                            {{ product.price }} ₹</v-spacer
+                            {{ product.prix }} $</v-spacer
                           >
                           <v-spacer
                             style="
@@ -148,7 +150,7 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   data: () => ({
-    products:[],
+    products: [],
   }),
   mounted() {
     document.title = "damage type";
@@ -156,31 +158,20 @@ export default {
     this.initialize();
   },
   computed: {
-    ...mapGetters([
-      "getdamageTypes",
-      "getdamageTypesByProfile_group_id",
-      "getUsers",
-    ]),
+    ...mapGetters(["getdamageTypes", "getProduits", "getUsers"]),
   },
-  watch: {
-    
-  },
+  watch: {},
   created() {},
   methods: {
     initialize() {
-      
-      this.setUsersAction().then(() => {
-        this.products = [...this.getUsers];
+      this.setProduitsAction().then(() => {
+        this.products = [...this.getProduits];
       });
     },
-    ...mapActions([
-      "setUsersAction",
-    ]),
-
+    ...mapActions(["setProduitsAction"]),
   },
 };
 </script>
-
 
 <style scoped>
 .div {

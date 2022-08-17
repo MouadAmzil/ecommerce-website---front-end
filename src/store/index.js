@@ -4,7 +4,7 @@ import Vuex from "vuex";
 import roleModule from "./models/roleModule";
 import usersModule from "./models/usersModule";
 import categorieModule from "./models/categorieModule";
-import functionModule from "./models/produitModule";
+import produitsModule from "./models/produitModule";
 import commandeModule from "./models/commandeModule";
 
 import VuexPersist from "vuex-persist";
@@ -26,15 +26,14 @@ let store = null;
 export default function () {
   store = new Vuex.Store({
     modules: {
-      roleModule,
       usersModule,
-      categorieModule,
-      commandeModule
+      produitsModule,
+
     },
-    getters: {},
+    state: {},
     mutations: {},
     actions: {},
-    modules: {},
+    getters: {},
     plugins: [vuexLocalStorage.plugin],
   });
   return store;
