@@ -2,14 +2,13 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 import roleModule from "./models/roleModule";
-import userModule from "./models/userModule";
+import usersModule from "./models/usersModule";
 import categorieModule from "./models/categorieModule";
-import produitModule from "./models/produitModule";
+import functionModule from "./models/produitModule";
 import commandeModule from "./models/commandeModule";
 
 import VuexPersist from "vuex-persist";
 
-Vue.use(Vuex);
 
 Vue.use(Vuex);
 const vuexLocalStorage = new VuexPersist({
@@ -28,9 +27,8 @@ export default function () {
   store = new Vuex.Store({
     modules: {
       roleModule,
-      userModule,
+      usersModule,
       categorieModule,
-      produitModule,
       commandeModule
     },
     getters: {},

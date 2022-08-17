@@ -5,13 +5,16 @@ var token;
 CustomizedAxios.defaults.headers.common["Content-Type"] = "multipart/form-data";
 CustomizedAxios.defaults.headers.common["Accept"] = "application/json";
 
-if (localStorage.checklistCach) {
+/* if (localStorage.checklistCach) {
   token = JSON.parse(localStorage.checklistCach);
   CustomizedAxios.defaults.headers.common = {
     Authorization: `Bearer ${token.usersModule.token}`,
     Accept: "application/json",
   };
-}
+} */
+
+
+
 /* CustomizedAxios.defaults.headers.common["Accept"] = "application/json";
 CustomizedAxios.defaults.headers.common = {
   Authorization: `Bearer ` + token,

@@ -1,6 +1,6 @@
 import CustomizedAxios from "../../plugins/axios";
 
-const userModule = {
+const usersModule = {
   state: {
     users: [],
     useractive: null,
@@ -20,6 +20,23 @@ const userModule = {
     },
     DELETE_USER(state, user) {
       state.users = state.users.filter((c) => c.id != user.id);
+    },
+    ADD_ProfileGroupUsers2(state, user) {
+      state.users = state.users.map((c) => {
+        if (c.id == user.id) 
+          c.profile_groups=user.profile_groups;
+        return c;
+      });    },
+    DELETE_ProfileGroupUsers2(state, payload) {
+      console.log("pay ",payload);
+      state.users = state.users.map((c) => {
+        if (c.id == payload.user_id){
+          c.profile_groups=c.profile_groups.filter((e)=>{
+            return e.id!=payload.profile_group_id
+          });
+        } 
+        return c;
+      });
     },
     EDIT_USER(state, user) {
       state.users = state.users.map((c) => {
@@ -45,12 +62,25 @@ const userModule = {
           });
       });
     },
-    setUsersbyIDAction({ commit },id) {
+    deleteUserFromProfileGroupAction2({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        CustomizedAxios.get("users/"+id)
+        CustomizedAxios.post("profilegroup/deleteUserFromProfileGroup", payload)
           .then((response) => {
-            commit("SET_USERS", response.data.payload);
-            console.log("set user ");
+            console.log("res",response.data.payload);
+            commit("DELETE_ProfileGroupUsers2", payload);
+            resolve(response.data);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
+    addUserToProfileGroupAction2({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        CustomizedAxios.post("profilegroup/addUserToProfileGroup", payload)
+          .then((response) => {
+            commit("ADD_ProfileGroupUsers2", response.data.payload);
+            console.log(response.data.payload);
             resolve(response.data.payload);
           })
           .catch((error) => {
@@ -133,18 +163,6 @@ const userModule = {
           });
       });
     },
-    changePasswordAction({ commit }, user) {
-      return new Promise((resolve, reject) => {
-        CustomizedAxios.post("users/changePassword", user)
-          .then((response) => {
-            commit("GET_USERACTIVE", response.data.payload);
-            resolve(response.data.payload);
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      });
-    },
   },
   getters: {
     getUsers: (state) => {
@@ -155,4 +173,4 @@ const userModule = {
     },
   },
 };
-export default userModule;
+export default usersModule;

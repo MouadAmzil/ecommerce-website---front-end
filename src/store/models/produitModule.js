@@ -1,6 +1,6 @@
 import CustomizedAxios from "../../plugins/axios";
 
-const produitModule = {
+const produitsModule = {
   state: {
     produits: [],
   },
@@ -106,4 +106,4 @@ const produitModule = {
     },
   },
 };
-export default produitModule;
+export default produitsModule;

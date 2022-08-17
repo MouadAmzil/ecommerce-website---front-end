@@ -13,7 +13,7 @@ import '@mdi/font/css/materialdesignicons.css';
 Vue.use(vueCountryRegionSelect);
 Vue.use(VueTelInput);
 Vue.component("vue-phone-number-input", VuePhoneNumberInput);
-
+ 
 
 
 
@@ -24,5 +24,5 @@ new Vue({
   router,
   store,
   vuetify,
-  render: function (h) { return h(App) }
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");
