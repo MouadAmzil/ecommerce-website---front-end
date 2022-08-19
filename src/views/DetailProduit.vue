@@ -1,10 +1,24 @@
 <template>
   <v-row style="margin: 0; height: 100%; position: relative">
-    <v-col cols="6" style="margin: 0; padding: 0"> </v-col>
+    <v-col cols="6" style="margin: 0; padding: 0">
+      <v-img
+        class="img"
+        contain
+        style="
+          max-width: 100%;
+          max-height: 500px !important;
+          background-color: #f6f6f6;
+          background-size: contain !important;
+        "
+        :src="
+          'http://127.0.0.1:8000/storage/' + produit[0].pictures[0].filename
+        "
+      ></v-img>
+    </v-col>
     <v-col cols="6">
       <div class="detail-produit">
         <v-chip color="red" label text-color="white">HOTSALE</v-chip>
-        <h3>{{ produit.name }}</h3>
+        <h3 v-if="produit.length > 0">{{ produit[0].name }}</h3>
 
         <div class="about-produit">
           <p
@@ -17,8 +31,9 @@
               height: 18px;
               margin-top: 8px;
             "
+            v-if="produit.length > 0"
           >
-            {{ produit.mark }}
+            {{ produit[0].brand }}
           </p>
           <v-rating
             v-model="rating"
@@ -50,8 +65,8 @@
         </div>
 
         <b class="subheading">Description :</b>
-        <p>{{ produit.description }}</p>
-        <h3>{{ produit.price }}$</h3>
+        <p v-if="produit.length > 0">{{ produit[0].description }}</p>
+        <h3 v-if="produit.length > 0">{{ produit[0].prix }}$</h3>
         <div class="colors">
           <p style="margin-top: 20px">Colors :</p>
 
@@ -64,24 +79,37 @@
           </p>
         </div>
 
-        <div><img src="../assets/shoes.png" alt="" /></div>
-
-        <b id="size">Size :</b>
-
-        <v-chip-group
-          v-model="selection"
-          active-class="deep-purple--text text--accent-4"
-          mandatory
-        >
-          <v-chip>{{ produit.size[0] }}</v-chip>
-          <v-chip>{{ produit.size[1] }}</v-chip>
-          <v-chip>{{ produit.size[2] }}</v-chip>
-          <v-chip>{{ produit.size[3] }}</v-chip>
-        </v-chip-group>
+        <div>
+          <v-img
+            class="img"
+            contain
+            style="
+              max-width: 30%;
+              max-height: 70px !important;
+              background-color: #f6f6f6;
+              background-size: contain !important;
+            "
+            :src="
+              'http://127.0.0.1:8000/storage/' + produit[0].pictures[0].filename
+            "
+          ></v-img>
+        </div>
       </div>
     </v-col>
     <div class="card">
-      <img class="card-img" src="../assets/shoes.png" />
+      <v-img
+            class="img"
+            contain
+            style="
+              max-width: 30%;
+              max-height: 70px !important;
+              background-color: #f6f6f6;
+              background-size: contain !important;
+            "
+            :src="
+              'http://127.0.0.1:8000/storage/' + produit[0].pictures[0].filename
+            "
+          ></v-img>
       <div style="width: 200px">
         <p
           style="
@@ -92,6 +120,7 @@
             color: #474747;
             line-height: 22px;
           "
+          v-if="produit.length > 0"
         >
           {{ produit.name }}
         </p>
@@ -104,8 +133,9 @@
             line-height: 1px;
             color: #474747;
           "
+          v-if="produit.length > 0"
         >
-          {{ produit.mark }}
+          {{ produit.brand }}
         </p>
       </div>
       <div class="card-about">
@@ -197,6 +227,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   props: ["brand"],
 
@@ -210,26 +242,29 @@ export default {
       emptyIcon: "mdi-star-outline",
       fullIcon: "mdi-star",
       halfIcon: "mdi-star-half",
-      produit: {
-        name: "Nike React Miler",
-        mark: " Running shoes",
-        description: "Men's Road Running shoes",
-        price: 200,
-
-        size: [39, 41, 43, 44],
-      },
+      produit: [],
+      idproduit: null,
     };
   },
-  created(){
-    console.log(this.$route.params.produithamza);
-
+  created() {
+    this.idproduit = this.$route.params.id;
   },
   mounted() {
-
     document.title = "detailProduit";
-    console.log(this.$route.params.id);
+    this.initial();
+  },
+  computed: {
+    ...mapGetters(["getProduits"]),
   },
   methods: {
+    ...mapActions(["setProduitbyIDAction"]),
+    initial() {
+      this.setProduitbyIDAction(this.idproduit).then((resolve) => {
+        this.produit.push(resolve);
+
+        console.log("this.produit", resolve);
+      });
+    },
     increment() {
       this.count++;
     },

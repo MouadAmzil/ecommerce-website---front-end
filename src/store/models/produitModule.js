@@ -40,7 +40,7 @@ const produitsModule = {
         CustomizedAxios.get("produits/" + id)
           .then((response) => {
             commit("SET_PRODUITS", response.data.payload);
-            console.log("set produit ");
+            console.log("set produit by id");
             resolve(response.data.payload);
           })
           .catch((error) => {
