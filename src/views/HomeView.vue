@@ -9,7 +9,7 @@
       <v-spacer class="about">
         <v-sheet class="mx-auto">
           <v-slide-group multiple show-arrows>
-            <v-slide-item v-for="n in 10" :key="n" v-slot="{ active, toggle }">
+            <v-slide-item v-for="categorie in categories" :key="n" v-slot="{ active, toggle }">
               <v-btn
                 class="mx-2"
                 :input-value="active"
@@ -18,7 +18,7 @@
                 rounded
                 @click="toggle"
               >
-                category {{ n }}
+                {{category.name}} 
               </v-btn>
             </v-slide-item>
           </v-slide-group>
@@ -151,9 +151,10 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     products: [],
+    categories:[],
   }),
   mounted() {
-    document.title = "damage type";
+    document.title = "Title";
 
     this.initialize();
   },
