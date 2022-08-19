@@ -1,62 +1,61 @@
-import DetailProduitVue from '@/views/DetailProduit.vue'
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import WishList from '../views/WishListView.vue'
-import Card from '../views/CardView.vue' 
-import Login from '../views/Login/login.vue'
-import SignUp from '../views/Login/SignupView.vue'
-import listProduit from '../components/listProduit.vue'
-Vue.use(VueRouter)
+import DetailProduitVue from "@/views/DetailProduit.vue";
+import Vue from "vue";
+import VueRouter from "vue-router";
+import HomeView from "../views/HomeView.vue";
+import WishList from "../views/WishListView.vue";
+import Card from "../views/CardView.vue";
+import Login from "../views/Login/login.vue";
+import SignUp from "../views/Login/SignupView.vue";
+import listProduit from "../components/listProduit.vue";
+Vue.use(VueRouter);
 
 const routes = [
-  { 
-    path: '/home',
-    name: 'home',
+  {
+    path: "/home",
+    name: "home",
 
-    component: HomeView
-  },
-  { 
-    path: '/listProduit',
-    name: 'listProduit',
-
-    component: listProduit
-  },
-  { 
-    path: '/wishList',
-    name: 'wshList',
-
-    component: WishList
-  },
-  { 
-    path: '/card',
-    name: 'card',
-
-    component: Card
+    component: HomeView,
   },
   {
-    path:'/login',
-    name: 'login',
-    component: Login
+    path: "/listProduit",
+    name: "listProduit",
+
+    component: listProduit,
   },
   {
-    path:'/signup',
-    name: 'SignUp',
-    component: SignUp
+    path: "/wishList",
+    name: "wshList",
+
+    component: WishList,
   },
   {
-    path:'/detailproduit/:id',
-    name:'detailProduit',
+    path: "/card",
+    name: "card",
+
+    component: Card,
+  },
+  {
+    path: "/detailproduit/:id",
+    name: "detailProduit",
     component: DetailProduitVue,
-    props: true 
-  }
-
-]
+    props: true,
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: Login,
+  },
+  {
+    path: "/signup",
+    name: "SignUp",
+    component: SignUp,
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

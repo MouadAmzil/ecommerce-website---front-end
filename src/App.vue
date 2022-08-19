@@ -52,7 +52,7 @@
                       style="text-decoration: none"
                     >
                       <v-list-item-icon>
-                        <v-icon color="red" x-large>mdi-heart</v-icon>
+                        <v-icon color="red" x-large>mdi-cards-heart-outline</v-icon>
                       </v-list-item-icon>
                       <v-list-item-content>
                         <v-list-item-title>WishList</v-list-item-title>
