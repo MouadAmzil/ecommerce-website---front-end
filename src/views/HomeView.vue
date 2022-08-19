@@ -329,7 +329,7 @@
       <v-spacer class="about">
         <v-sheet class="mx-auto">
           <v-slide-group multiple show-arrows>
-            <v-slide-item v-for="n in 10" :key="n" v-slot="{ active, toggle }">
+            <v-slide-item v-for="categorie in categories" :key="n" v-slot="{ active, toggle }">
               <v-btn
                 class="mx-2"
                 :input-value="active"
@@ -338,7 +338,7 @@
                 rounded
                 @click="toggle"
               >
-                category {{ n }}
+                {{category.name}} 
               </v-btn>
             </v-slide-item>
           </v-slide-group>
@@ -469,14 +469,43 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   data: () => ({
-    products: [],
-    dialog: false,
-    produit: [],
-    count:0,
-      selection: 2,
+    products: [
+        {
+          id: 2,
+          name: "Apple Macbook Air",
+          image:
+            "https://help.apple.com/assets/6062258EBFC7E7487E19DBB0/60622591BFC7E7487E19DBBA/fr_FR/540d7697864354f0c0bed1741209d7f1.png",
+          description: "Apple M1 CHp 51 GB Running shoes ",
+          stock: 0,
+          size: "",
+
+          price: 1900,
+        },
+        {
+          id: 3,
+          name: "Apple Watch Series 7",
+          image:
+            "https://itsu.ma/wp-content/uploads/2022/03/apple-watch-series-7-gps-minuit-ITsu-maroc.jpg",
+          description: "Men Road Running shoes ",
+          stock: "available",
+          size: "",
+          price: 200,
+        },
+        {
+          id: 4,
+          name: "Nike Air Force",
+          image:
+            "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a9861ab2-bc80-4328-ba7e-1d0a6e8d49b2/chaussure-air-force-1-07-ess-pour-xxQdZf.png",
+          description: "Men Road Running shoes ",
+          stock: "available",
+          reduction: "25% off",
+          size: 5,
+          price: 200,
+        },
+      ],
   }),
   mounted() {
-    document.title = "damage type";
+    document.title = "Title";
 
     this.initialize();
   },
