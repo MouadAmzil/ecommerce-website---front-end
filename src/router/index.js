@@ -21,6 +21,8 @@ const routes = [
     name: "listProduit",
 
     component: listProduit,
+    props: true,
+
   },
   {
     path: "/wishList",
