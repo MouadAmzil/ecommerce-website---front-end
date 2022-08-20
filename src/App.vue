@@ -70,14 +70,14 @@
                       style="text-decoration: none"
                     >
                       <v-list-item-icon>
-                        <v-icon  large>mdi-cart-outline</v-icon>
+                        <v-icon large>mdi-cart-outline</v-icon>
                       </v-list-item-icon>
                       <v-list-item-content>
                         <v-list-item-title>Cart</v-list-item-title>
                       </v-list-item-content>
                     </router-link>
                   </v-list-item>
-                    <v-divider></v-divider>
+                  <v-divider></v-divider>
                   <v-list-item>
                     <router-link
                       to="/profileSetting"
@@ -85,10 +85,15 @@
                       style="text-decoration: none"
                     >
                       <v-list-item-icon>
-                        <v-icon color="#8eb3b0" x-large>mdi-account-circle</v-icon>
+                        <v-icon color="#8eb3b0" x-large
+                          >mdi-account-circle</v-icon
+                        >
                       </v-list-item-icon>
                       <v-list-item-content>
-                        <v-list-item-title>His Name</v-list-item-title>
+                        <v-list-item-title v-if="useractive.length > 0">{{
+                          useractive[0].username
+                        }}</v-list-item-title>
+                        <v-list-item-title v-else>username</v-list-item-title>
                       </v-list-item-content>
                     </router-link>
                   </v-list-item>
@@ -208,31 +213,30 @@ export default {
     login,
   },
   data: () => ({
-          islogin: true,
+    islogin: true,
+        useractive:[],
 
   }),
   mounted() {
     document.title = "Title";
 
-
     this.initialize();
   },
   computed: {
-    ...mapGetters(["getdamageTypes"]),
+    ...mapGetters(["getUserActive"]),
   },
   watch: {},
-  created() {
-  },
+  created() {},
   methods: {
     initialize() {
-      this.setProduitsAction().then(() => {
-        this.products = [...this.getProduits];
-      });
+            this.useractive=[];
+
+          this.useractive.push(this.getUserActive);
+
     },
     ...mapActions(["setProduitsAction"]),
     clickProduitDetails(product) {},
     login() {
-      localStorage.setItem("islogin",false);
     },
     addToWishList(product) {},
   },

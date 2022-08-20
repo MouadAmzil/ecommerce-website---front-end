@@ -31,10 +31,16 @@
 
               <v-list-item link>
                 <v-list-item-content>
-                  <v-list-item-title class="text-h6">
-                    John Leider
+                  <v-list-item-title v-if="useractive.length>0" class="text-h6">
+                    {{useractive[0].username}}
                   </v-list-item-title>
-                  <v-list-item-subtitle
+                  <v-list-item-title v-else class="text-h6">
+                    username
+                  </v-list-item-title>
+                  <v-list-item-subtitle v-if="useractive.length>0"
+                    >{{useractive[0].email}}</v-list-item-subtitle
+                  >
+                  <v-list-item-subtitle v-else
                     >john@vuetifyjs.com</v-list-item-subtitle
                   >
                 </v-list-item-content>
@@ -90,6 +96,7 @@
                 <router-link
                   to="/loginProfile"
                   style="text-decoration: none"
+                  v-if="useractive.length==0"
                 >
                   <v-list-item>
                     <v-list-item-icon>
@@ -137,6 +144,7 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     products: [],
+    useractive:[],
   }),
   mounted() {
     document.title = "Title";
@@ -144,15 +152,18 @@ export default {
     this.initialize();
   },
   computed: {
-    ...mapGetters(["getdamageTypes"]),
+    ...mapGetters(['getUserActive']),
   },
   watch: {},
   created() {},
   methods: {
     initialize() {
+      this.useractive=[];
       this.setProduitsAction().then(() => {
         this.products = [...this.getProduits];
       });
+    this.useractive.push(this.getUserActive);
+
     },
     ...mapActions(["setProduitsAction"]),
     clickProduitDetails(product) {},
