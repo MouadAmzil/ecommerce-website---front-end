@@ -11,6 +11,7 @@ import VuexPersist from "vuex-persist";
 
 
 Vue.use(Vuex);
+localStorage.removeItem('user');
 const vuexLocalStorage = new VuexPersist({
   key: "user",
   storage: window.localStorage, // or window.sessionStorage or localForage

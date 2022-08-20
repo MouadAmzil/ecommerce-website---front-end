@@ -31,15 +31,18 @@
 
               <v-list-item link>
                 <v-list-item-content>
-                  <v-list-item-title v-if="useractive.length>0" class="text-h6">
-                    {{useractive[0].username}}
+                  <v-list-item-title
+                    v-if="useractive.length > 0"
+                    class="text-h6"
+                  >
+                    {{ useractive[0].username }}
                   </v-list-item-title>
                   <v-list-item-title v-else class="text-h6">
                     username
                   </v-list-item-title>
-                  <v-list-item-subtitle v-if="useractive.length>0"
-                    >{{useractive[0].email}}</v-list-item-subtitle
-                  >
+                  <v-list-item-subtitle v-if="useractive.length > 0">{{
+                    useractive[0].email
+                  }}</v-list-item-subtitle>
                   <v-list-item-subtitle v-else
                     >john@vuetifyjs.com</v-list-item-subtitle
                   >
@@ -65,10 +68,7 @@
                     </v-list-item-content>
                   </v-list-item>
                 </router-link>
-                <router-link
-                  to="/changePassword"
-                  style="text-decoration: none"
-                >
+                <router-link to="/changePassword" style="text-decoration: none">
                   <v-list-item>
                     <v-list-item-icon>
                       <v-icon medium color="#8eb3b0">mdi-lock-outline</v-icon>
@@ -96,7 +96,7 @@
                 <router-link
                   to="/loginProfile"
                   style="text-decoration: none"
-                  v-if="useractive.length==0"
+                  v-if="useractive.length == 0"
                 >
                   <v-list-item>
                     <v-list-item-icon>
@@ -104,28 +104,20 @@
                     </v-list-item-icon>
 
                     <v-list-item-content>
-                      <v-list-item-title
-                        >Login</v-list-item-title
-                      >
+                      <v-list-item-title>Login</v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
                 </router-link>
-                <router-link
-                  to="/changePassword"
-                  style="text-decoration: none"
-                >
-                  <v-list-item>
-                    <v-list-item-icon>
-                      <v-icon medium color="#8eb3b0">mdi-logout</v-icon>
-                    </v-list-item-icon>
 
-                    <v-list-item-content>
-                      <v-list-item-title
-                        >Logout</v-list-item-title
-                      >
-                    </v-list-item-content>
-                  </v-list-item>
-                </router-link>
+                <v-list-item @click="logout">
+                  <v-list-item-icon>
+                    <v-icon medium color="#8eb3b0">mdi-logout</v-icon>
+                  </v-list-item-icon>
+
+                  <v-list-item-content>
+                    <v-list-item-title>Logout</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
               </v-list-item-group>
             </v-list>
           </v-navigation-drawer>
@@ -144,7 +136,7 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   data: () => ({
     products: [],
-    useractive:[],
+    useractive: [],
   }),
   mounted() {
     document.title = "Title";
@@ -152,20 +144,26 @@ export default {
     this.initialize();
   },
   computed: {
-    ...mapGetters(['getUserActive']),
+    ...mapGetters(["getUserActive"]),
   },
   watch: {},
   created() {},
   methods: {
     initialize() {
-      this.useractive=[];
+      this.useractive = [];
       this.setProduitsAction().then(() => {
         this.products = [...this.getProduits];
       });
-    this.useractive.push(this.getUserActive);
-
+      this.useractive.push(this.getUserActive);
     },
     ...mapActions(["setProduitsAction"]),
+    logout() {
+      localStorage.clear();
+      this.$router.push({
+        name: "home",
+      });
+      window.location.reload();
+    },
     clickProduitDetails(product) {},
     addToCart(product) {},
     addToWishList(product) {},
