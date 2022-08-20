@@ -7,6 +7,10 @@ import Card from "../views/CardView.vue";
 import Login from "../views/Login/login.vue";
 import SignUp from "../views/Login/SignupView.vue";
 import listProduit from "../components/listProduit.vue";
+import profileSetting from "../components/profileSetting/profileSetting.vue";
+import modifierProfile from "../components/profileSetting/modifierProfile/modifierProfile.vue";
+import changePassword from "../components/profileSetting/changepassword/changePassword.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -41,6 +45,24 @@ const routes = [
     name: "detailProduit",
     component: DetailProduitVue,
     props: true,
+  },
+  {
+    path: "/profileSetting",
+    name: "profileSetting",
+    component: profileSetting,
+    props: true,
+    children: [
+      {
+        path: "/modifierProfile",
+        name: "modifierProfile",
+        component: modifierProfile,
+      },
+      {
+        path: "/changePassword",
+        name: "changePassword",
+        component: changePassword,
+      },
+    ],
   },
   {
     path: "/login",

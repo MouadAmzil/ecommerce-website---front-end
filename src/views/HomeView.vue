@@ -109,10 +109,10 @@
                             "
                           >
                             <v-action>
-                              <v-icon style="padding-right: 5px"
+                              <v-icon large right @click.stop="addToCart(product)"
                                 >mdi-cart</v-icon
                               >
-                              <v-icon>mdi-cards-heart-outline</v-icon>
+                              <v-icon large @click.stop="addToWishList(product)">mdi-cards-heart-outline</v-icon>
                             </v-action>
                           </v-spacer>
                         </v-spacer>
@@ -178,6 +178,12 @@ export default {
 
      // this.dialog = true;
       console.log("produit", product);
+    },
+    addToCart(product){
+      console.log("addToCart", product);
+    },
+     addToWishList(product){
+      console.log("addToCart", product);
     },
   },
 };

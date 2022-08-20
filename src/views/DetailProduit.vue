@@ -1,12 +1,20 @@
 <template>
-  <v-row style="margin: 0; height: 100%; position: relative">
+  <v-row
+    style="
+      margin: 0;
+      height: 100%;
+      background: #f6f6f6;
+      border: 3px solid #f6f6f6;
+      border-radius: 20px;
+box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;   "
+  >
     <v-col cols="6" style="margin: 0; padding: 0">
       <v-img
         class="img"
         contain
         style="
           max-width: 100%;
-          max-height: 500px !important;
+          max-height: 450px !important;
           background-color: #f6f6f6;
           background-size: contain !important;
         "
@@ -98,18 +106,18 @@
     </v-col>
     <div class="card">
       <v-img
-            class="img"
-            contain
-            style="
-              max-width: 30%;
-              max-height: 70px !important;
-              background-color: #f6f6f6;
-              background-size: contain !important;
-            "
-            :src="
-              'http://127.0.0.1:8000/storage/' + produit[0].pictures[0].filename
-            "
-          ></v-img>
+        class="img"
+        contain
+        style="
+          max-width: 30%;
+          max-height: 70px !important;
+          background-color: #f6f6f6;
+          background-size: contain !important;
+        "
+        :src="
+          'http://127.0.0.1:8000/storage/' + produit[0].pictures[0].filename
+        "
+      ></v-img>
       <div style="width: 200px">
         <p
           style="
@@ -250,7 +258,6 @@ export default {
     this.idproduit = this.$route.params.id;
   },
   mounted() {
-    document.title = "detailProduit";
     this.initial();
   },
   computed: {
@@ -261,6 +268,7 @@ export default {
     initial() {
       this.setProduitbyIDAction(this.idproduit).then((resolve) => {
         this.produit.push(resolve);
+       document.title = this.produit[0].name;
 
         console.log("this.produit", resolve);
       });
@@ -285,12 +293,14 @@ export default {
   height: 100px;
   width: 800px;
   padding: 20px;
-  position: absolute;
-  top: 85%;
+  position: relative;
   left: 50%;
+  top: -1%;
   transform: translateX(-50%);
-  background: rgba(229, 229, 229, 0.34);
-  border: 3px solid rgba(232, 111, 111, 0.26);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+  border: 3px solid rgba(255, 255, 255, 0.26);
   border-radius: 20px;
 }
 .card-about {

@@ -1,5 +1,4 @@
 <template>
-
   <v-app v-if="login" id="inspire">
     <v-app-bar class="pt-3" max-height="90" color="white" flat>
       <v-container class="d-flex justify-center">
@@ -30,7 +29,10 @@
                 <v-img src="../src/assets/brande.png"></v-img>
               </v-list>
               <v-list rounded>
-                <v-list-item-group active-class="active" class="maraginBettwenItems">
+                <v-list-item-group
+                  active-class="active"
+                  class="maraginBettwenItems"
+                >
                   <v-list-item>
                     <router-link
                       to="/home"
@@ -38,10 +40,10 @@
                       style="text-decoration: none"
                     >
                       <v-list-item-icon>
-                        <v-icon x-large>mdi-home</v-icon>
+                        <v-icon large>mdi-shopping-outline</v-icon>
                       </v-list-item-icon>
                       <v-list-item-content>
-                        <v-list-item-title>Home</v-list-item-title>
+                        <v-list-item-title>Products</v-list-item-title>
                       </v-list-item-content>
                     </router-link>
                   </v-list-item>
@@ -52,7 +54,9 @@
                       style="text-decoration: none"
                     >
                       <v-list-item-icon>
-                        <v-icon color="red" x-large>mdi-cards-heart-outline</v-icon>
+                        <v-icon color="red" large
+                          >mdi-cards-heart-outline</v-icon
+                        >
                       </v-list-item-icon>
                       <v-list-item-content>
                         <v-list-item-title>WishList</v-list-item-title>
@@ -66,31 +70,35 @@
                       style="text-decoration: none"
                     >
                       <v-list-item-icon>
-                        <v-icon color="red" x-large>mdi-cart</v-icon>
+                        <v-icon  large>mdi-cart-outline</v-icon>
                       </v-list-item-icon>
                       <v-list-item-content>
                         <v-list-item-title>Cart</v-list-item-title>
                       </v-list-item-content>
                     </router-link>
                   </v-list-item>
-                  <v-divider></v-divider>
-
+                    <v-divider></v-divider>
                   <v-list-item>
-                    <v-list-item-icon>
-                      <v-icon x-large>mdi-account-circle</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                      <v-list-item-title>His Name</v-list-item-title>
-                    </v-list-item-content>
+                    <router-link
+                      to="/profileSetting"
+                      class="itemd d-flex flex-row"
+                      style="text-decoration: none"
+                    >
+                      <v-list-item-icon>
+                        <v-icon color="#8eb3b0" x-large>mdi-account-circle</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title>His Name</v-list-item-title>
+                      </v-list-item-content>
+                    </router-link>
                   </v-list-item>
                 </v-list-item-group>
-
               </v-list>
             </v-card>
           </template>
           <!-- </v-sheet> -->
         </v-col>
-        <v-col cols="10">
+        <v-col max-width="100%" max-height="100%" cols="10">
           <router-view />
         </v-col>
       </v-row>
@@ -192,15 +200,15 @@
 }
 </style>
 <script>
-import login from '../src/views/Login/LoginView.vue'
+import login from "../src/views/Login/LoginView.vue";
 export default {
   components: {
-  login
-},
+    login,
+  },
 
   data() {
     return {
-      login:true,
+      login: true,
       products: [
         {
           id: 1,
