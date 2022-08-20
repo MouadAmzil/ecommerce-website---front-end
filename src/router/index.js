@@ -10,6 +10,7 @@ import listProduit from "../components/listProduit.vue";
 import profileSetting from "../components/profileSetting/profileSetting.vue";
 import modifierProfile from "../components/profileSetting/modifierProfile/modifierProfile.vue";
 import changePassword from "../components/profileSetting/changepassword/changePassword.vue";
+import loginProfile from "../components/profileSetting/login/loginProfile.vue";
 
 Vue.use(VueRouter);
 
@@ -62,12 +63,18 @@ const routes = [
         name: "changePassword",
         component: changePassword,
       },
+      {
+        path: "/loginProfile",
+        name: "loginProfile",
+        component: loginProfile,
+      },
     ],
   },
   {
     path: "/login",
     name: "login",
     component: Login,
+
   },
   {
     path: "/signup",

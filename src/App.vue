@@ -1,5 +1,5 @@
 <template>
-  <v-app v-if="login" id="inspire">
+  <v-app v-if="islogin" id="inspire">
     <v-app-bar class="pt-3" max-height="90" color="white" flat>
       <v-container class="d-flex justify-center">
         <v-responsive class="pt-6" max-width="750">
@@ -200,61 +200,41 @@
 }
 </style>
 <script>
+import { mapActions, mapGetters } from "vuex";
 import login from "../src/views/Login/LoginView.vue";
+
 export default {
   components: {
     login,
   },
+  data: () => ({
+          islogin: true,
 
-  data() {
-    return {
-      login: true,
-      products: [
-        {
-          id: 1,
-          name: "Nike",
-          description: "Men Road Running shoes ",
-          stock: 5,
-          size: 5,
-          reduction: "25% off",
-          price: 200,
-          image:
-            "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/303abd11-0610-4881-8616-a8103a700aed/chaussures-air-max-terrascape-90-pour-CRn0XW.png",
-        },
-        {
-          id: 2,
-          name: "Apple Macbook Air",
-          image:
-            "https://help.apple.com/assets/6062258EBFC7E7487E19DBB0/60622591BFC7E7487E19DBBA/fr_FR/540d7697864354f0c0bed1741209d7f1.png",
-          description: "Apple M1 CHp 51 GB Running shoes ",
-          stock: 0,
-          size: "",
+  }),
+  mounted() {
+    document.title = "Title";
 
-          price: 1900,
-        },
-        {
-          id: 3,
-          name: "Apple Watch Series 7",
-          image:
-            "https://itsu.ma/wp-content/uploads/2022/03/apple-watch-series-7-gps-minuit-ITsu-maroc.jpg",
-          description: "Men Road Running shoes ",
-          stock: "available",
-          size: "",
-          price: 200,
-        },
-        {
-          id: 4,
-          name: "Nike Air Force",
-          image:
-            "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a9861ab2-bc80-4328-ba7e-1d0a6e8d49b2/chaussure-air-force-1-07-ess-pour-xxQdZf.png",
-          description: "Men Road Running shoes ",
-          stock: "available",
-          reduction: "25% off",
-          size: 5,
-          price: 200,
-        },
-      ],
-    };
+
+    this.initialize();
+  },
+  computed: {
+    ...mapGetters(["getdamageTypes"]),
+  },
+  watch: {},
+  created() {
+  },
+  methods: {
+    initialize() {
+      this.setProduitsAction().then(() => {
+        this.products = [...this.getProduits];
+      });
+    },
+    ...mapActions(["setProduitsAction"]),
+    clickProduitDetails(product) {},
+    login() {
+      localStorage.setItem("islogin",false);
+    },
+    addToWishList(product) {},
   },
 };
 </script>

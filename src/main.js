@@ -10,6 +10,8 @@ import "vue-phone-number-input/dist/vue-phone-number-input.css";
 import vueCountryRegionSelect from 'vue-country-region-select';
 import '@mdi/font/css/materialdesignicons.css';
 import "../src/components/profileSetting/style.scss";
+import "../src/components/profileSetting/login/style.scss";
+
 Vue.use(vueCountryRegionSelect);
 Vue.use(VueTelInput);
 Vue.component("vue-phone-number-input", VuePhoneNumberInput);

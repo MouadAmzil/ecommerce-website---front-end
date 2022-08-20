@@ -87,6 +87,38 @@
                     <v-list-item-title>Gestion Store</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
+                <router-link
+                  to="/loginProfile"
+                  style="text-decoration: none"
+                >
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon medium color="#8eb3b0">mdi-login</v-icon>
+                    </v-list-item-icon>
+
+                    <v-list-item-content>
+                      <v-list-item-title
+                        >Login</v-list-item-title
+                      >
+                    </v-list-item-content>
+                  </v-list-item>
+                </router-link>
+                <router-link
+                  to="/changePassword"
+                  style="text-decoration: none"
+                >
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon medium color="#8eb3b0">mdi-logout</v-icon>
+                    </v-list-item-icon>
+
+                    <v-list-item-content>
+                      <v-list-item-title
+                        >Logout</v-list-item-title
+                      >
+                    </v-list-item-content>
+                  </v-list-item>
+                </router-link>
               </v-list-item-group>
             </v-list>
           </v-navigation-drawer>
