@@ -1,6 +1,28 @@
 <template>
   <div>
-    <div class="pa-6" style="width: 100%; padding: 40px 24px !important" min-height="90vh" rounded="lg">
+    <v-app-bar class="pt-3" max-height="90" color="white" flat>
+      <v-container class="d-flex justify-center">
+        <v-responsive class="pt-6" max-width="750">
+          <v-text-field
+            height="30"
+            rounded
+            outlined
+            elevation="20px"
+            color="grey"
+            background-color="white"
+            placeholder="Search"
+            v-model="searchText"
+          ></v-text-field>
+        </v-responsive>
+        <v-icon large @click.stop="search">mdi-magnify</v-icon>
+      </v-container>
+    </v-app-bar>
+    <div
+      class="pa-6"
+      style="width: 100%; padding: 40px 24px !important"
+      min-height="90vh"
+      rounded="lg"
+    >
       <v-spacer class="about">
         <h2 class="pt-2">Trending Items</h2>
         <v-container class="mycontainer" align-center fluid>
@@ -65,8 +87,15 @@
                               padding-right: 10px;
                             ">
                             <v-action>
-                              <v-icon large right @click.stop="addToCart(product)">mdi-cart</v-icon>
-                              <v-icon large @click.stop="addToWishList(product)">mdi-cards-heart-outline</v-icon>
+                              <v-icon
+                                large
+                                right
+                                @click.stop="addToCart(product)"
+                                >mdi-cart</v-icon
+                              >
+                              <v-icon large @click.stop="addToWishList(product)"
+                                >mdi-cards-heart-outline</v-icon
+                              >
                             </v-action>
                           </v-spacer>
                         </v-spacer>
@@ -89,23 +118,27 @@ export default {
   data: () => ({
     products: [],
     produit: [],
-    categories: [{
-      "id": 1,
-      "name": "Books",
-      "description": "a written or printed work consisting of pages glued or sewn together along one side and bound in covers. ",
-      "created_at": "21/07/2022 23:43",
-      "updated_at": "21/07/2022 23:43"
-    },
-    {
-      "id": 2,
-      "name": "Fashion",
-      "description": "the prevailing style (as in dress) during a particular time The spring fashions are now on display",
-      "created_at": "21/07/2022 23:43",
-      "updated_at": "21/07/2022 23:43"
-    }],
+    searchText: null,
+    categories: [
+      {
+        id: 1,
+        name: "Books",
+        description:
+          "a written or printed work consisting of pages glued or sewn together along one side and bound in covers. ",
+        created_at: "21/07/2022 23:43",
+        updated_at: "21/07/2022 23:43",
+      },
+      {
+        id: 2,
+        name: "Fashion",
+        description:
+          "the prevailing style (as in dress) during a particular time The spring fashions are now on display",
+        created_at: "21/07/2022 23:43",
+        updated_at: "21/07/2022 23:43",
+      },
+    ],
     count: 0,
     selection: 2,
-
   }),
   mounted() {
     document.title = "Title";
@@ -127,7 +160,7 @@ export default {
     clickProduitDetails(product) {
       this.produit = [];
       this.produit.push(product);
-      this.$router.push({ path: '/detailproduit/' + this.produit[0].id });
+      this.$router.push({ path: "/detailproduit/" + this.produit[0].id });
       //this.$router.replace({ path: '/detailproduit' });
 
       // this.dialog = true;
@@ -137,7 +170,16 @@ export default {
       console.log("addToCart", product);
     },
     addToWishList(product) {
-      console.log("addToCart", product);
+      console.log("addToWishList", product);
+    },
+    search() {
+      this.products=[];
+      this.setProduitsAction().then(() => {
+       // this.products = [...this.getProduits];
+        this.products = this.getProduits.filter((c) => c.brand.toUpperCase() == this.searchText.toUpperCase());
+      });
+
+      console.log("search", this.searchText);
     },
   },
 };

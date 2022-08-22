@@ -15,14 +15,24 @@
         <v-card
           class="mx-auto mt-10"
           max-width="256"
-          max-height="356"
+          max-height="456"
           height="356"
           tile
         >
           <v-navigation-drawer permanent>
             <v-list>
-              <v-list-item>
-                <v-list-item-avatar>
+              <v-list-item >
+                <v-img
+                      class="img"
+                      width="30"
+                      height="50"
+                      :src="
+                        'http://127.0.0.1:8000/storage/' +
+                        useractive[0].picture[0].filename
+                      "
+                      v-if="useractive.length > 0"
+                    ></v-img>
+                <v-list-item-avatar v-else>
                   <v-img
                     src="https://cdn.vuetifyjs.com/images/john.png"
                   ></v-img>
