@@ -1,20 +1,6 @@
 <template>
   <v-app v-if="islogin" id="inspire">
-    <v-app-bar class="pt-3" max-height="90" color="white" flat>
-      <v-container class="d-flex justify-center">
-        <v-responsive class="pt-6" max-width="750">
-          <v-text-field
-            height="30"
-            rounded
-            outlined
-            elevation="20px"
-            color="grey"
-            background-color="white"
-            placeholder="Search"
-          ></v-text-field>
-        </v-responsive>
-      </v-container>
-    </v-app-bar>
+   
     <v-spacer class="pt-0 px-3">
       <v-row>
         <v-col class="pt-16" cols="2">
@@ -81,10 +67,20 @@
                   <v-list-item>
                     <router-link
                       to="/profileSetting"
-                      class="itemd d-flex flex-row"
+                      class="itemd d-flex flex-column"
                       style="text-decoration: none"
                     >
-                      <v-list-item-icon>
+                    <v-img
+                      class="img"
+                      width="70"
+                      height="50"
+                      :src="
+                        'http://127.0.0.1:8000/storage/' +
+                        useractive[0].picture[0].filename
+                      "
+                      v-if="useractive.length > 0"
+                    ></v-img>
+                      <v-list-item-icon v-else>
                         <v-icon color="#8eb3b0" x-large
                           >mdi-account-circle</v-icon
                         >
@@ -113,6 +109,46 @@
     <login />
   </v-app>
 </template>
+
+<script>
+import { mapActions, mapGetters } from "vuex";
+import login from "../src/views/Login/LoginView.vue";
+
+export default {
+  components: {
+    login,
+  },
+  data: () => ({
+    islogin: true,
+        useractive:[],
+
+  }),
+  mounted() {
+    document.title = "Title";
+
+    this.initialize();
+  },
+  computed: {
+    ...mapGetters(["getUserActive"]),
+  },
+  watch: {},
+  created() {},
+  methods: {
+    initialize() {
+            this.useractive=[];
+
+          this.useractive.push(this.getUserActive);
+
+    },
+    ...mapActions(["setProduitsAction"]),
+    clickProduitDetails(product) {},
+    login() {
+    },
+    addToWishList(product) {},
+  },
+};
+</script>
+
 <style scoped>
 .div {
   display: inline-block;
@@ -204,41 +240,3 @@
   background: #555;
 }
 </style>
-<script>
-import { mapActions, mapGetters } from "vuex";
-import login from "../src/views/Login/LoginView.vue";
-
-export default {
-  components: {
-    login,
-  },
-  data: () => ({
-    islogin: true,
-        useractive:[],
-
-  }),
-  mounted() {
-    document.title = "Title";
-
-    this.initialize();
-  },
-  computed: {
-    ...mapGetters(["getUserActive"]),
-  },
-  watch: {},
-  created() {},
-  methods: {
-    initialize() {
-            this.useractive=[];
-
-          this.useractive.push(this.getUserActive);
-
-    },
-    ...mapActions(["setProduitsAction"]),
-    clickProduitDetails(product) {},
-    login() {
-    },
-    addToWishList(product) {},
-  },
-};
-</script>
