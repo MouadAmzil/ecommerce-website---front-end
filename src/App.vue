@@ -89,7 +89,6 @@
                         <v-list-item-title v-if="useractive.length > 0">{{
                           useractive[0].username
                         }}</v-list-item-title>
-                        <v-list-item-title v-else><button>Login</button></v-list-item-title>
                       </v-list-item-content>
                     </router-link>
                   </v-list-item>
