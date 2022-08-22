@@ -73,7 +73,7 @@
                         <v-icon large>mdi-cart-outline</v-icon>
                       </v-list-item-icon>
                       <v-list-item-content>
-                        <v-list-item-title>Cart</v-list-item-title>
+                        <v-list-item-title>Cart {{useractive.length}}</v-list-item-title>
                       </v-list-item-content>
                     </router-link>
                   </v-list-item>
@@ -84,7 +84,7 @@
                       class="itemd d-flex flex-row"
                       style="text-decoration: none"
                     >
-                      <v-list-item-icon>
+                      <v-list-item-icon v-if="useractive.length > 0">
                         <v-icon color="#8eb3b0" x-large
                           >mdi-account-circle</v-icon
                         >
@@ -93,7 +93,7 @@
                         <v-list-item-title v-if="useractive.length > 0">{{
                           useractive[0].username
                         }}</v-list-item-title>
-                        <v-list-item-title v-else>username</v-list-item-title>
+                        <v-list-item-title v-else><button>Login</button></v-list-item-title>
                       </v-list-item-content>
                     </router-link>
                   </v-list-item>
