@@ -27,21 +27,36 @@
         <h2 class="pt-2">Trending Items</h2>
         <v-container class="mycontainer" align-center fluid>
           <v-row>
-            <v-col cols="6" class="myItmeHover" v-for="product in products" :key="product.id"
-              @click="clickProduitDetails(product)">
-              <v-card elevation="5" style="border-radius: 24px; overflow: hidden; cursor: pointer" outlined m
-                in-height="100%">
+            <v-col
+              cols="6"
+              class="myItmeHover"
+              v-for="product in products"
+              :key="product.id"
+              @click="clickProduitDetails(product)"
+            >
+              <v-card
+                elevation="5"
+                style="border-radius: 24px; overflow: hidden; cursor: pointer"
+                outlined
+                m
+                in-height="100%"
+              >
                 <v-row>
                   <v-col col cols="6">
-                    <v-img class="img" contain style="
+                    <v-img
+                      class="img"
+                      contain
+                      style="
                         max-width: 100%;
                         max-height: 200px !important;
                         background-color: #f6f6f6;
                         background-size: contain !important;
-                      " :src="
+                      "
+                      :src="
                         'http://127.0.0.1:8000/storage/' +
                         product.pictures[0].filename
-                      "></v-img>
+                      "
+                    ></v-img>
                   </v-col>
 
                   <v-col cols="6">
@@ -49,43 +64,67 @@
                       <h3>{{ product.name }}</h3>
                       <h5>{{ product.brand }}</h5>
 
-                      <v-card-text style="
+                      <v-card-text
+                        style="
                           display: flex;
                           align-items: center;
                           margin-bottom: 5px;
-                        ">Colors :
-                        <span style="
+                        "
+                        >Colors :
+                        <span
+                          style="
                             padding: 4px 8px;
                             margin-left: 6px;
                             border-radius: 24px;
                             background-color: #f6f6f6;
                             display: flex;
                             align-items: center;
-                          ">
-                          <span class="dot" sytle="background-color:red;"></span>
+                          "
+                        >
+                          <span
+                            class="dot"
+                            sytle="background-color:red;"
+                          ></span>
                           <span class="dot"></span>
                           <span class="dot"></span>
                         </span>
                       </v-card-text>
 
                       <!-- <v-card-text>{{ product.price }} $</v-card-text> -->
-                      <v-spacer class="div" :class="{ AddPadding: product.size == 0 }">
-                        <v-chip v-if="product.stock == 0" color="red lighten-1">only {{ product.stock }}</v-chip>
-                        <v-chip v-else color="teal lighten-1">only {{ product.stock }}</v-chip>
+                      <v-spacer
+                        class="div"
+                        :class="{ AddPadding: product.size == 0 }"
+                      >
+                        <v-chip v-if="product.stock == 0" color="red lighten-1"
+                          >only {{ product.stock }}</v-chip
+                        >
+                        <v-chip v-else color="teal lighten-1"
+                          >only {{ product.stock }}</v-chip
+                        >
                       </v-spacer>
-                      <v-spacer class="footerCard" :class="{ AddMargin2: product.size == 0 }">
-                        <v-spacer style="display: flex; justify-content: space-between">
-                          <v-spacer style="
+                      <v-spacer
+                        class="footerCard"
+                        :class="{ AddMargin2: product.size == 0 }"
+                      >
+                        <v-spacer
+                          style="display: flex; justify-content: space-between"
+                        >
+                          <v-spacer
+                            style="
                               font-weight: 700;
                               font-size: 20px;
                               line-height: 22px;
-                            ">
-                            {{ product.prix }} $</v-spacer>
-                          <v-spacer style="
+                            "
+                          >
+                            {{ product.prix }} $</v-spacer
+                          >
+                          <v-spacer
+                            style="
                               display: flex;
                               justify-content: flex-end;
                               padding-right: 10px;
-                            ">
+                            "
+                          >
                             <v-action>
                               <v-icon
                                 large
@@ -118,7 +157,10 @@ export default {
   data: () => ({
     products: [],
     produit: [],
-    searchText: null,
+    searchText: "",
+    scrapingJumia:{
+      name:"",
+    },
     categories: [
       {
         id: 1,
@@ -149,14 +191,14 @@ export default {
     ...mapGetters(["getdamageTypes", "getProduits", "getUsers"]),
   },
   watch: {},
-  created() { },
+  created() {},
   methods: {
     initialize() {
       this.setProduitsAction().then(() => {
         this.products = [...this.getProduits];
       });
     },
-    ...mapActions(["setProduitsAction"]),
+    ...mapActions(["setProduitsAction","setProduitsByScrapingAction"]),
     clickProduitDetails(product) {
       this.produit = [];
       this.produit.push(product);
@@ -173,12 +215,23 @@ export default {
       console.log("addToWishList", product);
     },
     search() {
-      this.products=[];
+      this.products = [];
       this.setProduitsAction().then(() => {
-       // this.products = [...this.getProduits];
-        this.products = this.getProduits.filter((c) => c.brand.toUpperCase() == this.searchText.toUpperCase());
+        // this.products = [...this.getProduits];
+        this.products = this.getProduits.filter(
+          (c) => c.brand.toUpperCase() == this.searchText.toUpperCase()
+        );
+        if (this.searchText.length==0) {
+             this.products = [...this.getProduits];
+        }else if(this.searchText.length > 0) {
+          this.scrapingJumia.name=this.searchText;
+             this.setProduitsByScrapingAction(this.scrapingJumia).then((resolve) => {
+                this.products = [...this.getProduits];
+                //console.log("this.getProduits",resolve);
+             });
+        }
       });
-        
+
       console.log("search", this.searchText);
     },
   },
@@ -192,7 +245,8 @@ export default {
 
 * {
   /* "Segoe UI", Tahoma, Geneva, Verdana, sans-serif */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .v-card__text {
