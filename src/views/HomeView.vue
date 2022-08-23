@@ -57,6 +57,17 @@
                         product.pictures[0].filename
                       "
                     ></v-img>
+                    <v-img
+                      class="img"
+                      contain
+                      style="
+                        max-width: 100%;
+                        max-height: 200px !important;
+                        background-color: #f6f6f6;
+                        background-size: contain !important;
+                      "
+                      :src=" product.src"
+                    ></v-img>
                   </v-col>
 
                   <v-col cols="6">
@@ -158,8 +169,8 @@ export default {
     products: [],
     produit: [],
     searchText: "",
-    scrapingJumia:{
-      name:"",
+    scrapingJumia: {
+      name: "",
     },
     categories: [
       {
@@ -198,7 +209,7 @@ export default {
         this.products = [...this.getProduits];
       });
     },
-    ...mapActions(["setProduitsAction","setProduitsByScrapingAction"]),
+    ...mapActions(["setProduitsAction", "setProduitsByScrapingAction"]),
     clickProduitDetails(product) {
       this.produit = [];
       this.produit.push(product);
@@ -221,14 +232,16 @@ export default {
         this.products = this.getProduits.filter(
           (c) => c.brand.toUpperCase() == this.searchText.toUpperCase()
         );
-        if (this.searchText.length==0) {
-             this.products = [...this.getProduits];
-        }else if(this.searchText.length > 0) {
-          this.scrapingJumia.name=this.searchText;
-             this.setProduitsByScrapingAction(this.scrapingJumia).then((resolve) => {
-                this.products = [...this.getProduits];
-                //console.log("this.getProduits",resolve);
-             });
+        if (this.searchText.length == 0) {
+          this.products = [...this.getProduits];
+        } else if (this.searchText.length > 0) {
+          this.scrapingJumia.name = this.searchText;
+          this.setProduitsByScrapingAction(this.scrapingJumia).then(
+            (resolve) => {
+              this.products = [...this.getProduits];
+              //console.log("this.getProduits",resolve);
+            }
+          );
         }
       });
 
