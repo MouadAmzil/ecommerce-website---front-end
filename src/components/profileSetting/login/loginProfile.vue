@@ -79,10 +79,14 @@ export default {
 
       this.LoginAction(userLogin)
         .then((resolve) => {
+          this.logged= true;
+          localStorage.setItem("logged", this.logged);
           console.log("user login", resolve);
           this.$router.push({
             name: "modifierProfile",
           });
+          this.failedAuth = false;
+
           window.location.reload();
         })
         .catch(() => {

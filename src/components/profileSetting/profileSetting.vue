@@ -21,17 +21,17 @@
         >
           <v-navigation-drawer permanent>
             <v-list>
-              <v-list-item >
+              <v-list-item>
                 <v-img
-                      class="img"
-                      width="30"
-                      height="50"
-                      :src="
-                        'http://127.0.0.1:8000/storage/' +
-                        useractive[0].picture[0].filename
-                      "
-                      v-if="useractive.length > 0"
-                    ></v-img>
+                  class="img"
+                  width="30"
+                  height="50"
+                  :src="
+                    'http://127.0.0.1:8000/storage/' +
+                    useractive[0].picture[0].filename
+                  "
+                  v-if="useractive[0] != null"
+                ></v-img>
                 <v-list-item-avatar v-else>
                   <v-img
                     src="https://cdn.vuetifyjs.com/images/john.png"
@@ -41,16 +41,13 @@
 
               <v-list-item link>
                 <v-list-item-content>
-                  <v-list-item-title
-                    v-if="useractive.length > 0"
-                    class="text-h6"
-                  >
+                  <v-list-item-title v-if="useractive[0] != null" class="text-h6">
                     {{ useractive[0].username }}
                   </v-list-item-title>
                   <v-list-item-title v-else class="text-h6">
                     username
                   </v-list-item-title>
-                  <v-list-item-subtitle v-if="useractive.length > 0">{{
+                  <v-list-item-subtitle v-if="useractive[0] != null">{{
                     useractive[0].email
                   }}</v-list-item-subtitle>
                   <v-list-item-subtitle v-else
@@ -103,12 +100,8 @@
                     <v-list-item-title>Gestion Store</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-                <router-link
-                  to="/loginProfile"
-                  style="text-decoration: none"
-                  v-if="useractive.length == 0"
-                >
-                  <v-list-item>
+                <router-link to="/loginProfile" style="text-decoration: none">
+                  <v-list-item v-if="useractive[0] == null">
                     <v-list-item-icon>
                       <v-icon medium color="#8eb3b0">mdi-login</v-icon>
                     </v-list-item-icon>
@@ -119,7 +112,7 @@
                   </v-list-item>
                 </router-link>
 
-                <v-list-item @click="logout">
+                <v-list-item @click="logout" v-if="useractive[0] != null">
                   <v-list-item-icon>
                     <v-icon medium color="#8eb3b0">mdi-logout</v-icon>
                   </v-list-item-icon>
@@ -147,6 +140,7 @@ export default {
   data: () => ({
     products: [],
     useractive: [],
+    logged: false,
   }),
   mounted() {
     document.title = "Title";
@@ -161,14 +155,16 @@ export default {
   methods: {
     initialize() {
       this.useractive = [];
-      this.setProduitsAction().then(() => {
+      /*  this.setProduitsAction().then(() => {
         this.products = [...this.getProduits];
-      });
+      }); */
       this.useractive.push(this.getUserActive);
     },
     ...mapActions(["setProduitsAction"]),
     logout() {
       localStorage.clear();
+      localStorage.setItem("logged", false);
+      this.logged = false;
       this.$router.push({
         name: "home",
       });
