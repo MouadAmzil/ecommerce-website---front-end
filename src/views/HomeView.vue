@@ -217,7 +217,7 @@ export default {
        // this.products = [...this.getProduits];
         this.products = this.getProduits.filter((c) => c.brand.toUpperCase() == this.searchText.toUpperCase());
       });
-
+        
       console.log("search", this.searchText);
     },
   },
