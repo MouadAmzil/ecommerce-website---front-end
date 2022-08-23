@@ -72,7 +72,7 @@
                     >
                     <v-img
                       class="img"
-                      width="70"
+                      width="70" 
                       height="50"
                       :src="
                         'http://127.0.0.1:8000/storage/' +
@@ -89,7 +89,6 @@
                         <v-list-item-title v-if="useractive.length > 0">{{
                           useractive[0].username
                         }}</v-list-item-title>
-                        <v-list-item-title v-else>username</v-list-item-title>
                       </v-list-item-content>
                     </router-link>
                   </v-list-item>
