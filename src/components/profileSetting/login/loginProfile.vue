@@ -69,6 +69,7 @@ export default {
       console.log("xccc");
     },
     Login() {
+      debugger;
       console.log("username", this.username);
       console.log("password", this.password);
       var userLogin = {

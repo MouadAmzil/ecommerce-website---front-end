@@ -3,7 +3,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import WishList from "../views/WishListView.vue";
-import Card from "../views/CardView.vue";
+import Card from "../components/panel/PanelView.vue";
 import Login from "../views/Login/login.vue";
 import SignUp from "../views/Login/SignupView.vue";
 import listProduit from "../components/listProduit.vue";

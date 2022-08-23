@@ -154,7 +154,7 @@ export default {
     this.initialize();
   },
   computed: {
-    ...mapGetters(["getUserActive"]),
+    ...mapGetters(["getUserActive","getProduits"]),
   },
   watch: {},
   created() {},

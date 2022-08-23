@@ -1,11 +1,17 @@
 <template>
-  <v-app v-if="islogin" id="inspire">
-
-    <v-spacer class="pt-0 px-3">
+    <v-spacer class="pt-16 px-3">
       <v-row>
-        <v-col class="pt-16" cols="2">
+         <v-col max-width="100%" max-height="100%" cols="8">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptatibus earum aspernatur dolor, iure placeat animi iusto quaerat suscipit repellendus, modi necessitatibus rerum perferendis vitae doloremque, quia itaque eius repellat!
+          Voluptates quibusdam nisi tempore deserunt quia rem delectus repellat illo qui, ea inventore reprehenderit, ex odio sint autem exercitationem blanditiis consectetur nam harum culpa aspernatur porro. Facere eaque eos facilis?
+          Voluptatem quidem expedita laudantium ipsam optio? Nam, itaque doloremque ducimus sunt hic aliquam voluptatibus aperiam! Impedit at est deserunt recusandae reprehenderit obcaecati neque veniam aspernatur, vero eligendi maxime fugiat sunt.
+          Distinctio, quidem. V sit facere blanditiis voluptatem saepe, eos esse nobis quaerat laboriosam labore recusandae aliquid? Vel officia temporibus dolorum eligendi sapiente rerum? Vel.
+          Autem, quas soluta praesentium quisquam distinctio voluptas quibusdam ipsum voluptates amet placeat tenetur ad tempora voluptatum. Facere eaque, quas voluptate accusamus veniam saepe velit iure, adipisci praesentium, fuga quam accusantium?
+        </v-col>
+        <v-col class="pt-16" cols="4">
+            hi hello
           <template>
-            <v-card class="mx-auto" style="border-radius: 24px !important; padding: 3px 5px" max-width="300" tile>
+            <!-- <v-card class="mx-auto" style="border-radius: 24px !important; padding: 3px 5px" max-width="300" tile>
               <v-list style="padding: 0px !important" class="brand">
                 <v-img src="../src/assets/brande.png"></v-img>
               </v-list>
@@ -60,153 +66,18 @@
                   </v-list-item>
                 </v-list-item-group>
               </v-list>
-            </v-card>
+            </v-card> -->
           </template>
           <!-- </v-sheet> -->
         </v-col>
-        <v-col max-width="100%" max-height="100%" cols="10">
-          <router-view />
-        </v-col>
+       
       </v-row>
     </v-spacer>
-  </v-app>
-  <v-app v-else>
-    <login />
-  </v-app>
+
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
-import login from "../src/views/Login/LoginView.vue";
-
 export default {
-  components: {
-    login,
-  },
-  data: () => ({
-    islogin: true,
-    useractive: [],
 
-  }),
-  mounted() {
-    document.title = "Title";
-
-    this.initialize();
-  },
-  computed: {
-    ...mapGetters(["getUserActive"]),
-  },
-  watch: {},
-  created() { },
-  methods: {
-    initialize() {
-      this.useractive = [];
-
-      this.useractive.push(this.getUserActive);
-
-    },
-    ...mapActions(["setProduitsAction"]),
-    clickProduitDetails(product) { },
-    login() {
-    },
-    addToWishList(product) { },
-  },
-};
+}
 </script>
-
-<style scoped>
-.div {
-  display: inline-block;
-}
-
-* {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.v-card__text {
-  padding: 0 !important;
-}
-
-.AddMargin2 {
-  margin-top: 47px !important;
-}
-
-.AddPadding {
-  margin-top: 10px;
-}
-
-.myItmeHover:hover {
-  transition: all 0.5s ease-in-out;
-  transform: scale(0.97);
-}
-
-.v-image__image {
-  background-size: contain !important;
-}
-
-.mycontainer {
-  overflow-y: scroll !important;
-  height: 68vh !important;
-}
-
-.myIyemListText {
-  font-weight: 700 !important;
-  font-size: 18px !important;
-  line-height: 30px !important;
-  color: #474747 !important;
-}
-
-.v-responsive__sizer {
-  padding-bottom: 50% !important;
-}
-
-.maraginBettwenItems {
-  margin-top: 3px !important;
-  margin-bottom: 3px !important;
-}
-
-.dot {
-  height: 18px;
-  margin-right: 2px;
-  width: 18px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.footerCard {
-  width: 100%;
-  /* height: 100%; */
-  display: flex;
-  align-items: flex-end;
-  margin-top: 40px;
-}
-
-.active {
-  color: #1976d2;
-  outline-color: rgb(25, 118, 210);
-}
-
-.img {
-  color: white !important;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-</style>
