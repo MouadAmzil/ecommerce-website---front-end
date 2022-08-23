@@ -12,6 +12,7 @@ import modifierProfile from "../components/profileSetting/modifierProfile/modifi
 import changePassword from "../components/profileSetting/changepassword/changePassword.vue";
 import loginProfile from "../components/profileSetting/login/loginProfile.vue";
 import detailProduitScraping from "../components/detailProduiScraping/detailProduitScraping.vue";
+import gestionProduit from "../components/profileSetting/gestionStore/gestionProduit.vue";
 
 Vue.use(VueRouter);
 
@@ -74,6 +75,11 @@ const routes = [
         path: "/loginProfile",
         name: "loginProfile",
         component: loginProfile,
+      },
+      {
+        path: "/gestionProduit",
+        name: "gestionProduit",
+        component: gestionProduit,
       },
     ],
   },

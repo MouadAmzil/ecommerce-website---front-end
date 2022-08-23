@@ -3,6 +3,9 @@
     style="
       margin: 0;
       height: 100%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 3%;
       background: #f6f6f6;
       border: 3px solid #f6f6f6;
       border-radius: 10px;
@@ -88,7 +91,7 @@
                     </v-list-item-content>
                   </v-list-item>
                 </router-link>
-
+              <router-link to="/gestionProduit" style="text-decoration: none">
                 <v-list-item>
                   <v-list-item-icon>
                     <v-icon medium color="#8eb3b0"
@@ -100,6 +103,8 @@
                     <v-list-item-title>Gestion Store</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
+              </router-link>
+                
                 <router-link to="/loginProfile" style="text-decoration: none">
                   <v-list-item v-if="useractive[0] == null">
                     <v-list-item-icon>

@@ -62,7 +62,7 @@
                       contain
                       style="
                         max-width: 100%;
-                        max-height: 200px !important;
+                        max-height: 240px !important;
                         background-color: #f6f6f6;
                         background-size: contain !important;
                       "

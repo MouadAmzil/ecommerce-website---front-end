@@ -2,7 +2,7 @@
   <v-row
     style="
       margin: 0;
-      padding-top: 130px;
+      padding-top: 60px;
       margin-top: 20px;
       height: 100%;
       background: #f6f6f6;
