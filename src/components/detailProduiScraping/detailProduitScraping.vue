@@ -2,6 +2,8 @@
   <v-row
     style="
       margin: 0;
+      padding-top: 130px;
+      margin-top: 20px;
       height: 100%;
       background: #f6f6f6;
       border: 3px solid #f6f6f6;
@@ -154,32 +156,7 @@
         :src="produit[0].src"
       ></v-img>
       <div style="width: 200px">
-        <p
-          style="
-            font-family: 'Almarai';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 20px;
-            color: #474747;
-            line-height: 22px;
-          "
-          v-if="produit.length > 0"
-        >
-          {{ produit[0].name }}
-        </p>
-        <p
-          style="
-            font-family: 'Almarai';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1px;
-            color: #474747;
-          "
-          v-if="produit.length > 0"
-        >
-          {{ produit[0].brand }}
-        </p>
+       
       </div>
       <div class="card-about">
         <p
