@@ -35,6 +35,19 @@ const produitsModule = {
           });
       });
     },
+    setProduitsByScrapingAction({ commit },scrapingJumia) {
+      return new Promise((resolve, reject) => {
+        CustomizedAxios.post("scraping/jumia",scrapingJumia)
+          .then((response) => {
+            commit("SET_PRODUITS", response.data.payload);
+            console.log("set setProduitsByScrapingAction ");
+            resolve(response.data.payload);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
     setProduitbyIDAction({ commit }, id) {
       return new Promise((resolve, reject) => {
         CustomizedAxios.get("produits/" + id)

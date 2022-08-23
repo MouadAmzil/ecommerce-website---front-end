@@ -1,6 +1,5 @@
 <template>
   <v-app v-if="islogin" id="inspire">
-
     <v-spacer class="pt-0 px-3">
       <v-row>
         <v-col class="pt-16" cols="2">
@@ -43,18 +42,29 @@
                   </v-list-item>
                   <v-divider></v-divider>
                   <v-list-item>
-                    <router-link to="/profileSetting" class="itemd d-flex flex-column" style="text-decoration: none">
-                      <v-img  class="img" width="70" height="50" v-on:error="logo.url = './assets/brande.png'" :src="
-                        'http://127.0.0.1:8000/storage/' +
-                        useractive[0].picture[0].filename
-                      " v-if="useractive.length > 0"></v-img>
+                    <router-link
+                      to="/profileSetting"
+                      class="itemd d-flex flex-column"
+                      style="text-decoration: none"
+                    >
+                      <v-img
+                        v-if="useractive[0] != null"
+                        class="img"
+                        width="70"
+                        height="50"
+                        :src="
+                          'http://127.0.0.1:8000/storage/' +
+                          useractive[0].picture[0].filename
+                        "
+                      ></v-img>
                       <v-list-item-icon v-else>
                         <v-icon color="#8eb3b0" x-large>mdi-account-circle</v-icon>
                       </v-list-item-icon>
                       <v-list-item-content>
-                        <v-list-item-title v-if="useractive.length > 0">{{
-                            useractive[0].username
+                        <v-list-item-title v-if="useractive[0] != null">{{
+                          useractive[0].username
                         }}</v-list-item-title>
+                        <v-list-item-title v-else>profile</v-list-item-title>
                       </v-list-item-content>
                     </router-link>
                   </v-list-item>
@@ -86,30 +96,32 @@ export default {
   data: () => ({
     islogin: true,
     useractive: [],
-
+    logged: true,
   }),
   mounted() {
     document.title = "Title";
 
-    this.initialize();
   },
   computed: {
     ...mapGetters(["getUserActive"]),
   },
   watch: {},
-  created() { },
+  created() {
+    this.logged=localStorage.getItem("logged");
+    console.log("logged app",this.logged);
+        this.initialize();
+
+  },
   methods: {
     initialize() {
-      this.useractive = [];
-
-      this.useractive.push(this.getUserActive);
+       this.useractive = [];
+        this.useractive.push(this.getUserActive);
 
     },
     ...mapActions(["setProduitsAction"]),
-    clickProduitDetails(product) { },
-    login() {
-    },
-    addToWishList(product) { },
+    clickProduitDetails(product) {},
+    login() {},
+    addToWishList(product) {},
   },
 };
 </script>
