@@ -213,7 +213,9 @@ export default {
     clickProduitDetails(product) {
       this.produit = [];
       this.produit.push(product);
-      this.$router.push({ path: "/detailproduit/" + this.produit[0].id });
+      localStorage.setItem('produitInfo', JSON.stringify(product));
+      this.$router.push({ path: "/detailProduitScraping"});
+
       //this.$router.replace({ path: '/detailproduit' });
 
       // this.dialog = true;

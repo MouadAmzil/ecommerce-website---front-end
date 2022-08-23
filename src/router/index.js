@@ -11,6 +11,7 @@ import profileSetting from "../components/profileSetting/profileSetting.vue";
 import modifierProfile from "../components/profileSetting/modifierProfile/modifierProfile.vue";
 import changePassword from "../components/profileSetting/changepassword/changePassword.vue";
 import loginProfile from "../components/profileSetting/login/loginProfile.vue";
+import detailProduitScraping from "../components/detailProduiScraping/detailProduitScraping.vue";
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,12 @@ const routes = [
     name: "card",
 
     component: Card,
+  },
+  {
+    path: "/detailProduitScraping",
+    name: "detailProduitScraping",
+    component: detailProduitScraping,
+    props: true,
   },
   {
     path: "/detailproduit/:id",
