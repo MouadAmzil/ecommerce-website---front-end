@@ -8,7 +8,7 @@
                         max-width="100%" tile>
                         <v-toolbar-title style="padding-left: 10px;" class="text-h">Card</v-toolbar-title>
                         <v-divider />
-                        <v-spacer style="padding: 10px 20px;">
+                        <v-spacer style="padding: 10px 20px;overflow: scroll;height: 73vh;">
                             <!-- TODO: Here Put your map for map the all list of panel product in v-row -->
                             <v-row>
                                 <v-col cols="2">
@@ -23,7 +23,8 @@
                                             <span class="teal--text lighten-2">IN STOCK</span>
                                         </h5>
                                     </v-spacer>
-                                    <v-spacer class="card-about pt-11" style="display: flex;padding-right: 10px; height: 100%;">
+                                    <v-spacer class="card-about pt-11"
+                                        style="display: flex;padding-right: 10px; height: 100%;">
                                         <button v-on:click.prevent="decrement" class="decrement">
                                             -
                                         </button>
@@ -41,16 +42,18 @@
                                             1768 DH
                                         </div>
                                     </v-spacer>
-                                    <v-spacer  style="display: flex;justify-content: flex-end;padding-right: 10px; height: 100%;">
+                                    <v-spacer
+                                        style="display: flex;justify-content: flex-end;padding-right: 10px; height: 100%;">
                                         <!-- <v-action> -->
-                                            <v-icon style="padding-right: 10px; cursor: pointer;">mdi-trash-can-outline</v-icon>
-                                            <v-icon style=" cursor: pointer;">mdi-cards-heart-outline</v-icon>
+                                        <v-icon style="padding-right: 10px; cursor: pointer;">mdi-trash-can-outline
+                                        </v-icon>
+                                        <v-icon style=" cursor: pointer;">mdi-cards-heart-outline</v-icon>
                                         <!-- </v-action> -->
                                     </v-spacer>
                                 </v-col>
-                                <v-divider class="mx-10 " ></v-divider>
+                                <v-divider class="mx-10 "></v-divider>
                             </v-row>
-                            
+
                         </v-spacer>
                     </v-card>
                 </template>
