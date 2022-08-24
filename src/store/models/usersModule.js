@@ -62,32 +62,6 @@ const usersModule = {
           });
       });
     },
-    deleteUserFromProfileGroupAction2({ commit }, payload) {
-      return new Promise((resolve, reject) => {
-        CustomizedAxios.post("profilegroup/deleteUserFromProfileGroup", payload)
-          .then((response) => {
-            console.log("res",response.data.payload);
-            commit("DELETE_ProfileGroupUsers2", payload);
-            resolve(response.data);
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      });
-    },
-    addUserToProfileGroupAction2({ commit }, payload) {
-      return new Promise((resolve, reject) => {
-        CustomizedAxios.post("profilegroup/addUserToProfileGroup", payload)
-          .then((response) => {
-            commit("ADD_ProfileGroupUsers2", response.data.payload);
-            console.log(response.data.payload);
-            resolve(response.data.payload);
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      });
-    },
     addUserAction2({ commit }, user) {
       return new Promise((resolve, reject) => {
         CustomizedAxios.post("users/create", user)

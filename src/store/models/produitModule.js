@@ -48,6 +48,19 @@ const produitsModule = {
           });
       });
     },
+    setProduitsByUserIDAction({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        CustomizedAxios.get("users/getProduitsByUser/" + id)
+          .then((response) => {
+            commit("SET_PRODUITS", response.data.payload);
+            console.log("set Produits By User by id");
+            resolve(response.data.payload);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
     setProduitbyIDAction({ commit }, id) {
       return new Promise((resolve, reject) => {
         CustomizedAxios.get("produits/" + id)

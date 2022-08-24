@@ -66,7 +66,7 @@
                         background-color: #f6f6f6;
                         background-size: contain !important;
                       "
-                      :src=" product.src"
+                      :src="product.src"
                     ></v-img>
                   </v-col>
 
@@ -213,8 +213,8 @@ export default {
     clickProduitDetails(product) {
       this.produit = [];
       this.produit.push(product);
-      localStorage.setItem('produitInfo', JSON.stringify(product));
-      this.$router.push({ path: "/detailProduitScraping"});
+      localStorage.setItem("produitInfo", JSON.stringify(product));
+      this.$router.push({ path: "/detailProduitScraping" });
 
       //this.$router.replace({ path: '/detailproduit' });
 
@@ -234,16 +234,18 @@ export default {
         this.products = this.getProduits.filter(
           (c) => c.brand.toUpperCase() == this.searchText.toUpperCase()
         );
-        if (this.searchText.length == 0) {
-          this.products = [...this.getProduits];
-        } else if (this.searchText.length > 0) {
-          this.scrapingJumia.name = this.searchText;
-          this.setProduitsByScrapingAction(this.scrapingJumia).then(
-            (resolve) => {
-              this.products = [...this.getProduits];
-              //console.log("this.getProduits",resolve);
-            }
-          );
+        if (this.products.length == 0) {
+          if (this.searchText.length == 0) {
+            this.products = [...this.getProduits];
+          } else if (this.searchText.length > 0) {
+            this.scrapingJumia.name = this.searchText;
+            this.setProduitsByScrapingAction(this.scrapingJumia).then(
+              (resolve) => {
+                this.products = [...this.getProduits];
+                //console.log("this.getProduits",resolve);
+              }
+            );
+          }
         }
       });
 

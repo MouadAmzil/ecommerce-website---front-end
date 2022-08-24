@@ -31,7 +31,7 @@
                   height="50"
                   :src="
                     'http://127.0.0.1:8000/storage/' +
-                    useractive[0].picture[0].filename
+                          useractive[0].picture[useractive[0].picture.length - 1].filename
                   "
                   v-if="useractive[0] != null"
                 ></v-img>
