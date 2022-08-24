@@ -53,13 +53,11 @@
                                 </v-col>
                                 <v-divider class="mx-10 "></v-divider>
                             </v-row>
-
                         </v-spacer>
                     </v-card>
                 </template>
                 <!-- </v-sheet> -->
             </v-col>
-
         </v-row>
     </v-spacer>
 </template>
