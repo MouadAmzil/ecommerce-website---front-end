@@ -59,6 +59,7 @@
                 <v-row>
                   <v-col col cols="6">
                     <v-img
+                      v-if="product.src==''"
                       class="img"
                       contain
                       style="
@@ -73,6 +74,7 @@
                       "
                     ></v-img>
                     <v-img
+                    v-else
                       class="img"
                       contain
                       style="
@@ -220,6 +222,7 @@ export default {
       description: "",
       brand: "",
       stock: 2,
+      src:"",
       prix: null,
       categorie_id: 2,
     },
@@ -293,8 +296,9 @@ export default {
       } else {
         this.ProduitModel.name = product.name;
         this.ProduitModel.description = product.name;
+        this.ProduitModel.src = product.src;
         this.ProduitModel.brand = product.brand;
-        this.ProduitModel.prix = parseFloat(product.prix.replace('Dhs', '')) ;
+        this.ProduitModel.prix = parseFloat(product.prix.replace("Dhs", ""));
 
         this.addProduitAction(this.ProduitModel).then((resolve) => {
           this.ProduitsByUser.produit_id = resolve.id;

@@ -26,12 +26,13 @@
               >
                 <v-row>
                   <v-col col cols="6">
-                    <v-img
+                   <v-img
+                      v-if="product.src==''"
                       class="img"
                       contain
                       style="
-                        width: 100%;
-                        height: 200px !important;
+                        max-width: 100%;
+                        max-height: 200px !important;
                         background-color: #f6f6f6;
                         background-size: contain !important;
                       "
@@ -39,6 +40,18 @@
                         'http://127.0.0.1:8000/storage/' +
                         product.pictures[0].filename
                       "
+                    ></v-img>
+                    <v-img
+                    v-else
+                      class="img"
+                      contain
+                      style="
+                        max-width: 100%;
+                        max-height: 240px !important;
+                        background-color: #f6f6f6;
+                        background-size: contain !important;
+                      "
+                      :src="product.src"
                     ></v-img>
                   </v-col>
 
