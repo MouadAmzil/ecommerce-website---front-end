@@ -88,10 +88,15 @@
                             "
                           >
                             <v-action>
-                              <v-icon style="padding-right: 5px"
+                              <v-icon large style="padding-right: 5px"
                                 >mdi-cart</v-icon
                               >
-                              <v-icon color="red">mdi-cards-heart</v-icon>
+                              <v-icon
+                                large
+                                @click.stop="addToWishList(product)"
+                                :color="product.id != heart ? 'red' : 'grey'"
+                                >mdi-cards-heart-outline</v-icon
+                              >
                             </v-action>
                           </v-spacer>
                         </v-spacer>
@@ -115,7 +120,13 @@ export default {
   data() {
     return {
       products: [],
-      iduserActive:[],
+      iduserActive: [],
+      heart: 0,
+      ProduitsByUser:{
+        user_id: null,
+        produit_id:null
+      },
+
     };
   },
   mounted() {
@@ -128,9 +139,8 @@ export default {
   },
   watch: {},
   created() {
-          this.iduserActive=this.getUserActive.id;
-
-
+    this.iduserActive = this.getUserActive.id;
+    this.ProduitsByUser.user_id=this.getUserActive.id;
   },
   methods: {
     initialize() {
@@ -138,7 +148,7 @@ export default {
         this.products = [...this.getProduits];
       });
     },
-    ...mapActions(["setProduitsByUserIDAction"]),
+    ...mapActions(["setProduitsByUserIDAction","deleteUserToProduitAction"]),
     clickProduitDetails(product) {
       this.produit = [];
       this.produit.push(product);
@@ -154,6 +164,18 @@ export default {
       console.log("addToCart", product);
     },
     addToWishList(product) {
+if (this.heart == 0) {
+        this.heart = product.id;
+      } else if (this.heart == product.id) {
+        this.heart = 0;
+      } else if (this.heart != product.id) {
+        this.heart = product.id;
+      }   
+      this.ProduitsByUser.produit_id=product.id;
+        this.deleteUserToProduitAction(this.ProduitsByUser).then(() => {
+        this.products = [...this.getProduits];
+        
+      });
       console.log("addToWishList", product);
     },
   },

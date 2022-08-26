@@ -14,6 +14,9 @@ const produitsModule = {
     DELETE_PRODUIT(state, produit) {
       state.produits = state.produits.filter((c) => c.id != produit.id);
     },
+    DELETE_PRODUITfromUser(state, produit) {
+      state.produits = state.produits.filter((c) => c.id != produit.produit_id);
+    },
     EDIT_PRODUIT(state, produit) {
       state.produits = state.produits.map((c) => {
         if (c.id == produit.id) return produit;
@@ -53,7 +56,7 @@ const produitsModule = {
         CustomizedAxios.get("users/getProduitsByUser/" + id)
           .then((response) => {
             commit("SET_PRODUITS", response.data.payload);
-            console.log("set Produits By User by id");
+            console.log("set Produits By UserIDAction by id");
             resolve(response.data.payload);
           })
           .catch((error) => {
@@ -94,6 +97,18 @@ const produitsModule = {
         CustomizedAxios.post("produits/delete", produit)
           .then((response) => {
             commit("DELETE_PRODUIT", produit);
+            resolve(response.data.payload);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
+    deleteUserToProduitAction({ commit }, produit) {
+      return new Promise((resolve, reject) => {
+        CustomizedAxios.post("users/deleteUserToProduit", produit)
+          .then((response) => {
+            commit("DELETE_PRODUITfromUser", produit);
             resolve(response.data.payload);
           })
           .catch((error) => {
