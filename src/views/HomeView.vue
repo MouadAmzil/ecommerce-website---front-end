@@ -39,6 +39,7 @@
             autoplay
           ></lottie-player>
         </div>
+
         <v-container class="mycontainer" align-center fluid>
           <v-row>
             <v-col
@@ -157,6 +158,7 @@
                                 @click.stop="addToCart(product)"
                                 >mdi-cart</v-icon
                               >
+
                               <v-icon
                                 :color="product.id == heart ? 'red' : 'grey'"
                                 large
@@ -185,6 +187,10 @@ export default {
   data: () => ({
     products: [],
     produit: [],
+    ProduitsByUser: {
+      user_id: null,
+      produit_id: null,
+    },
     visible: "none",
     heart: 0,
     searchText: "",
@@ -209,8 +215,18 @@ export default {
         updated_at: "21/07/2022 23:43",
       },
     ],
+    ProduitModel: {
+      name: "",
+      description: "",
+      brand: "",
+      stock: 2,
+      prix: null,
+      categorie_id: 2,
+    },
+    isScraping: false,
     count: 0,
     selection: 2,
+    iduserActive: null,
   }),
   mounted() {
     document.title = "Title";
@@ -218,10 +234,18 @@ export default {
     this.initialize();
   },
   computed: {
-    ...mapGetters(["getdamageTypes", "getProduits", "getUsers"]),
+    ...mapGetters([
+      "getdamageTypes",
+      "getProduits",
+      "getUsers",
+      "getUserActive",
+    ]),
   },
   watch: {},
-  created() {},
+  created() {
+    this.iduserActive = this.getUserActive.id;
+    this.ProduitsByUser.user_id = this.getUserActive.id;
+  },
   methods: {
     initialize() {
       this.visible = "block";
@@ -232,7 +256,12 @@ export default {
         this.visible = "none";
       }, 4000);
     },
-    ...mapActions(["setProduitsAction", "setProduitsByScrapingAction"]),
+    ...mapActions([
+      "setProduitsAction",
+      "setProduitsByScrapingAction",
+      "addProduitToUserAction",
+      "addProduitAction",
+    ]),
     clickProduitDetails(product) {
       this.produit = [];
       this.produit.push(product);
@@ -255,7 +284,27 @@ export default {
       } else if (this.heart != product.id) {
         this.heart = product.id;
       }
-      console.log("addToWishList", product);
+      if (this.isScraping == false) {
+        this.ProduitsByUser.produit_id = product.id;
+
+        this.addProduitToUserAction(this.ProduitsByUser).then(() => {
+          //this.products = [...this.getProduits];
+        });
+      } else {
+        this.ProduitModel.name = product.name;
+        this.ProduitModel.description = product.name;
+        this.ProduitModel.brand = product.brand;
+        this.ProduitModel.prix = parseFloat(product.prix.replace('Dhs', '')) ;
+
+        this.addProduitAction(this.ProduitModel).then((resolve) => {
+          this.ProduitsByUser.produit_id = resolve.id;
+
+          this.addProduitToUserAction(this.ProduitsByUser).then(() => {
+            //this.products = [...this.getProduits];
+          });
+        });
+      }
+      console.log("addToWishList", this.ProduitsByUser);
     },
     search() {
       this.products = [];
@@ -270,6 +319,7 @@ export default {
             if (this.searchText.length == 0) {
               this.products = [...this.getProduits];
             } else if (this.searchText.length > 0) {
+              this.isScraping = true;
               this.scrapingJumia.name = this.searchText;
               this.setProduitsByScrapingAction(this.scrapingJumia).then(
                 (resolve) => {

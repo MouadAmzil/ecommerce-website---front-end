@@ -91,7 +91,19 @@ const produitsModule = {
           });
       });
     },
-
+    addProduitToUserAction({ commit }, produit) {
+      return new Promise((resolve, reject) => {
+        CustomizedAxios.post("users/addUserToProduit", produit)
+          .then((response) => {
+            console.log("res add ", response);
+            //commit("ADD_PRODUIT", response.data.payload);
+            resolve(response.data.payload);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
     deleteProduitAction({ commit }, produit) {
       return new Promise((resolve, reject) => {
         CustomizedAxios.post("produits/delete", produit)
