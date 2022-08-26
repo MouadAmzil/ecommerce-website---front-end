@@ -11,6 +11,7 @@ import vueCountryRegionSelect from 'vue-country-region-select';
 import '@mdi/font/css/materialdesignicons.css';
 import "../src/components/profileSetting/style.scss";
 import "../src/components/profileSetting/login/style.scss";
+import "@lottiefiles/lottie-player";
 
 Vue.use(vueCountryRegionSelect);
 Vue.use(VueTelInput);

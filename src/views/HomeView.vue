@@ -25,6 +25,20 @@
     >
       <v-spacer class="about">
         <h2 class="pt-2">Trending Items</h2>
+        <div
+          :style="
+            'display:' + visible + ';' + 'padding-left:300px;padding-top:100px;'
+          "
+        >
+          <lottie-player
+            src="https://assets2.lottiefiles.com/packages/lf20_dyfc7cm9.json"
+            background="transparent"
+            speed="1"
+            style="width: 300px; height: 300px"
+            loop
+            autoplay
+          ></lottie-player>
+        </div>
         <v-container class="mycontainer" align-center fluid>
           <v-row>
             <v-col
@@ -143,7 +157,10 @@
                                 @click.stop="addToCart(product)"
                                 >mdi-cart</v-icon
                               >
-                              <v-icon large @click.stop="addToWishList(product)"
+                              <v-icon
+                                :color="product.id == heart ? 'red' : 'grey'"
+                                large
+                                @click.stop="addToWishList(product)"
                                 >mdi-cards-heart-outline</v-icon
                               >
                             </v-action>
@@ -168,6 +185,8 @@ export default {
   data: () => ({
     products: [],
     produit: [],
+    visible: "none",
+    heart: 0,
     searchText: "",
     scrapingJumia: {
       name: "",
@@ -205,9 +224,13 @@ export default {
   created() {},
   methods: {
     initialize() {
-      this.setProduitsAction().then(() => {
-        this.products = [...this.getProduits];
-      });
+      this.visible = "block";
+      setTimeout(() => {
+        this.setProduitsAction().then(() => {
+          this.products = [...this.getProduits];
+        });
+        this.visible = "none";
+      }, 4000);
     },
     ...mapActions(["setProduitsAction", "setProduitsByScrapingAction"]),
     clickProduitDetails(product) {
@@ -225,29 +248,40 @@ export default {
       console.log("addToCart", product);
     },
     addToWishList(product) {
+      if (this.heart == 0) {
+        this.heart = product.id;
+      } else if (this.heart == product.id) {
+        this.heart = 0;
+      } else if (this.heart != product.id) {
+        this.heart = product.id;
+      }
       console.log("addToWishList", product);
     },
     search() {
       this.products = [];
-      this.setProduitsAction().then(() => {
-        // this.products = [...this.getProduits];
-        this.products = this.getProduits.filter(
-          (c) => c.brand.toUpperCase() == this.searchText.toUpperCase()
-        );
-        if (this.products.length == 0) {
-          if (this.searchText.length == 0) {
-            this.products = [...this.getProduits];
-          } else if (this.searchText.length > 0) {
-            this.scrapingJumia.name = this.searchText;
-            this.setProduitsByScrapingAction(this.scrapingJumia).then(
-              (resolve) => {
-                this.products = [...this.getProduits];
-                //console.log("this.getProduits",resolve);
-              }
-            );
+      this.visible = "block";
+      setTimeout(() => {
+        this.setProduitsAction().then(() => {
+          // this.products = [...this.getProduits];
+          this.products = this.getProduits.filter(
+            (c) => c.brand.toUpperCase() == this.searchText.toUpperCase()
+          );
+          if (this.products.length == 0) {
+            if (this.searchText.length == 0) {
+              this.products = [...this.getProduits];
+            } else if (this.searchText.length > 0) {
+              this.scrapingJumia.name = this.searchText;
+              this.setProduitsByScrapingAction(this.scrapingJumia).then(
+                (resolve) => {
+                  this.products = [...this.getProduits];
+                  //console.log("this.getProduits",resolve);
+                }
+              );
+            }
           }
-        }
-      });
+        });
+        this.visible = "none";
+      }, 5000);
 
       console.log("search", this.searchText);
     },
