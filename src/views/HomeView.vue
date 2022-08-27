@@ -144,7 +144,7 @@
                               line-height: 22px;
                             "
                           >
-                            {{ product.prix }} $</v-spacer
+                            {{ product.prix }} DH</v-spacer
                           >
                           <v-spacer
                             style="
@@ -298,8 +298,8 @@ export default {
         this.ProduitModel.description = product.name;
         this.ProduitModel.src = product.src;
         this.ProduitModel.brand = product.brand;
-        this.ProduitModel.prix = parseFloat(product.prix.replace("Dhs", ""));
-
+        var taman = product.prix.replace(',', '');;
+        this.ProduitModel.prix = parseFloat(taman);
         this.addProduitAction(this.ProduitModel).then((resolve) => {
           this.ProduitsByUser.produit_id = resolve.id;
 
