@@ -100,7 +100,6 @@ export default {
   }),
   mounted() {
     document.title = "Title";
-
   },
   computed: {
     ...mapGetters(["getUserActive"]),
@@ -110,13 +109,11 @@ export default {
     this.logged=localStorage.getItem("logged");
     console.log("logged app",this.logged);
         this.initialize();
-
   },
   methods: {
     initialize() {
        this.useractive = [];
         this.useractive.push(this.getUserActive);
-
     },
     ...mapActions(["setProduitsAction"]),
     clickProduitDetails(product) {},
