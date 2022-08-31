@@ -170,6 +170,7 @@ export default {
           price: 200,
         },
       ],
+      paniers:[],
     };
   },
 };

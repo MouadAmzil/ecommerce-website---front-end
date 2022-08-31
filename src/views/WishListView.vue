@@ -119,7 +119,15 @@
                 </v-row>
               </v-card>
             </v-col>
-          </v-row>
+          </v-row>   
+          <div
+          :style="
+            'display:' + visible + ';' + 'padding-left:300px;padding-top:70px;'
+          "
+        >
+        <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_qh5z2fdq.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop  autoplay></lottie-player>
+          <h2 class="pt-2 pl-16 red--text">Empty Wishlist </h2>
+        </div>
         </v-container>
       </v-spacer>
     </v-sheet>
@@ -134,6 +142,7 @@ export default {
     return {
       products: [],
       iduserActive: [],
+      visible:"block",
       heart: 0,
       ProduitsByUser:{
         user_id: null,
@@ -150,15 +159,24 @@ export default {
   computed: {
     ...mapGetters(["getProduits", "getUserActive"]),
   },
-  watch: {},
+  watch: {
+    
+  },
   created() {
     this.iduserActive = this.getUserActive.id;
     this.ProduitsByUser.user_id=this.getUserActive.id;
+
   },
   methods: {
     initialize() {
       this.setProduitsByUserIDAction(this.iduserActive).then(() => {
         this.products = [...this.getProduits];
+        if (this.products.length == 0) {
+          this.visible = "block";
+        }else{
+          this.visible = "none";
+
+        }
       });
     },
     ...mapActions(["setProduitsByUserIDAction","deleteUserToProduitAction"]),

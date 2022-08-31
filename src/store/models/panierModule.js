@@ -48,7 +48,19 @@ const panierModule = {
           });
       });
     },
-
+    getProduitsByUserAction({ commit }, id) {
+      return new Promise((resolve, reject) => {
+        CustomizedAxios.get("paniers/getProduitsByUser" + id)
+          .then((response) => {
+            commit("SET_PANIERS", response.data.payload);
+            console.log("set panier ");
+            resolve(response.data.payload);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
     addProduitAction({ commit }, panier) {
       return new Promise((resolve, reject) => {
         CustomizedAxios.post("paniers/create", panier)
