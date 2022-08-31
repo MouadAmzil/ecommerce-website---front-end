@@ -48,9 +48,9 @@ const panierModule = {
           });
       });
     },
-    getProduitsByUserAction({ commit }, id) {
+    getProduitsPanierByUserAction({ commit }, id) {
       return new Promise((resolve, reject) => {
-        CustomizedAxios.get("paniers/getProduitsByUser" + id)
+        CustomizedAxios.get("paniers/getProduitsByUser/" + id)
           .then((response) => {
             commit("SET_PANIERS", response.data.payload);
             console.log("set panier ");
@@ -125,7 +125,7 @@ const panierModule = {
       },
   },
   getters: {
-    getProduits: (state) => {
+    getPaniers: (state) => {
       return state.paniers;
     },
   },
