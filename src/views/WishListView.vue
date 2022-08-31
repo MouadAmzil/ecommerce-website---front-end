@@ -205,6 +205,10 @@ if (this.heart == 0) {
       this.ProduitsByUser.produit_id=product.id;
         this.deleteUserToProduitAction(this.ProduitsByUser).then(() => {
         this.products = [...this.getProduits];
+        if (this.products.length == 0) {
+          this.visible = "block";
+
+        }
         
       });
       console.log("addToWishList", product);

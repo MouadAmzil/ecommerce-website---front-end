@@ -59,7 +59,7 @@
                 <v-row>
                   <v-col col cols="6">
                     <v-img
-                      v-if="product.src==''"
+                      v-if="product.src == ''"
                       class="img"
                       contain
                       style="
@@ -74,7 +74,7 @@
                       "
                     ></v-img>
                     <v-img
-                    v-else
+                      v-else
                       class="img"
                       contain
                       style="
@@ -222,9 +222,14 @@ export default {
       description: "",
       brand: "",
       stock: 2,
-      src:"",
+      src: "",
       prix: null,
       categorie_id: 2,
+    },
+    PanierModel: {
+      panier_id: 0,
+      produit_id: 0,
+      Qte: 1,
     },
     isScraping: false,
     count: 0,
@@ -264,6 +269,8 @@ export default {
       "setProduitsByScrapingAction",
       "addProduitToUserAction",
       "addProduitAction",
+      "addProduitToPanierAction",
+      "addProduitAction"
     ]),
     clickProduitDetails(product) {
       this.produit = [];
@@ -278,6 +285,31 @@ export default {
     },
     addToCart(product) {
       console.log("addToCart", product);
+      
+      if (this.isScraping == false) {
+         this.PanierModel.panier_id=this.getUserActive.panier.id;
+      this.PanierModel.produit_id=product.id;
+      this.addProduitToPanierAction(this.PanierModel).then(() => {
+        console.log("done");
+      }); 
+      console.log("done isScraping false");
+      }else{
+        console.log("done isScraping true");
+
+         this.ProduitModel.name = product.name;
+        this.ProduitModel.description = product.name;
+        this.ProduitModel.src = product.src;
+        this.ProduitModel.brand = product.brand;
+        var taman = product.prix.replace(",", "");
+        this.ProduitModel.prix = parseFloat(taman);
+        this.addProduitAction(this.ProduitModel).then((resolve) => {
+          this.PanierModel.panier_id=this.getUserActive.panier.id;
+          this.PanierModel.produit_id=resolve.id;
+          this.addProduitToPanierAction(this.PanierModel).then(() => {
+          console.log("done");
+      });
+        }); 
+      }
     },
     addToWishList(product) {
       if (this.heart == 0) {
@@ -298,7 +330,7 @@ export default {
         this.ProduitModel.description = product.name;
         this.ProduitModel.src = product.src;
         this.ProduitModel.brand = product.brand;
-        var taman = product.prix.replace(',', '');;
+        var taman = product.prix.replace(",", "");
         this.ProduitModel.prix = parseFloat(taman);
         this.addProduitAction(this.ProduitModel).then((resolve) => {
           this.ProduitsByUser.produit_id = resolve.id;
@@ -319,8 +351,10 @@ export default {
           this.products = this.getProduits.filter(
             (c) => c.brand.toUpperCase() == this.searchText.toUpperCase()
           );
+
           if (this.products.length == 0) {
             if (this.searchText.length == 0) {
+              this.isScraping = false;
               this.products = [...this.getProduits];
             } else if (this.searchText.length > 0) {
               this.isScraping = true;
