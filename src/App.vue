@@ -4,7 +4,7 @@
       <v-row>
         <v-col class="pt-16" cols="2">
           <template>
-            <v-card class="mx-auto" style="border-radius: 24px !important; padding: 3px 5px" max-width="300" tile>
+            <v-card class="mx-auto" style="border-radius: 24px !important; padding: 3px 5px ;overflow: hidden;" max-width="300" tile>
               <v-list style="padding: 0px !important" class="brand">
                 <v-img src="../src/assets/brande.png"></v-img>
               </v-list>
