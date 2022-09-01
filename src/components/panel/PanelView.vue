@@ -203,11 +203,7 @@ export default {
     CalcuTotal() {
       this.total=0;
       this.paniers.panier.produits.map((res) => {
-        debugger;
-        console.log(res.pivot.Qte * res.prix);
-        console.log(this.total);
         this.total = (res.pivot.Qte * res.prix) + this.total;
-
       })
     },
   },
