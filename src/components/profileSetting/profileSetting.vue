@@ -92,7 +92,7 @@
                   </v-list-item>
                 </router-link>
               <router-link to="/gestionProduit" style="text-decoration: none">
-                <v-list-item>
+                <v-list-item  v-if='useractive[0] != null' >
                   <v-list-item-icon>
                     <v-icon medium color="#8eb3b0"
                       >mdi-store-cog-outline</v-icon

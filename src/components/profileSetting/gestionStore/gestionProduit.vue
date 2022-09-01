@@ -40,6 +40,54 @@
                       ></v-text-field>
                     </v-col>
                   </v-row>
+                  <v-row>
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="editedItem.description"
+                        label="description"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="editedItem.brand"
+                        label="brand"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="editedItem.stock"
+                        label="stock"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="editedItem.prix"
+                        label="prix"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
+                    <v-row>
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="editedItem.src"
+                        label="src"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="editedItem.categorie_id"
+                        label="categorie_id"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
                 </v-container>
               </v-card-text>
 
@@ -117,17 +165,22 @@ export default {
     idgrp: null,
     editedIndex: -1,
     editedItem: {
-      id: null,
-      name: "",
-      profile_group_id: "",
-    },
-    defaultItem: {
-      id: null,
       name: "",
       description: "",
-      profileGroup: {
-        id: null,
-      },
+      brand: "",
+      stock: 0,
+      prix: 0,
+      src:"",
+      categorie_id: 2,
+    },
+    defaultItem: {
+      name: "",
+      description: "",
+      brand: "",
+      stock: 0,
+      prix: 0,
+      src:"",
+      categorie_id: 2,
     },
   }),
   mounted() {
@@ -146,9 +199,12 @@ export default {
       if (!val) {
         this.editedIndex = -1;
         this.editedItem = {
-          id: null,
           name: "",
-          profile_group_id: "",
+          description: "",
+          brand: "",
+          stock: 0,
+          prix: 0,
+          categorie_id: 2,
         };
       }
     },
@@ -163,7 +219,12 @@ export default {
         this.produits = [...this.getProduits];
       });
     },
-    ...mapActions(["setProduitsAction"]),
+    ...mapActions([
+      "setProduitsAction",
+      "addProduitAction",
+      "deleteProduitAction",
+      "editProduitAction",
+    ]),
 
     editItem(item) {
       this.editedIndex = this.produits.indexOf(item) + 1;
@@ -176,7 +237,7 @@ export default {
       this.dialogDelete = true;
     },
     deleteItemConfirm() {
-      this.deleteEQUIPMENTAction(this.editedItem).then(() => {
+      this.deleteProduitAction(this.editedItem).then(() => {
         this.equipmentsFiltres = this.equipmentsFiltres.filter((e) => {
           return e.id != this.editedItem.id;
         });
@@ -192,12 +253,11 @@ export default {
     },
     save() {
       if (this.editedIndex == -1) {
-        this.editedItem.profile_group_id = localStorage.getItem("id");
-        this.addEQUIPMENTAction(this.editedItem).then((equipment) => {
-          this.equipmentsFiltres.push(equipment);
+        this.addProduitAction(this.editedItem).then((equipment) => {
+          this.produits.push(equipment);
         });
       } else {
-        this.editEQUIPMENTAction(this.editedItem).then((equipment) => {
+        this.editProduitAction(this.editedItem).then((equipment) => {
           this.produits = this.produits.map((c) => {
             if (c.id == equipment.id) return equipment;
             return c;

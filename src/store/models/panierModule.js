@@ -22,7 +22,7 @@ const panierModule = {
     },
   },
   actions: {
-    setProduitsAction({ commit }) {
+    setpaniersAction({ commit }) {
       return new Promise((resolve, reject) => {
         CustomizedAxios.get("paniers/")
           .then((response) => {
@@ -35,7 +35,7 @@ const panierModule = {
           });
       });
     },
-    setProduitbyIDAction({ commit }, id) {
+    setpaniersbyIDAction({ commit }, id) {
       return new Promise((resolve, reject) => {
         CustomizedAxios.get("paniers/" + id)
           .then((response) => {
@@ -48,7 +48,7 @@ const panierModule = {
           });
       });
     },
-    getProduitsPanierByUserAction({ commit }, id) {
+    getpanierssPanierByUserAction({ commit }, id) {
       return new Promise((resolve, reject) => {
         CustomizedAxios.get("paniers/getProduitsByUser/" + id)
           .then((response) => {
@@ -61,7 +61,7 @@ const panierModule = {
           });
       });
     },
-    addProduitAction({ commit }, panier) {
+    addpaniersAction({ commit }, panier) {
       return new Promise((resolve, reject) => {
         CustomizedAxios.post("paniers/create", panier)
           .then((response) => {
@@ -75,7 +75,7 @@ const panierModule = {
       });
     },
 
-    deleteProduitAction({ commit }, panier) {
+    deletepaniersAction({ commit }, panier) {
       return new Promise((resolve, reject) => {
         CustomizedAxios.post("paniers/delete", panier)
           .then((response) => {
@@ -87,7 +87,7 @@ const panierModule = {
           });
       });
     },
-    editProduitAction({ commit }, panier) {
+    editpaniersAction({ commit }, panier) {
       return new Promise((resolve, reject) => {
         CustomizedAxios.post("paniers/update", panier)
           .then((response) => {

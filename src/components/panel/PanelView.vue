@@ -169,9 +169,9 @@ export default {
 
   },
   methods: {
-    ...mapActions(["getProduitsPanierByUserAction"]),
+    ...mapActions(["getpanierssPanierByUserAction"]),
     initialize() {
-      this.getProduitsPanierByUserAction(this.iduserActive).then(() => {
+      this.getpanierssPanierByUserAction(this.iduserActive).then(() => {
         this.paniers = this.getPaniers;
         this.paniers.panier.produits.map((res) => {
           this.total = res.prix + this.total;
