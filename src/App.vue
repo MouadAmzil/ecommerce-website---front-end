@@ -42,27 +42,19 @@
                   </v-list-item>
                   <v-divider></v-divider>
                   <v-list-item>
-                    <router-link
-                      to="/profileSetting"
-                      class="itemd d-flex flex-column"
-                      style="text-decoration: none"
-                    >
-                      <v-img
-                        v-if="useractive[0] != null"
-                        class="img"
-                        width="70"
-                        height="50"
-                        :src="
+                    <router-link to="/profileSetting" class="itemd d-flex " style="text-decoration: none">
+                      <v-list-item-avatar>
+                        <v-img v-if="useractive[0] != null" class="img" width="70" height="50" :src="
                           'http://127.0.0.1:8000/storage/' +
                           useractive[0].picture[useractive[0].picture.length - 1].filename
-                        "
-                      ></v-img>
-                      <v-list-item-icon v-else>
-                        <v-icon color="#8eb3b0" x-large>mdi-account-circle</v-icon>
-                      </v-list-item-icon>
+                        "></v-img>
+                        <v-list-item-icon v-else>
+                          <v-icon color="#8eb3b0" x-large>mdi-account-circle</v-icon>
+                        </v-list-item-icon>
+                      </v-list-item-avatar>
                       <v-list-item-content>
                         <v-list-item-title v-if="useractive[0] != null">{{
-                          useractive[0].username
+                            useractive[0].username
                         }}</v-list-item-title>
                         <v-list-item-title v-else>profile</v-list-item-title>
                       </v-list-item-content>
@@ -106,19 +98,19 @@ export default {
   },
   watch: {},
   created() {
-    this.logged=localStorage.getItem("logged");
-    console.log("logged app",this.logged);
-        this.initialize();
+    this.logged = localStorage.getItem("logged");
+    console.log("logged app", this.logged);
+    this.initialize();
   },
   methods: {
     initialize() {
-       this.useractive = [];
-        this.useractive.push(this.getUserActive);
+      this.useractive = [];
+      this.useractive.push(this.getUserActive);
     },
     ...mapActions(["setProduitsAction"]),
-    clickProduitDetails(product) {},
-    login() {},
-    addToWishList(product) {},
+    clickProduitDetails(product) { },
+    login() { },
+    addToWishList(product) { },
   },
 };
 </script>
