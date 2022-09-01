@@ -126,7 +126,6 @@
           "
         >
         <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_qh5z2fdq.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop  autoplay></lottie-player>
-          <h2 class="pt-2 pl-16 red--text">Empty Wishlist </h2>
         </div>
         </v-container>
       </v-spacer>

@@ -185,13 +185,17 @@
                 <v-col cols="12" class="d-flex flex-row orange--text">
                   <h4>Total :</h4>
                   <v-spacer></v-spacer>
-                  <h4 class="orange--text">{{ shipping + total }}DH</h4>
+                  <h4 class="orange--text">{{ total +  shipping }}DH</h4>
                 </v-col>
                 <v-col
                   cols="12"
                   class="d-flex flex-row justify-center orange--text"
                 >
-                  <v-btn color="green" class="ma-2 white--text">
+                  <v-btn
+                    color="green"
+                    class="ma-2 white--text"
+                    @click="placeOrder()"
+                  >
                     Place order
                     <v-icon right color="#fff"> mdi-cart-arrow-down </v-icon>
                   </v-btn>
@@ -230,6 +234,11 @@ export default {
       produit_id: 0,
       panier_id: 0,
     },
+    OrderModel: {
+      status_commande: "",
+      mantant: 0,
+      placeorder:[],
+    },
   }),
   mounted: function () {
     // this.updatelikescount(this.post_id);
@@ -242,17 +251,22 @@ export default {
   created() {
     this.iduserActive = this.getUserActive.id;
     this.idPanier = this.getUserActive.panier.id;
-    this.PanierModel.panier_id=this.getUserActive.panier.id;
+    this.PanierModel.panier_id = this.getUserActive.panier.id;
     this.initialize();
   },
   methods: {
-    ...mapActions(["getpanierssPanierByUserAction","deleteProduitToPanierAction"]),
+    ...mapActions([
+      "getpanierssPanierByUserAction",
+      "deleteProduitToPanierAction",
+      "addCommandeAction"
+    ]),
     initialize() {
       this.getpanierssPanierByUserAction(this.iduserActive).then(() => {
         this.paniers = this.getPaniers;
         this.paniers.panier.produits.map((res) => {
           this.total = res.prix + this.total;
         });
+
       });
     },
     increment(id) {
@@ -273,7 +287,6 @@ export default {
         });
         this.CalcuTotal();
       }
-
     },
     CalcuTotal() {
       this.total = 0;
@@ -282,16 +295,26 @@ export default {
       });
     },
     deleteFromCart(product) {
-      this.PanierModel.produit_id=product.id;
+      this.PanierModel.produit_id = product.id;
       console.log(this.PanierModel);
       this.deleteProduitToPanierAction(this.PanierModel).then((resolve) => {
         this.paniers = resolve;
-        this.total=0;
+        this.total = 0;
         this.paniers.panier.produits.map((res) => {
           this.total = res.prix + this.total;
         });
       });
-
+    },
+    placeOrder() {
+      this.OrderModel.status_commande="on progress";
+      this.OrderModel.mantant=this.shipping + this.total ;
+      this.OrderModel.placeorder=this.paniers;
+      this.addCommandeAction(this.OrderModel).then((resolve) => {
+        this.getpanierssPanierByUserAction(this.iduserActive).then(() => {
+        this.paniers = this.getPaniers;
+      });
+      });
+      console.log("this.OrderModel",this.OrderModel)
     },
   },
 };
