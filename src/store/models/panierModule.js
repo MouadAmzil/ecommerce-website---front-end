@@ -14,6 +14,9 @@ const panierModule = {
     DELETE_PANIER(state, panier) {
       state.paniers = state.paniers.filter((c) => c.id != panier.id);
     },
+    DELETE_PRODUIT_FROM_PANIER(state, panier) {
+      state.paniers = state.paniers.panier.produits.filter((c) => c.id != panier.produit_id);
+    },
     EDIT_PANIER(state, panier) {
       state.paniers = state.paniers.map((c) => {
         if (c.id == panier.id) return panier;
@@ -115,7 +118,7 @@ const panierModule = {
         return new Promise((resolve, reject) => {
           CustomizedAxios.post("paniers/deleteProduitFromPanier", panier)
             .then((response) => {
-              commit("EDIT_PANIER", response.data.payload);
+           //   commit("DELETE_PRODUIT_FROM_PANIER", panier);
               resolve(response.data.payload);
             })
             .catch((error) => {
