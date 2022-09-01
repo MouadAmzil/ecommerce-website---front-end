@@ -31,7 +31,8 @@
                   height="50"
                   :src="
                     'http://127.0.0.1:8000/storage/' +
-                          useractive[0].picture[useractive[0].picture.length - 1].filename
+                    useractive[0].picture[useractive[0].picture.length - 1]
+                      .filename
                   "
                   v-if="useractive[0] != null"
                 ></v-img>
@@ -44,7 +45,10 @@
 
               <v-list-item link>
                 <v-list-item-content>
-                  <v-list-item-title v-if="useractive[0] != null" class="text-h6">
+                  <v-list-item-title
+                    v-if="useractive[0] != null"
+                    class="text-h6"
+                  >
                     {{ useractive[0].username }}
                   </v-list-item-title>
                   <v-list-item-title v-else class="text-h6">
@@ -91,20 +95,36 @@
                     </v-list-item-content>
                   </v-list-item>
                 </router-link>
-              <router-link to="/gestionProduit" style="text-decoration: none">
-                <v-list-item  v-if='useractive[0] != null' >
-                  <v-list-item-icon>
-                    <v-icon medium color="#8eb3b0"
-                      >mdi-store-cog-outline</v-icon
-                    >
-                  </v-list-item-icon>
+           
+                <v-list-group no-action sub-group v-if="useractive[0] != null">
+                  <v-icon medium color="#8eb3b0">mdi-store-cog-outline</v-icon>
+                  <template v-slot:activator>
+                    <v-list-item-content>
+                      <v-list-item-title>Gestion Store</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
 
-                  <v-list-item-content>
-                    <v-list-item-title>Gestion Store</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </router-link>
-                
+                  <v-list-item>
+                    <router-link
+                      to="/gestionProduit"
+                      style="text-decoration: none"
+                    >
+                      <v-list-item-content>
+                        <v-list-item-title>Gestion Produit</v-list-item-title>
+                      </v-list-item-content>
+                    </router-link>
+                  </v-list-item>
+                  <v-list-item>
+                    <router-link
+                      to="/gestionCommande"
+                      style="text-decoration: none"
+                    >
+                      <v-list-item-content>
+                        <v-list-item-title>Gestion Commandes</v-list-item-title>
+                      </v-list-item-content>
+                    </router-link>
+                  </v-list-item>
+                </v-list-group>
                 <router-link to="/loginProfile" style="text-decoration: none">
                   <v-list-item v-if="useractive[0] == null">
                     <v-list-item-icon>
@@ -153,7 +173,7 @@ export default {
     this.initialize();
   },
   computed: {
-    ...mapGetters(["getUserActive","getProduits"]),
+    ...mapGetters(["getUserActive", "getProduits"]),
   },
   watch: {},
   created() {},

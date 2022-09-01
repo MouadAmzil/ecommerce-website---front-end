@@ -13,6 +13,7 @@ import changePassword from "../components/profileSetting/changepassword/changePa
 import loginProfile from "../components/profileSetting/login/loginProfile.vue";
 import detailProduitScraping from "../components/detailProduiScraping/detailProduitScraping.vue";
 import gestionProduit from "../components/profileSetting/gestionStore/gestionProduit.vue";
+import gestionCommande from "../components/profileSetting/gestionStore/gestionCommande.vue";
 
 Vue.use(VueRouter);
 
@@ -80,6 +81,11 @@ const routes = [
         path: "/gestionProduit",
         name: "gestionProduit",
         component: gestionProduit,
+      },
+      {
+        path: "/gestionCommande",
+        name: "gestionCommande",
+        component: gestionCommande,
       },
     ],
   },
