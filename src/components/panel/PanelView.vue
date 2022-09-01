@@ -40,7 +40,7 @@
                     <v-spacer style="padding-top: 10px; padding-right: 5px">
                       <h3>{{ product.name }}</h3>
                       <h5>
-                        {{ product.price }}
+                        {{ product.prix }}
                         <v-divider class="mx-2" vertical></v-divider>
                         <span class="teal--text lighten-2">IN STOCK</span>
                       </h5>
@@ -50,7 +50,7 @@
                         -
                       </button>
                       <p class="counter">
-                        {{ product.pivot.Qte  }}
+                        {{ product.pivot.Qte }}
                       </p>
                       <button v-on:click.prevent="increment(product.id)" class="increment">
                         +
@@ -64,7 +64,10 @@
                           font-weight: 500;
                           color: #7e7777;
                         ">
-                        {{ product.prix }}DH
+                        {{ product.prix }}DH <sup
+                          style="background: #f376aa;padding: 3px;border-radius: 50%;color: wheat;">*{{
+                              product.pivot.Qte
+                          }}</sup>
                       </div>
                     </v-spacer>
                     <v-spacer style="
@@ -76,7 +79,6 @@
                       <!-- <v-action> -->
                       <v-icon style="padding-right: 10px; cursor: pointer">mdi-trash-can-outline
                       </v-icon>
-
                       <!-- </v-action> -->
                     </v-spacer>
                   </v-col>
@@ -154,7 +156,7 @@ export default {
   mounted: function () {
     // this.updatelikescount(this.post_id);
 
-    //this.initialize();
+    //this.initialize(); hi this is me for sara
     // this.CalcuTotal();
   },
   computed: {
@@ -183,7 +185,7 @@ export default {
           res.pivot.Qte = res.pivot.Qte + 1;
         }
       })
-
+      this.CalcuTotal();
     },
     decrement(id, QTE) {
       if (QTE > 1) {
@@ -192,21 +194,21 @@ export default {
             res.pivot.Qte = res.pivot.Qte - 1;
           }
         })
+        this.CalcuTotal();
       }
       // if (this.count > 1) {
       //   this.count--;
       // }
     },
     CalcuTotal() {
-      if (this.paniers.panier.produits.length > 0) {
+      this.total=0;
+      this.paniers.panier.produits.map((res) => {
+        debugger;
+        console.log(res.pivot.Qte * res.prix);
+        console.log(this.total);
+        this.total = (res.pivot.Qte * res.prix) + this.total;
 
-        this.paniers.panier.produits.map((res) => {
-          //debugger;
-          this.total = res.prix + this.total;
-        });
-      } else {
-        this.total = 0;
-      }
+      })
     },
   },
 };
