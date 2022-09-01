@@ -185,7 +185,7 @@
                 <v-col cols="12" class="d-flex flex-row orange--text">
                   <h4>Total :</h4>
                   <v-spacer></v-spacer>
-                  <h4 class="orange--text">{{ total +  shipping }}DH</h4>
+                  <h4 class="orange--text">{{ total + shipping }}DH</h4>
                 </v-col>
                 <v-col
                   cols="12"
@@ -237,7 +237,7 @@ export default {
     OrderModel: {
       status_commande: "",
       mantant: 0,
-      placeorder:[],
+      placeorder: [],
     },
   }),
   mounted: function () {
@@ -258,7 +258,7 @@ export default {
     ...mapActions([
       "getpanierssPanierByUserAction",
       "deleteProduitToPanierAction",
-      "addCommandeAction"
+      "addCommandeAction",
     ]),
     initialize() {
       this.getpanierssPanierByUserAction(this.iduserActive).then(() => {
@@ -266,7 +266,6 @@ export default {
         this.paniers.panier.produits.map((res) => {
           this.total = res.prix + this.total;
         });
-
       });
     },
     increment(id) {
@@ -306,15 +305,22 @@ export default {
       });
     },
     placeOrder() {
-      this.OrderModel.status_commande="on progress";
+    this.OrderModel.status_commande="on progress";
       this.OrderModel.mantant=this.shipping + this.total ;
       this.OrderModel.placeorder=this.paniers;
       this.addCommandeAction(this.OrderModel).then((resolve) => {
         this.getpanierssPanierByUserAction(this.iduserActive).then(() => {
         this.paniers = this.getPaniers;
       });
+      swal({
+        title: "Good job!",
+        text: "Your order has been successfully!",
+        icon: "success",
+        button: "Aww yiss!",
       });
-      console.log("this.OrderModel",this.OrderModel)
+      }); 
+      
+      console.log("this.OrderModel", this.OrderModel);
     },
   },
 };

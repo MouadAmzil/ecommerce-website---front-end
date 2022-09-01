@@ -12,7 +12,7 @@ import '@mdi/font/css/materialdesignicons.css';
 import "../src/components/profileSetting/style.scss";
 import "../src/components/profileSetting/login/style.scss";
 import "@lottiefiles/lottie-player";
-
+import swal from 'sweetalert';
 Vue.use(vueCountryRegionSelect);
 Vue.use(VueTelInput);
 Vue.component("vue-phone-number-input", VuePhoneNumberInput);
