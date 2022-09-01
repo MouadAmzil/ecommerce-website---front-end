@@ -16,16 +16,16 @@
           <div>
             <div>
               <label for="username">Laste Password</label>
-              <input type="text" placeholder="Username" id="username" style="width: 260px; padding-left: 10px" />
+              <input type="password" id="username" style="width: 260px; padding-left: 10px" />
             </div>
             <div class="fs">
               <label for="firstname">New Password</label>
-              <input placeholder="Firstname" type="password" id="user" style="width: 260px; padding-left: 10px" />
+              <input type="password" id="user" style="width: 260px; padding-left: 10px" />
             </div>
             <div class="fs">
               <label for="password">Confirme Password</label>
               <!-- <VuePassword v-model="password" id="password" placeholder="" style="width: 260px; padding-left: 10px"/> -->
-              <input type="text" placeholder="Password" id="password" style="width: 260px; padding-left: 10px" />
+              <input type="password" id="password" style="width: 260px; padding-left: 10px" />
             </div>
 
           </div>
